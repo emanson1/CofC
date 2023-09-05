@@ -8,7 +8,7 @@ import Services from '../Pages/Services.jsx';
 import Gallery from '../Pages/Gallery.jsx';
 import NavBar from './NavBar';
 import { connect } from 'react-redux';
-import Background from '../Images/floorpic2.png';
+import Background from '../Images/Gallery/floorpic2.png';
 import CofCLogo from '../Images/CofCLogo.jpg';
 const tabs = {
   // 'instrument': Instruments,
