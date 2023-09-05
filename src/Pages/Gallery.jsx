@@ -149,7 +149,7 @@ const useStyles = makeStyles((theme) => ({
         return images;
     };
     useEffect(() => {
-        const images=importAll(require.context('../Images/', false, /\.(png|jpe?g|svg)$/));
+        const images=importAll(require.context('../Images/Gallery/', false, /\.(png|jpe?g|svg)$/));
 
         setListOfImages(images);
     }, []);
@@ -159,7 +159,7 @@ const useStyles = makeStyles((theme) => ({
 
                   {
                         listOfImages.map(
-                          (image, index) =>    <a Href={`../images/${image}`} target='_blank'><img height={100} width={100} key={index} src={image} alt="info"></img></a>
+                          (image, index) =>    <a Href={`../Images/Gallery/${image}`} target='_blank'><img height={100} width={100} key={index} src={image} alt="info"></img></a>
                         )
                   }
                 </Grid>
