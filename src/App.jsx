@@ -6,7 +6,7 @@ import {Paper, Grid, Box, Typography} from '@material-ui/core';
 import TinderCard from 'react-tinder-card';
 import DataLayer from './Pages/DataLayer';
 import MainPage from './Pages/MainPage';
-import LoggedIn from './Pages/LoggedIn';
+
 import NavBar from './Pages/NavBar';
 import {View} from 'react-native';
 import ModalRoot from './Shared/ModalRoot';
@@ -54,13 +54,11 @@ function App(props) {
   return (
     // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
     <React.Fragment>
-     {!isLoggedIn && <LoggedIn handleClose={hideModal} setIsLoggedIn={setIsLoggedIn}/> }
-      {isLoggedIn && 
       <Router>
         <Route
   exact path='/'
   render={(props) => (
-    <MainPage {...props} setIsLoggedIn={setIsLoggedIn} />
+    <MainPage {...props} />
   )}
 />
       </Router>

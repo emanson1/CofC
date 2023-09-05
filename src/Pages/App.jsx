@@ -3,7 +3,7 @@ import {Route, BrowserRouter as Router} from 'react-router-dom';
 import './App.css';
 import {Paper, Grid, Box, Typography} from '@material-ui/core';
 import Instruments from './Pages/Instruments';
-import OpeningSlider from './Pages/OpeningSlider';
+
 import {View} from 'react-native';
 import ModalRoot from './Shared/ModalRoot';
 import { makeStyles } from '@material-ui/core/styles';
@@ -49,8 +49,6 @@ function App(props) {
  
   return (
     <React.Fragment>
-     {!isLoggedIn && <OpeningSlider handleClose={hideModal} setIsLoggedIn={setIsLoggedIn}/> }
-      {isLoggedIn && 
       
      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
      <Box>
@@ -59,7 +57,7 @@ function App(props) {
     <Route exact path='/' component={Instruments}/>
     </Router>
     </Box>
-       </View>}
+       </View>
        {modalType!==undefined && modalType!==null && isLoggedIn && <ModalRoot handleClose={hideModal} open={open}/> }
        
        </React.Fragment>

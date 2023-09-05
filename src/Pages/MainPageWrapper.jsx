@@ -3,17 +3,13 @@ import { Grid, Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import {showModal, hideModal} from '../actions/bluevilleActions';
 import Marquee from 'react-double-marquee';
+import Home from '../Pages/Home.jsx';
+import Services from '../Pages/Services.jsx';
+import Gallery from '../Pages/Gallery.jsx';
 import NavBar from './NavBar';
 import { connect } from 'react-redux';
 import Background from '../Images/floorpic2.png';
 import CofCLogo from '../Images/CofCLogo.jpg';
-import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
-import HelpIcon from '@mui/icons-material/Help';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
-import PaidIcon from '@mui/icons-material/Paid';
-import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
-import { ReactComponent as StairsIcon } from '../Images/stairs_1.svg';
 const tabs = {
   // 'instrument': Instruments,
   // 'settings':  Settings,
@@ -166,6 +162,7 @@ logoColor:{
 }));
 const InstrumentWrapper = props => {
   const {handleClose, handleOpen, rej, sel, instruments, setInstruments,setRej,setSel,setIsLoggedIn} = props;
+  const [curWindow,setCurWindow] = useState(<Home/>);
   const classes = useStyles();
   
   
@@ -187,14 +184,14 @@ const InstrumentWrapper = props => {
  }
   return (
     <div className={classes.pageClass}>
-      <Grid container className={classes.headingClass}>
+      <Grid container  className={classes.headingClass}>
       <Grid item xs={3}>
       <div className={classes.logoClass}><img src={CofCLogo}/></div></Grid>
       <Grid item xs={6}>
       <Grid container className={classes.linkOffset}>
-      <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>openModal({open:true, modalType:'Wishlist', data:{}})}>Home</a></Grid>
-      <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>openModal({open:true, modalType:'Wishlist', data:{}})}>Services</a></Grid>
-      <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>openModal({open:true, modalType:'Wishlist', data:{}})}>Gallery</a></Grid>
+      <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Home/>)}>Home</a></Grid>
+      <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Services/>)}>Services</a></Grid>
+      <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Gallery/>)}>Gallery</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>openModal({open:true, modalType:'Wishlist', data:{}})}>About</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
       <Grid item xs={2} ><a className={classes.linkClass} href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
@@ -211,43 +208,14 @@ const InstrumentWrapper = props => {
       <Grid container className={classes.panorama}>
         <Grid item xs={12}>
         <Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12}  style={{opacity:.9}}>
           <Typography variant={'h3'} className={classes.headingLarge} style={{paddingTop:30,paddingBottom:30,textAlign:'center'}}>Wood Floor Refinishing Service in Irmo, SC.<br/>  Open today until 5:00 PM</Typography>
         </Grid>
         
       </Grid>
-  <Grid className={classes.blueBar}><br/></Grid>    
-      <Grid container style={{paddingTop:60}}>
-        <Grid item xs={2}>
-          {/* <a  onClick={()=>setIsLogdgedIn(false)}>LogOut</a> */}
-          </Grid> 
-        <Grid item xs={10}>
-        <Grid container >
-        <Grid item xs={1}>
-        <AccountBoxIcon className={classes.iconSize} style={{paddingTop:16,paddingRight:12, color: '#003569'}}/>
-        </Grid>
-        <Grid item xs={10}>
-          <Typography className={classes.headingLarge}  variant={'h4'}>
-          <div className={classes.headingMedium}>CFC Hardwood is:</div>
-          <ul>
-            <li>Family owned business serving the greater Columbia area for over twenty years</li>
-            <li>Exceptional work and honest pricing, with 100s of satisfied customers and a 5 star Google rating</li>
-            </ul></Typography>
-            </Grid>
-      
-            <Grid item xs={1}>
-            </Grid>
-        </Grid>
-<Grid item xs={12}><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></Grid>
-          
-          
-          
-         </Grid>
-        <Grid item xs={1}>
-          {/* <a  onClick={()=>openModal({open:true, modalType:'Wishlist', instrument:{}})}>Account&nbsp;&nbsp;&nbsp;</a> */}
-        </Grid>
-      </Grid>
-      <Grid item xs={12}><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></Grid>
+  <Grid className={classes.blueBar}><br/></Grid>
+  <Grid item xs={12} style={{width:1600}}>{curWindow}</Grid>
+   <Grid item xs={12}><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></Grid>
       
       <Grid container style={{backgroundColor:'white'}}>
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>openModal({open:true, modalType:'Wishlist', data:{}})}>Home</a></Grid>
