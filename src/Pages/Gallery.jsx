@@ -159,7 +159,7 @@ const useStyles = makeStyles((theme) => ({
 
                   {
                         listOfImages.map(
-                          (image, index) =>    <Grid xs={1}><a Href={`../Images/Gallery/${image}`} target='_blank'><img height={100} width={100} key={index} src={image} alt="info"></img></a></Grid>
+                          (image, index) =>    <Grid xs={1}><a Href={`${image}`} target='_blank'><img height={100} width={100} key={index} src={image} alt="info"></img></a></Grid>
                         )
                   }
                 </Grid>
