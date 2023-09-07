@@ -154,16 +154,24 @@ const useStyles = makeStyles((theme) => ({
         setListOfImages(images);
     }, []);
             return(
-                <Grid container style={{paddingTop:60}}>
-                  <Grid item xs={12}><Typography className={classes.headingLarge}  variant={'h4'}><div className={classes.headingMedium}>CofC Hardwood Gallery:</div></Typography></Grid>
+              <Grid container>
+                
+                <Grid xs={1}></Grid>
+               <Grid item xs={10} style={{textAlign:'middle'}}>
+               <Grid container>
+                  <Grid item xs={12}><Typography className={classes.headingLarge}  variant={'h4'}><div className={classes.headingMedium}>CofC Hardwood Gallery:<br/><br/></div></Typography></Grid>
 
                   {
                         listOfImages.map(
-                          (image, index) =>    <Grid xs={1}><a Href={`${image}`} target='_blank'><img height={100} width={100} key={index} src={image} alt="info"></img></a></Grid>
+                          (image, index) =>    <Grid style={{paddingTop:60, textAlign:'center', backgroundColor:'white',opacity:'.6'}} xs={2}><a Href={`${image}`} target='_blank'><img height={100} width={100} key={index} src={image} alt="info" style={{border:'3px solid #003569'}}></img></a></Grid>
                         )
                   }
                 </Grid>
+                <Grid xs={1}></Grid>
+                </Grid>
+            </Grid>
             );
+           
         }
 
 const mapStateToProps = (state) => ({
