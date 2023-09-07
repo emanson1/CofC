@@ -5,6 +5,7 @@ import {showModal, hideModal} from '../actions/bluevilleActions';
 import Marquee from 'react-double-marquee';
 import Home from '../Pages/Home.jsx';
 import Services from '../Pages/Services.jsx';
+import About from '../Pages/About.jsx';
 import Gallery from '../Pages/Gallery.jsx';
 import NavBar from './NavBar';
 import { connect } from 'react-redux';
@@ -192,7 +193,7 @@ const InstrumentWrapper = props => {
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Home/>)}>Home</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Services/>)}>Services</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Gallery/>)}>Gallery</a></Grid>
-      <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>openModal({open:true, modalType:'Wishlist', data:{}})}>About</a></Grid>
+      <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<About/>)}>About</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
       <Grid item xs={2} ><a className={classes.linkClass} href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
       </Grid>
