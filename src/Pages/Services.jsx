@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import EngineeringIcon from '@mui/icons-material/Engineering';
 import { connect } from 'react-redux';
 const useStyles = makeStyles((theme) => ({
     triPane:{opacity:.75},
@@ -152,7 +152,7 @@ return (
         <Grid container >
         <Grid item xs={1}>
         
-        <AccountBoxIcon className={classes.iconSize} style={{paddingTop:16,paddingRight:12, color: '#003569'}}/>
+        <EngineeringIcon className={classes.iconSize} style={{paddingTop:16,paddingRight:12, color: '#003569'}}/>
         </Grid>
         <Grid item xs={10}>
           <Typography className={classes.headingLarge}  variant={'h4'}>
