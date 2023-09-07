@@ -154,7 +154,7 @@ const Gallery = props => {
     setListOfImages(images);
   }, []);
   return (
-
+<div>
     <Grid container style={{ paddingTop: 60 }}>
       <Grid item xs={2}>
         {/* <a  onClick={()=>setIsLogdgedIn(false)}>LogOut</a> */}
@@ -166,20 +166,32 @@ const Gallery = props => {
             <CameraIcon className={classes.iconSize} style={{ paddingTop: 16, paddingRight: 12, color: '#003569' }} /></Grid>
           <Grid item xs={10} style={{ textAlign: 'middle' }}>
             <Grid container>
-              <Grid item xs={12}><Typography className={classes.headingLarge} variant={'h4'}><div className={classes.headingMedium}>CofC Hardwood Gallery:</div></Typography></Grid>
-
-              {
-                listOfImages.map(
-                  (image, index) => <Grid style={{ paddingTop: 60, textAlign: 'center', backgroundColor: 'white', opacity: '.6' }} xs={2}><a Href={`${image}`} target='_blank'><img height={100} width={100} key={index} src={image} alt="info" style={{ border: '3px solid #003569' }}></img></a></Grid>
-                )
-              }
+              <Grid item xs={12}><Typography className={classes.headingLarge} variant={'h4'}><div className={classes.headingMedium}><br/><br/><br/>CofC Hardwood Gallery:</div></Typography></Grid>
             </Grid>
             <Grid xs={2}></Grid>
           </Grid>
         </Grid>
         </Grid>
 
+      
+      
+      
       </Grid>
+      <Grid container><Grid xs={12}><hr/></Grid></Grid>
+<Grid container>
+  <Grid item xs={1}></Grid>
+  <Grid item xs={10}>
+      <Grid container>
+        {
+        listOfImages.map(
+          (image, index) => <Grid style={{ paddingTop: 60, textAlign: 'center', backgroundColor: 'white', opacity: '.6' }} xs={2}><a Href={`${image}`} target='_blank'><img height={100} width={100} key={index} src={image} alt="info" style={{ border: '3px solid #003569' }}></img></a></Grid>
+        )
+      }
+      </Grid>
+      </Grid>
+      <Grid item xs={1}></Grid>
+</Grid>
+</div>      
       );
            
         }
