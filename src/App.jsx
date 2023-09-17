@@ -62,7 +62,7 @@ function App(props) {
   )}
 />
       </Router>
-    }
+    
        {modalType!==undefined && modalType!==null && <ModalRoot handleClose={hideModal} open={open}/> }
        
        </React.Fragment>

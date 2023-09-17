@@ -198,11 +198,11 @@ const InstrumentWrapper = props => {
       <Grid item xs={2} ><a className={classes.linkClass} href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
       </Grid>
       <Grid container>
-      <Grid item xs={12}><Typography variant={'h2'} className={classes.logoColor} style={{textAlign:'center'}}> CFC Hardwood Floors, LLC.</Typography></Grid>
+      <Grid item xs={12}><Typography variant={'h2'} className={classes.logoColor} style={{textAlign:'center'}}> CFC Hardwood Floors LLC</Typography></Grid>
       </Grid>
       
       </Grid>  
-      <Grid item xs={3}><div className={classes.marginTopBottom30}><a onClick={()=>openModal({open:true, modalType:'Wishlist', data:{}})}><Box className={classes.contactBox}>Request Quote</Box></a></div>
+      <Grid item xs={3}><div className={classes.marginTopBottom30}><a onClick={()=>openModal({open:true, modalType:'quoteModal', data:{}})}><Box className={classes.contactBox}>Request Quote</Box></a></div>
       </Grid>
       </Grid>
 <Grid container><Grid>&nbsp;</Grid></Grid>

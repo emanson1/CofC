@@ -3,18 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Dialog,Grid } from '@material-ui/core';
 import {connect} from 'react-redux';
 import { hideModal } from '../actions/bluevilleActions';
-import EarningsPerShareModal from '../Modals/EarningsPerShareModal';
-import MarketCapacityModal from '../Modals/MarketCapacityModal';
-import DebtToEquityRatioModal from '../Modals/DebtToEquityRatioModal';
-import ResponsiblityModal from '../Modals/ResponsibilityModal';
-import NetMarginModal from '../Modals/NetMarginModal';
-import GrossMarginModal from '../Modals/GrossMarginModal';
-import SettingsModal from '../Modals/SettingsModal';
-import DashboardModal from '../Modals/DashboardModal';
-import WishlistModal from '../Modals/WishlistModal';
-import FutureModal from '../Modals/FutureModal';
-import SwipedModal from '../Modals/SwipedModal';
-import CreateNewAccountModal from '../Modals/CreateNewAccountModal';
+import QuoteModal from '../Modals/QuoteModal';
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
@@ -23,18 +12,7 @@ const Modals= {
   //   confirmationModal:ConfirmationModal,
   //   successModal:SucessModal,
   //   errorModal: ErrorModal,
-       EarningsPerShare: EarningsPerShareModal,
-       Future: FutureModal,
-       MarketCapacity:MarketCapacityModal,
-       DebtToEquityRatio: DebtToEquityRatioModal,
-       Responsiblity: ResponsiblityModal,
-       NetMargin: NetMarginModal,
-       GrossMargin: GrossMarginModal,
-       Settings: SettingsModal,
-       Dashboard: DashboardModal,
-       Wishlist: WishlistModal,
-       Swiped: SwipedModal,
-       CreateNewAccount: CreateNewAccountModal
+       quoteModal: QuoteModal
   //   marketPlace:MarketPlaceModal,
        
   //   account: AccountModal
