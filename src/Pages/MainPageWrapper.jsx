@@ -10,7 +10,7 @@ import Gallery from '../Pages/Gallery.jsx';
 import NavBar from './NavBar';
 import { connect } from 'react-redux';
 import Background from '../Images/Gallery/floorpic2.png';
-import CofCLogo from '../Images/CofCLogo.jpg';
+import CofCLogo from '../Images/CFC Logo 20230917.png';
 const tabs = {
   // 'instrument': Instruments,
   // 'settings':  Settings,
@@ -187,7 +187,7 @@ const InstrumentWrapper = props => {
     <div className={classes.pageClass}>
       <Grid container  className={classes.headingClass}>
       <Grid item xs={3}>
-      <div className={classes.logoClass}><img src={CofCLogo}/></div></Grid>
+      <div className={classes.logoClass}><img src={CofCLogo} style={{width:'50%'}}/></div></Grid>
       <Grid item xs={6}>
       <Grid container className={classes.linkOffset}>
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Home/>)}>Home</a></Grid>
