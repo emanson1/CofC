@@ -4,24 +4,72 @@ import { makeStyles } from '@material-ui/core/styles';
 import CameraIcon from '@mui/icons-material/CameraAlt';
 import { connect } from 'react-redux';
 const useStyles = makeStyles((theme) => ({
+  
+  imageCss:{
+    width:300,
+    heigh:300,
+    [theme.breakpoints.down('lg')]:
+    { 
+      
+     width: 250,
+     height: 250
+   },  
+   
+    [theme.breakpoints.down('md')]:
+    { 
+      
+     width: 200,
+     height: 200
+   },  
+   
+    [theme.breakpoints.down('sm')]:
+    { 
+      
+     width: 150,
+     height: 150
+   },  
+    [theme.breakpoints.down('xs')]: {
+      //width: '90vw',
+      width: 100,
+      height: 100
+    }
+  },
+  iconSize: {
+      
+    color: '#003569',
+    transform: 'scale(11.0)',
+    paddingTop:20,
+    paddingRight:10,
+
+    [theme.breakpoints.down('lg')]:
+      { 
+        transform: 'scale(9.0)',
+        paddingTop:16,
+        paddingRight:12,
+      },  
+      [theme.breakpoints.down('md')]: {
+        paddingTop:16,
+        paddingRight:14,
+        vtransform: 'scale(7.0)',
+      },
+      [theme.breakpoints.down('sm')]: {
+        paddingTop:12,
+        paddingRight:16,
+        transform: 'scale(4.5)',
+      },
+      [theme.breakpoints.down('xs')]: {
+        paddingTop:6,
+        paddingRight:24,
+        transform: 'scale(2.2)',
+      }
+    },
+   
   triPane: { opacity: .75 },
   blueBar: { backgroundColor: '#003569' },
   pageClass: {
     border: '1px solid #8C92B4',
     backgroundColor: '#003569',
     padding: 20
-
-  },
-  iconSize: {
-    transform: 'scale(13.8)',
-
-
-  },
-  iconSizeMedium: {
-    transform: 'scale(4.1)',
-    paddingTop: 15,
-
-
 
   },
   iconStairs: {
@@ -107,11 +155,24 @@ const useStyles = makeStyles((theme) => ({
     fontWeight: 'bold',
     textShadow: '-1px 0 black, 0 3px black, 1px 0 black, 0 -1px black'
   },
-  headingMedium: {
+  headingMedium:{
+    [theme.breakpoints.up('sm')]:
+    { 
+     fontSize:45,
+   },  
+    [theme.breakpoints.down('sm')]: {
+      //width: '90vw',
+    fontSize:32,
+    },
+    [theme.breakpoints.down('xs')]: {
+      //width: '90vw',
+    fontSize:22,
+    },
+   color:'white',
+   fontWeight:'bold',
+   textShadow: '-1px 0 black, 0 3px black, 1px 0 black, 0 -1px black'
+ },
 
-    fontSize: 45,
-    fontWeight: 'bold'
-  },
   contactBox: {
     paddingTop: 10,
     backgroundColor: '#ffcc00',
@@ -166,7 +227,12 @@ const Gallery = props => {
             <CameraIcon className={classes.iconSize} style={{ paddingTop: 16, paddingRight: 12, color: '#003569' }} /></Grid>
           <Grid item xs={10} style={{ textAlign: 'middle' }}>
             <Grid container>
-              <Grid item xs={12}><Typography className={classes.headingLarge} variant={'h4'}><div className={classes.headingMedium}><br/><br/><br/>CofC Hardwood Gallery:</div></Typography></Grid>
+              <Grid item xs={12}>
+                <Typography className={classes.headingMedium} variant={'h4'}>
+                <div ><br/><br/><br/>CofC Hardwood Gallery:
+                </div>
+                </Typography>
+                </Grid>
             </Grid>
             <Grid xs={2}></Grid>
           </Grid>
@@ -179,12 +245,14 @@ const Gallery = props => {
       </Grid>
       <Grid container><Grid xs={12}><hr/></Grid></Grid>
 <Grid container>
+  
   <Grid item xs={1}></Grid>
   <Grid item xs={10}>
-      <Grid container>
+      <Grid container >
+      <Grid style={{textAlign: 'center', backgroundColor: 'white', opacity: '.6'}} item xs={12}><br/><br/><br/></Grid>
         {
         listOfImages.map(
-          (image, index) => <Grid style={{ paddingTop: 60, textAlign: 'center', backgroundColor: 'white', opacity: '.6' }} xs={2}><a Href={`${image}`} target='_blank'><img height={100} width={100} key={index} src={image} alt="info" style={{ border: '3px solid #003569' }}></img></a></Grid>
+          (image, index) => <Grid style={{textAlign: 'center', backgroundColor: 'white', opacity: '.6'}} md={3} sm={4} xs={4}><a Href={`${image}`} target='_blank'><img className={classes.imageCss} key={index} src={image} alt="info" style={{ border: '3px solid #003569' }}></img></a></Grid>
         )
       }
       </Grid>

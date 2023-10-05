@@ -12,23 +12,38 @@ const useStyles = makeStyles((theme) => ({
      padding:20
      
     },
-     iconSize:{
-     transform: 'scale(13.8)',
+    
+    iconSize: {
+      
+      color: '#003569',
+      transform: 'scale(11.0)',
+      paddingTop:20,
+      paddingRight:10,
+  
+      [theme.breakpoints.down('lg')]:
+        { 
+          transform: 'scale(9.0)',
+          paddingTop:16,
+          paddingRight:12,
+        },  
+        [theme.breakpoints.down('md')]: {
+          paddingTop:16,
+          paddingRight:14,
+          vtransform: 'scale(7.0)',
+        },
+        [theme.breakpoints.down('sm')]: {
+          paddingTop:12,
+          paddingRight:16,
+          transform: 'scale(4.5)',
+        },
+        [theme.breakpoints.down('xs')]: {
+          paddingTop:6,
+          paddingRight:24,
+          transform: 'scale(2.2)',
+        }
+      },
+      
      
-     
-    },
-    iconSizeMedium:{
-     transform: 'scale(4.1)',
-     paddingTop: 15,
-     
-     
-     
-    },
-    iconStairs:{
-     transform: 'scale(0.8)',
-     color:'white'
-     
-    },
     alignBottom:{
      display:'table-cell',
      verticalAlign:'middle',
@@ -99,18 +114,22 @@ const useStyles = makeStyles((theme) => ({
      textShadow: '-1px 0 #8C92B4, 0 3px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4'
      //fontFamily:'cursive'
    },
-     headingLarge:{
-       //paddingTop:50,
-       //paddingBottom:10,
-       
+     headingMedium:{
+        [theme.breakpoints.up('sm')]:
+        { 
+         fontSize:45,
+       },  
+        [theme.breakpoints.down('sm')]: {
+          //width: '90vw',
+        fontSize:32,
+        },
+        [theme.breakpoints.down('xs')]: {
+          //width: '90vw',
+        fontSize:22,
+        },
        color:'white',
        fontWeight:'bold',
        textShadow: '-1px 0 black, 0 3px black, 1px 0 black, 0 -1px black'
-     },
-     headingMedium:{
-      
-       fontSize:45,
-       fontWeight:'bold'
      },
      contactBox:{
        paddingTop:10,
@@ -152,11 +171,11 @@ return (
         <Grid container >
         <Grid item xs={1}>
         
-        <HomeIcon className={classes.iconSize} style={{paddingTop:16,paddingRight:12, color: '#003569'}}/>
+        <HomeIcon className={classes.iconSize} />
         </Grid>
         <Grid item xs={10}>
-          <Typography className={classes.headingLarge}  variant={'h4'}>
-          <div className={classes.headingMedium}>CFC Hardwood is:</div>
+          <Typography className={classes.headingMedium}  variant={'h4'}>
+          CFC Hardwood is:
           <ul>
             <li>Family owned business serving the greater Columbia area for over twenty years</li>
             <li>Exceptional work and honest pricing, with 100s of satisfied customers and a 5 star Google rating</li>

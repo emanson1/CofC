@@ -12,23 +12,38 @@ const useStyles = makeStyles((theme) => ({
      padding:20
      
     },
-     iconSize:{
-     transform: 'scale(13.8)',
+    iconSize: {
+      paddingTop:16,
+      color: '#003569',
+      transform: 'scale(11.0)',
+      paddingRight:10,
+  
+      [theme.breakpoints.down('lg')]:
+        { 
+          transform: 'scale(9.0)',
+          paddingRight:12,
+        },  
+        [theme.breakpoints.down('md')]: {
+          paddingTop:10,
+          paddingRight:14,
+          vtransform: 'scale(7.0)',
+        },
+        [theme.breakpoints.down('sm')]: {
+          paddingRight:16,
+          transform: 'scale(4.5)',
+        },
+        [theme.breakpoints.down('xs')]: {
+          paddingTop:6,
+          paddingRight:24,
+          transform: 'scale(2.2)',
+        }
+      },
+    
+      iconSizeMedium:{
+        transform: 'scale(4.1)',
+        paddingTop: 15,
+       },
      
-     
-    },
-    iconSizeMedium:{
-     transform: 'scale(4.1)',
-     paddingTop: 15,
-     
-     
-     
-    },
-    iconStairs:{
-     transform: 'scale(0.8)',
-     color:'white'
-     
-    },
     alignBottom:{
      display:'table-cell',
      verticalAlign:'middle',
@@ -108,10 +123,23 @@ const useStyles = makeStyles((theme) => ({
        textShadow: '-1px 0 black, 0 3px black, 1px 0 black, 0 -1px black'
      },
      headingMedium:{
-      
+      [theme.breakpoints.up('sm')]:
+      { 
        fontSize:45,
-       fontWeight:'bold'
-     },
+     },  
+      [theme.breakpoints.down('sm')]: {
+        //width: '90vw',
+      fontSize:32,
+      },
+      [theme.breakpoints.down('xs')]: {
+        //width: '90vw',
+      fontSize:22,
+      },
+     color:'white',
+     fontWeight:'bold',
+     textShadow: '-1px 0 black, 0 3px black, 1px 0 black, 0 -1px black'
+   },
+
      contactBox:{
        paddingTop:10,
        backgroundColor: '#ffcc00',
@@ -152,11 +180,11 @@ return (
         <Grid container >
         <Grid item xs={1}>
         
-        <AccountBoxIcon className={classes.iconSize} style={{paddingTop:16,paddingRight:12, color: '#003569'}}/>
+        <AccountBoxIcon className={classes.iconSize} />
         </Grid>
         <Grid item xs={10}>
-          <Typography className={classes.headingLarge}  variant={'h4'}>
-          <div className={classes.headingMedium}>About CFC Hardwood Services LLC:</div>
+          <Typography className={classes.headingMedium} variant={'h4'}>
+          <div>About CFC Hardwood Services LLC:</div>
           <ul>
             <li>CofC Hardwood LLC was founded in 2003 by William Miller to provide the absolute best in industry hardwood floor refinishing</li>
             <li>Blah Blah Blah give me more words</li>

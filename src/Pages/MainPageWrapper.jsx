@@ -26,23 +26,6 @@ const useStyles = makeStyles((theme) => ({
   padding:20
   
  },
-  iconSize:{
-  transform: 'scale(13.8)',
-  
-  
- },
- iconSizeMedium:{
-  transform: 'scale(4.1)',
-  paddingTop: 15,
-  
-  
-  
- },
- iconStairs:{
-  transform: 'scale(0.8)',
-  color:'white'
-  
- },
  alignBottom:{
   display:'table-cell',
   verticalAlign:'middle',
@@ -79,7 +62,25 @@ const useStyles = makeStyles((theme) => ({
   },
   linkClass:{
     fontSize:20,
-    textAlign:'center'
+    textAlign:'center',
+    fontWeight:'bold',
+    [theme.breakpoints.down('lg')]:
+    { 
+     fontSize:18,
+   }, 
+  [theme.breakpoints.down('md')]:
+    { 
+     fontSize:16,
+   },  
+    [theme.breakpoints.down('sm')]: {
+      //width: '90vw',
+    fontSize:12,
+    },
+    [theme.breakpoints.down('xs')]: {
+      //width: '90vw',
+    fontSize:8,
+    },
+  
   },
   headingClass:{
     backgroundColor:'white',
@@ -104,45 +105,111 @@ color:'white',
 //fontWeight:'bold'
 
 },
-logoColor:{
+TitleClass:{
   paddingTop:30,
   color: '#003569',
-  //color: '#8C92B4',
   textAlign: 'center',
   fontWeight: 'bold',
-  textShadow: '-1px 0 #8C92B4, 0 3px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4'
-  //fontFamily:'cursive'
+  textShadow: '-1px 0 #8C92B4, 0 3px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
+  fontSize:70,
+     
+  [theme.breakpoints.down('lg')]:
+    { 
+     fontSize:55,
+   }, 
+  [theme.breakpoints.down('md')]:
+    { 
+      paddingTop:20,
+      fontSize:40,
+   },  
+    [theme.breakpoints.down('sm')]: {
+      paddingTop:10,
+      fontSize:30,
+      textShadow: '-1px 0 #8C92B4, 0 1px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
+
+    },
+    [theme.breakpoints.down('xs')]: {
+      //width: '90vw',
+    fontSize:20,
+    },
+
+  
 },
   panorama:{
     backgroundImage: `url(${Background})`,
     backgroundSize: 'cover',
-    
-    
   },
   headingLarge:{
-    //paddingTop:50,
-    //paddingBottom:10,
-    
+    fontSize:65,
+     
+    [theme.breakpoints.down('lg')]:
+      { 
+       fontSize:50,
+     }, 
+    [theme.breakpoints.down('md')]:
+      { 
+       fontSize:40,
+     },  
+      [theme.breakpoints.down('sm')]: {
+        //width: '90vw',
+      fontSize:32,
+      },
+      [theme.breakpoints.down('xs')]: {
+        //width: '90vw',
+      fontSize:20,
+      },
+    paddingTop:30,
+    paddingBottom:30,
+    textAlign:'center',
     color:'white',
     fontWeight:'bold',
-    textShadow: '-1px 0 black, 0 3px black, 1px 0 black, 0 -1px black'
+    textShadow: '-1px 0 black, 0 3px black, 1px 0 black, 0 -1px black',
   },
   headingMedium:{
    
     fontSize:45,
     fontWeight:'bold'
   },
+  
   contactBox:{
     paddingTop:10,
     backgroundColor: '#ffcc00',
     color: '#003569',
-    height:141,
-    width:141,
+    height:140,
+    width:140,
     fontSize:30,
     display: 'flex',
     justifyContent: 'center',
     textAlign:'center',   
-    fontWeight:'bold'
+    fontWeight:'bold',
+    [theme.breakpoints.down('lg')]:
+    { 
+     fontSize:25,
+     height:120,
+     width:120,
+     
+    }, 
+  [theme.breakpoints.down('md')]:
+    { 
+     fontSize:20,
+     height:100,
+    width:100,
+    
+   },  
+    [theme.breakpoints.down('sm')]: {
+      //width: '90vw',
+    fontSize:15,
+    height:80,
+    width:80,
+    
+    },
+    [theme.breakpoints.down('xs')]: {
+      //width: '90vw',
+    fontSize:12,
+    height:60,
+    width:60,
+    
+    },
   },
   darkBlueBackgroundLayer:
   {
@@ -161,7 +228,7 @@ logoColor:{
     fontSize:19
   }
 }));
-const InstrumentWrapper = props => {
+const MainPageWrapper = props => {
   const {handleClose, handleOpen, rej, sel, instruments, setInstruments,setRej,setSel,setIsLoggedIn} = props;
   const [curWindow,setCurWindow] = useState(<Home/>);
   const classes = useStyles();
@@ -198,7 +265,7 @@ const InstrumentWrapper = props => {
       <Grid item xs={2} ><a className={classes.linkClass} href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
       </Grid>
       <Grid container>
-      <Grid item xs={12}><Typography variant={'h2'} className={classes.logoColor} style={{textAlign:'center'}}> CFC Hardwood Floors LLC</Typography></Grid>
+      <Grid item xs={12}><Typography variant={'h2'} className={classes.TitleClass} style={{textAlign:'center'}}> CFC Hardwood Floors LLC</Typography></Grid>
       </Grid>
       
       </Grid>  
@@ -210,7 +277,7 @@ const InstrumentWrapper = props => {
         <Grid item xs={12}>
         <Grid>
         <Grid item xs={12}  style={{opacity:.9}}>
-          <Typography variant={'h3'} className={classes.headingLarge} style={{paddingTop:30,paddingBottom:30,textAlign:'center'}}>Wood Floor Refinishing Service in Irmo, SC.<br/>  Open today until 5:00 PM</Typography>
+          <Typography variant={'h3'} className={classes.headingLarge}> Wood Floor Refinishing Service in Irmo, SC.<br/>  Open today until 5:00 PM</Typography>
         </Grid>
         
       </Grid>
@@ -246,4 +313,4 @@ const mapDispatchToProps = (dispatch) => ({
     showModal: (modalProps, modalTypes) => dispatch(showModal(modalProps, modalTypes)),
     hideModal: () => dispatch(hideModal()),
 });
-export default connect(mapStateToProps, mapDispatchToProps)(InstrumentWrapper);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPageWrapper);

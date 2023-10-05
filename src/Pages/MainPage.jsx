@@ -5,17 +5,38 @@ import { makeStyles } from '@material-ui/core/styles';
 function MainPage(props) {
 
   const useStyles = makeStyles((theme) => ({
+   
     container: {
-      display: 'flex',
+      //display: 'flex',
+      width: '95%',
+      height:'95%',
       justifyContent: 'center',
-      // [theme.breakpoints.up('sm')]:
-      // {},  
-      // [theme.breakpoints.down('sm')]: {
-      //   width: '90vw',
-      //   maxWidth: '460px',
-      //   height: '400px'
-      // }
-    }
+      //  [theme.breakpoints.up('sm')]:
+      //  { 
+      //   width: 160,
+      //   height: 400
+      // },  
+      //  [theme.breakpoints.down('sm')]: {
+      //    //width: '90vw',
+      //    width: 160,
+      //    height: 400
+      //  }
+    },
+    iconSize: {
+    [theme.breakpoints.up('sm')]:
+      { 
+        transform: 'scale(13.8)',
+      },  
+      [theme.breakpoints.down('sm')]: {
+        //width: '90vw',
+        transform: 'scale(3.8)',
+      }
+    },
+    iconSizeMedium:{
+      transform: 'scale(4.1)',
+      paddingTop: 15,
+     },
+         
   
 }));
   

@@ -12,23 +12,38 @@ const useStyles = makeStyles((theme) => ({
      padding:20
      
     },
-     iconSize:{
-     transform: 'scale(13.8)',
+    iconSize: {
+      
+      color: '#003569',
+      transform: 'scale(11.0)',
+      paddingTop:16,
+      paddingRight:10,
+  
+      [theme.breakpoints.down('lg')]:
+        { 
+          transform: 'scale(9.0)',
+          paddingRight:12,
+        },  
+        [theme.breakpoints.down('md')]: {
+          paddingTop:10,
+          paddingRight:14,
+          vtransform: 'scale(7.0)',
+        },
+        [theme.breakpoints.down('sm')]: {
+          paddingRight:16,
+          transform: 'scale(4.5)',
+        },
+        [theme.breakpoints.down('xs')]: {
+          paddingRight:24,
+          transform: 'scale(2.2)',
+        }
+      },
+    
+      iconSizeMedium:{
+        transform: 'scale(4.1)',
+        paddingTop: 15,
+       },
      
-     
-    },
-    iconSizeMedium:{
-     transform: 'scale(4.1)',
-     paddingTop: 15,
-     
-     
-     
-    },
-    iconStairs:{
-     transform: 'scale(0.8)',
-     color:'white'
-     
-    },
     alignBottom:{
      display:'table-cell',
      verticalAlign:'middle',
@@ -108,10 +123,23 @@ const useStyles = makeStyles((theme) => ({
        textShadow: '-1px 0 black, 0 3px black, 1px 0 black, 0 -1px black'
      },
      headingMedium:{
-      
+      [theme.breakpoints.up('sm')]:
+      { 
        fontSize:45,
-       fontWeight:'bold'
-     },
+     },  
+      [theme.breakpoints.down('sm')]: {
+        //width: '90vw',
+      fontSize:32,
+      },
+      [theme.breakpoints.down('xs')]: {
+        //width: '90vw',
+      fontSize:22,
+      },
+     color:'white',
+     fontWeight:'bold',
+     textShadow: '-1px 0 black, 0 3px black, 1px 0 black, 0 -1px black'
+   },
+
      contactBox:{
        paddingTop:10,
        backgroundColor: '#ffcc00',
@@ -152,11 +180,11 @@ return (
         <Grid container >
         <Grid item xs={1}>
         
-        <EngineeringIcon className={classes.iconSize} style={{paddingTop:16,paddingRight:12, color: '#003569'}}/>
+        <EngineeringIcon className={classes.iconSize} />
         </Grid>
         <Grid item xs={10}>
-          <Typography className={classes.headingLarge}  variant={'h4'}>
-          <div className={classes.headingMedium}>CFC Hardwood Services include:</div>
+          <Typography  className={classes.headingMedium} variant={'h4'}>
+          <div>CFC Hardwood Services include:</div>
           <ul>
             <li>CofC Hardwood LLC offers the absolute best in industry hardwood floor refinishing</li>
             <li>Laminate work that Billy mentioned to me...</li>
