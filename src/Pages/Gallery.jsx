@@ -60,7 +60,7 @@ const useStyles = makeStyles((theme) => ({
       [theme.breakpoints.down('xs')]: {
         paddingTop:6,
         paddingRight:24,
-        transform: 'scale(2.2)',
+        transform: 'scale(2.0)',
       }
     },
    
@@ -217,14 +217,13 @@ const Gallery = props => {
   return (
 <div>
     <Grid container style={{ paddingTop: 60 }}>
-      <Grid item xs={2}>
+      <Grid item xs={1} sm={2}>
         {/* <a  onClick={()=>setIsLogdgedIn(false)}>LogOut</a> */}
       </Grid>
-      <Grid item xs={10}>
+      <Grid item xs={11} sm={10}>
         <Grid container >
           <Grid item xs={1}>
-
-            <CameraIcon className={classes.iconSize} style={{ paddingTop: 16, paddingRight: 12, color: '#003569' }} /></Grid>
+            <CameraIcon className={classes.iconSize} /></Grid>
           <Grid item xs={10} style={{ textAlign: 'middle' }}>
             <Grid container>
               <Grid item xs={12}>

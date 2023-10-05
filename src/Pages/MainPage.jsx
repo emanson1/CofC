@@ -8,7 +8,7 @@ function MainPage(props) {
    
     container: {
       //display: 'flex',
-      width: '95%',
+      width: '100%',
       height:'95%',
       justifyContent: 'center',
       //  [theme.breakpoints.up('sm')]:

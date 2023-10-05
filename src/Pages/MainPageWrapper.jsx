@@ -38,7 +38,15 @@ const useStyles = makeStyles((theme) => ({
   },
   linkOffset:{
     paddingTop:20,
-    
+    [theme.breakpoints.down('sm')]: {
+      //width: '90vw',
+      paddingTop:10,
+    },
+    [theme.breakpoints.down('xs')]: {
+      //width: '90vw',
+      paddingTop:5,
+    },
+  
   },
   boxBlue:{
   backgroundColor:'#003569',
@@ -54,7 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
   },
   marginTopBottom30:{
-    display: 'flex',
+    // display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     height:'100%',
@@ -78,7 +86,7 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('xs')]: {
       //width: '90vw',
-    fontSize:8,
+    fontSize:10,
     },
   
   },
@@ -119,7 +127,6 @@ TitleClass:{
    }, 
   [theme.breakpoints.down('md')]:
     { 
-      paddingTop:20,
       fontSize:40,
    },  
     [theme.breakpoints.down('sm')]: {
@@ -129,8 +136,9 @@ TitleClass:{
 
     },
     [theme.breakpoints.down('xs')]: {
-      //width: '90vw',
-    fontSize:20,
+      paddingTop:5,
+      
+    fontSize:15,
     },
 
   
@@ -178,7 +186,6 @@ TitleClass:{
     height:140,
     width:140,
     fontSize:30,
-    display: 'flex',
     justifyContent: 'center',
     textAlign:'center',   
     fontWeight:'bold',
@@ -205,9 +212,12 @@ TitleClass:{
     },
     [theme.breakpoints.down('xs')]: {
       //width: '90vw',
-    fontSize:12,
-    height:60,
-    width:60,
+      paddingTop:5,
+    marginLeft:10,
+    marginTop:10,
+    height:30,
+    width:45,
+    fontSize:10,
     
     },
   },
@@ -253,23 +263,23 @@ const MainPageWrapper = props => {
   return (
     <div className={classes.pageClass}>
       <Grid container  className={classes.headingClass}>
-      <Grid item xs={3}>
+      <Grid item xs={2} sm={3}>
       <div className={classes.logoClass}><img src={CofCLogo} style={{width:'60%'}}/></div></Grid>
-      <Grid item xs={6}>
+      <Grid item xs={8} sm={6}>
       <Grid container className={classes.linkOffset}>
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Home/>)}>Home</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Services/>)}>Services</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Gallery/>)}>Gallery</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<About/>)}>About</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
-      <Grid item xs={2} ><a className={classes.linkClass} href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
+      <Grid item xs={2} className={classes.linkClass} ><a href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
       </Grid>
       <Grid container>
       <Grid item xs={12}><Typography variant={'h2'} className={classes.TitleClass} style={{textAlign:'center'}}> CFC Hardwood Floors LLC</Typography></Grid>
       </Grid>
       
       </Grid>  
-      <Grid item xs={3}><div className={classes.marginTopBottom30}><a onClick={()=>openModal({open:true, modalType:'quoteModal', data:{}})}><Box className={classes.contactBox}>Request Quote</Box></a></div>
+      <Grid item xs={2} sm={3}><div className={classes.marginTopBottom30}><a onClick={()=>openModal({open:true, modalType:'quoteModal', data:{}})}><Box className={classes.contactBox}>Request Quote</Box></a></div>
       </Grid>
       </Grid>
 <Grid container><Grid>&nbsp;</Grid></Grid>
@@ -291,7 +301,7 @@ const MainPageWrapper = props => {
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>openModal({open:true, modalType:'Wishlist', data:{}})}>Gallery</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>openModal({open:true, modalType:'Wishlist', data:{}})}>About</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
-      <Grid item xs={2} ><a className={classes.linkClass} href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
+      <Grid item xs={2} className={classes.linkClass}><a  href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
       </Grid>
       
       </Grid>
