@@ -160,11 +160,11 @@ TitleClass:{
      },  
       [theme.breakpoints.down('sm')]: {
         //width: '90vw',
-      fontSize:32,
+      fontSize:30,
       },
       [theme.breakpoints.down('xs')]: {
         //width: '90vw',
-      fontSize:20,
+      fontSize:18,
       },
     paddingTop:30,
     paddingBottom:30,
