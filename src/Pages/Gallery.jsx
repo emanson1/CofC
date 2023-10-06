@@ -216,7 +216,7 @@ const Gallery = props => {
   }, []);
   return (
 <div>
-    <Grid container style={{ paddingTop: 60 }}>
+    <Grid container style={{ paddingTop: 10 }}>
       <Grid item xs={1} sm={2}>
         {/* <a  onClick={()=>setIsLogdgedIn(false)}>LogOut</a> */}
       </Grid>
