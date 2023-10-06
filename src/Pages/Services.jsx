@@ -34,7 +34,8 @@ const useStyles = makeStyles((theme) => ({
           transform: 'scale(4.5)',
         },
         [theme.breakpoints.down('xs')]: {
-          paddingRight:24,
+          paddingTop:6,
+          paddingRight:20,
           transform: 'scale(2.0)',
         }
       },
