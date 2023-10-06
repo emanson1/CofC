@@ -272,8 +272,8 @@ const MainPageWrapper = props => {
       <Grid item xs={2} className={classes.linkClass} ><a href="" onClick={()=>setCurWindow(<Services/>)}>Services</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a href="" onClick={()=>setCurWindow(<Gallery/>)}>Gallery</a></Grid>
       {/* <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<About/>)}>About</a></Grid> */}
-      <Grid item xs={2} className={classes.linkClass} ><a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
-      <Grid item xs={2} className={classes.linkClass} ><a href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
+      <Grid item xs={3} className={classes.linkClass} ><a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
+      <Grid item xs={3} className={classes.linkClass} ><a href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
       </Grid>
       <Grid container>
       <Grid item xs={12}><Typography variant={'h2'} className={classes.TitleClass} style={{textAlign:'center'}}> CFC Hardwood Floors LLC</Typography></Grid>
@@ -301,8 +301,8 @@ const MainPageWrapper = props => {
       <Grid item xs={2} className={classes.linkClass} ><a href="" onClick={()=>setCurWindow(<Services/>)}>Services</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a href="" onClick={()=>setCurWindow(<Gallery/>)}>Gallery</a></Grid>
       {/* <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<About/>)}>About</a></Grid> */}
-      <Grid item xs={2} className={classes.linkClass} ><a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
-      <Grid item xs={2} className={classes.linkClass} ><a href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
+      <Grid item xs={3} className={classes.linkClass} ><a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
+      <Grid item xs={3} className={classes.linkClass} ><a href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
       
       </Grid>
       
