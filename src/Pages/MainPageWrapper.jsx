@@ -268,9 +268,9 @@ const MainPageWrapper = props => {
       <div className={classes.logoClass}><img src={CofCLogo} style={{width:'60%'}}/></div></Grid>
       <Grid item xs={8} sm={6}>
       <Grid container className={classes.linkOffset}>
-      <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Home/>)}>Home</a></Grid>
-      <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Services/>)}>Services</a></Grid>
-      <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Gallery/>)}>Gallery</a></Grid>
+      <Grid item xs={2} className={classes.linkClass} style={{textAlign:'center'}} ><a onClick={()=>setCurWindow(<Home/>)}>Home</a></Grid>
+      <Grid item xs={2} className={classes.linkClass} style={{textAlign:'right'}} ><a onClick={()=>setCurWindow(<Services/>)}>Services</a></Grid>
+      <Grid item xs={2} className={classes.linkClass} style={{textAlign:'right'}} ><a onClick={()=>setCurWindow(<Gallery/>)}>Gallery</a></Grid>
       {/* <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<About/>)}>About</a></Grid> */}
       <Grid item xs={3} className={classes.linkClass} ><a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
       <Grid item xs={3} className={classes.linkClass} ><a href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
