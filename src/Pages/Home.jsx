@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Grid, Box, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import HomeIcon from '@mui/icons-material/HomeWork';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { connect } from 'react-redux';
 const useStyles = makeStyles((theme) => ({
     triPane:{opacity:.75},
@@ -163,6 +164,7 @@ const useStyles = makeStyles((theme) => ({
    const Home = props => {
     const classes = useStyles();
 return (
+  <React.Fragment>
 <Grid container style={{paddingTop:60}}>
         <Grid item xs={1} sm={2} >
           {/* <a  onClick={()=>setIsLogdgedIn(false)}>LogOut</a> */}
@@ -186,7 +188,7 @@ return (
             </Grid>
         </Grid>
         
-<Grid item xs={12}><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></Grid>
+{/* <Grid item xs={12}><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></Grid> */}
           
           
           
@@ -195,6 +197,40 @@ return (
           {/* <a  onClick={()=>openModal({open:true, modalType:'Wishlist', instrument:{}})}>Account&nbsp;&nbsp;&nbsp;</a> */}
         </Grid>
       </Grid>
+
+<Grid container style={{paddingTop:60}}>
+        <Grid item xs={1} sm={2}>
+          {/* <a  onClick={()=>setIsLogdgedIn(false)}>LogOut</a> */}
+          </Grid> 
+        <Grid item xs={11} sm={10}>
+        <Grid container >
+        <Grid item xs={1}>
+        
+        <AccountBoxIcon className={classes.iconSize} />
+        </Grid>
+        <Grid item xs={10}>
+          <Typography className={classes.headingMedium} variant={'h4'}>
+          <div>About CFC Hardwood Services LLC:</div>
+          <ul>
+            <li>CofC Hardwood LLC was founded in 2003 by William Miller to provide the absolute best in industry hardwood floor refinishing</li>
+            <li>Blah Blah Blah give me more words</li>
+            </ul></Typography>
+            </Grid>
+ 
+            <Grid item xs={1}>
+            </Grid>
+        </Grid>
+        
+{/* <Grid item xs={12}><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></Grid> */}
+          
+          
+         </Grid>
+        <Grid item xs={1}>
+          {/* <a  onClick={()=>openModal({open:true, modalType:'Wishlist', instrument:{}})}>Account&nbsp;&nbsp;&nbsp;</a> */}
+        </Grid>
+      </Grid>
+      </React.Fragment>
+
 
 );
 }

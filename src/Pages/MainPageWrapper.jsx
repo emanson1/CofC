@@ -212,11 +212,12 @@ TitleClass:{
     },
     [theme.breakpoints.down('xs')]: {
       //width: '90vw',
+      justifyContent:'center',
       paddingTop:5,
     marginLeft:10,
     marginTop:10,
     height:30,
-    width:45,
+    width:35,
     fontSize:10,
     
     },
@@ -270,7 +271,7 @@ const MainPageWrapper = props => {
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Home/>)}>Home</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Services/>)}>Services</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Gallery/>)}>Gallery</a></Grid>
-      <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<About/>)}>About</a></Grid>
+      {/* <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<About/>)}>About</a></Grid> */}
       <Grid item xs={2} className={classes.linkClass} ><a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
       </Grid>
