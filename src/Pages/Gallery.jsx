@@ -44,21 +44,21 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('lg')]:
       { 
         transform: 'scale(9.0)',
-        paddingTop:16,
+        paddingTop:26,
         paddingRight:12,
       },  
       [theme.breakpoints.down('md')]: {
-        paddingTop:16,
+        paddingTop:28,
         paddingRight:14,
         vtransform: 'scale(7.0)',
       },
       [theme.breakpoints.down('sm')]: {
-        paddingTop:12,
+        paddingTop:43,
         paddingRight:16,
         transform: 'scale(4.5)',
       },
       [theme.breakpoints.down('xs')]: {
-        paddingTop:6,
+        paddingTop:56,
         paddingRight:24,
         transform: 'scale(2.0)',
       }
