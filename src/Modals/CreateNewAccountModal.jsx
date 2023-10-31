@@ -57,7 +57,8 @@ export default function CreateNewAccountModal (props) {
           <Grid xs={12} className={'modalType'} item >Please create an account:</Grid>
           </Grid>
           <Box style={divImage} >
-            <div className={'modalLoginText'}>  <Formik
+            <div className={'modalLoginText'}> 
+             <Formik
     initialValues={{ email: '', password: '' }}
    // onSubmit={ (values)=>alert("here")}
     onSubmit={ (values)=>createAccount(values)}

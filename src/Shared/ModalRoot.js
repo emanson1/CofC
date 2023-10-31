@@ -54,7 +54,7 @@ return (
   aria-describedby="simple-modal-description"
 >
 <div>
-<SpecificModal handleClose={props.hideModal} modalProps={modalProps} divImage={divImage} />
+<SpecificModal handleClose={props.hideModal} modalProps={modalProps}  />
 </div>
 </Dialog>
 

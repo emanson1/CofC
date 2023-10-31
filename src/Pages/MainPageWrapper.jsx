@@ -10,7 +10,7 @@ import Gallery from '../Pages/Gallery.jsx';
 import NavBar from './NavBar';
 import { connect } from 'react-redux';
 import Background from '../Images/Gallery/floorpic2.png';
-import CofCLogo from '../Images/CFC Logo 20230917.png';
+import CofCLogo from '../Images/Gallery/CFCLogo.png';
 const tabs = {
   // 'instrument': Instruments,
   // 'settings':  Settings,
@@ -62,9 +62,7 @@ const useStyles = makeStyles((theme) => ({
 
   },
   marginTopBottom30:{
-    // display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center',
     height:'100%',
     width:'100%'
   },
@@ -280,7 +278,7 @@ const MainPageWrapper = props => {
       </Grid>
       
       </Grid>  
-      <Grid item xs={2} sm={3}><div className={classes.marginTopBottom30}><a onClick={()=>openModal({open:true, modalType:'quoteModal', data:{}})}><Box className={classes.contactBox}>Request Quote</Box></a></div>
+      <Grid item xs={2} sm={3} className={classes.marginTopBottom30}><a onClick={()=>openModal({open:true, modalType:'quoteModal', data:{}})}><Box className={classes.contactBox}>Request Quote</Box></a>
       </Grid>
       </Grid>
 <Grid container><Grid>&nbsp;</Grid></Grid>
