@@ -6,9 +6,19 @@ import { Grid, Box, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CofCLogo from '../Images/Gallery/CFCLogo.png';
 import Attachments from '../Pages/Attachments.jsx';
+import emailjs from 'emailjs-com';
 
 export default function QuoteModal(props) {
+  const sendEmail=(e) =>{
+    e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
 
+    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID')
+      .then((result) => {
+          window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
+      }, (error) => {
+          console.log(error.text);
+      });
+  }
   const [imageList, setImageList] = useState([]);
   const [image64, setImage64] = useState({});
   const [fileObj, setFileObj] = useState();
@@ -29,20 +39,90 @@ export default function QuoteModal(props) {
   }
   const useStyles = makeStyles((theme) => ({
     container: {
-      backgroundImage: `url(${CofCLogo})`,
-      backgroundSize: 'cover',
-      border: '2px solid black',
-      //opacity: .7,
-      minWidth: '100%',
-      minHeight: 600,
+      overflow:'none',
+      border: '2px solid #ffcc00',
+      padding:10,
+      overflow: 'hidden',
+      minHeight: 700,
       justifyContent: 'center',
+      backgroundImage: `url(${CofCLogo})`,
+      backgroundSize: '600px 700px',
+      [theme.breakpoints.down('xs')]: {
+        backgroundSize: '250px 300px',
+        minHeight: 800,
+      
+      },
+    
+    },
+    titleClass: {
+      paddingTop:10,
+      color: '#003569',
+      textAlign: 'center',
+      fontWeight: 'bold',
+      backgroundColor:'white',
+      textShadow: '-1px 0 #8C92B4, 0 3px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
+      fontSize:50,
+         
+      [theme.breakpoints.down('lg')]:
+        { 
+         fontSize:40,
+       }, 
+      [theme.breakpoints.down('md')]:
+        { 
+          fontSize:35,
+       },  
+        [theme.breakpoints.down('sm')]: {
+          fontSize:30,
+          textShadow: '-1px 0 #8C92B4, 0 1px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
+        },
+        [theme.breakpoints.down('xs')]: {
+        fontSize:25,
+        },
+     
     },
     subContainer: {
       backgroundColor: 'white',
       width: '100%',
       height: '100%',
-      opacity: .7,
+      opacity: .85,
+      padding:10
     },
+    subHeading: {
+      backgroundColor: '#ffcc00',
+      color: '#003569',
+      textAlign: 'center',
+      opacity: 1,
+      borderBottom:'2px solid #003569',
+      borderTop:'2px solid #003569',
+      [theme.breakpoints.down('sm')]: {
+        fontSize:20,
+      },
+      [theme.breakpoints.down('xs')]: {
+        fontSize:16,
+      }
+    
+    },
+    submitButtonGrid:{
+      textAlign: 'center',
+      
+    },
+    submitButton:{
+      width:'90%',
+      backgroundColor:'green',
+      fontSize:25,
+    },
+    inputText:{
+      fontSize:22,
+        fontWeight:'bold',     
+      [theme.breakpoints.down('xs')]:
+        { 
+         fontSize:17,
+       }, 
+      // [theme.breakpoints.down('md')]:
+      //   { 
+      //     fontSize:20,
+      //  }
+    }
   }));
   const classes = useStyles();
   const { modalProps, handleClose } = props;
@@ -81,53 +161,72 @@ export default function QuoteModal(props) {
 
 
         <Grid container className={classes.container}>
-          <Grid xs={12} className={classes.subContainer}>
+          <Grid xs={12}>
+          <Grid item xs={12}><Typography variant={'h5'} className={classes.titleClass} style={{textAlign:'center'}}> CFC Hardwood Floors LLC</Typography></Grid>
             <Grid container direction="row" alignItems="center">
-              <Grid xs={12} item >Quote Modal</Grid>
+              <Grid xs={12} item><Typography  className={classes.subHeading} variant="h6">Please enter the following information and we reach out with a quote and/or for more information.</Typography></Grid>
             </Grid>
+            
+            <Grid xs={12} className={classes.subContainer}>
+            <Grid xs={12}><br/></Grid>
+            
+              <Grid container direction="row" alignItems="center">
+                <Grid xs={12} item><Typography className={classes.inputText} variant="h6">Please supply your name:</Typography></Grid>
+                <Grid xs={12} item >
+                  <Field component={FormikTextField}
+                    variant="outlined"
+                    label="Name"
+                    margin="dense"
+                    name="customername"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid xs={12} item ><Typography variant="h6"  className={classes.inputText} >Please enter a valid email address (or phone number):</Typography></Grid>
+                <Grid xs={12} item className={classes.inputClass}>
+                  <Field component={FormikTextField}
+                    variant="outlined"
+                    label="Email"
+                    margin="dense"
+                    name="customeremail"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid xs={12} item >
+                  <Field component={FormikTextField}
+                    variant="outlined"
+                    label="Phone"
+                    margin="dense"
+                    name="customerphone"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid xs={12} item ><Typography variant="h6"  className={classes.inputText} >Please let us know what we can do to help:</Typography></Grid>
+                <Grid xs={12} item className={classes.inputClass}>
+                  <Field component={FormikTextField}
+                    multiline
+                    variant="outlined"
+                    label="Comments"
+                    margin="dense"
+                    name="comments"
+                    fullWidth
+                    
+                    minRows={3}
+                  />
+                </Grid>
+                <Grid xs={12} className={classes.submitButtonGrid} item>
+                  <Button className={classes.submitButton} variant='contained' color='primary' onClick={() => this.toggleUploadWindow()}>Send Info</Button>
+                  </Grid>
+                  <Grid xs={12} item ><hr/></Grid>
+                <Grid xs={12} item ><Typography variant="h6" className={classes.inputText}>Upload any pictures/info?</Typography></Grid>
+                <Grid xs={12} item ><Attachments setFieldValue={setFieldValue} values={values} />
+                </Grid>
+              </Grid>
+              {/* <Button onClick={handleClose1}>Close Modal</Button> */}
 
-            <Grid container direction="row" alignItems="center">
-              <Grid xs={12} item ><Typography variant="h6">Please supply your name:</Typography></Grid>
-              <Grid xs={12} item className={classes.inputClass}>
-                <Field component={FormikTextField}
-                  variant="outlined"
-                  label="Name"
-                  margin="dense"
-                  name="customername"
-                  fullWidth
-                />
-              </Grid>
-              <Grid xs={12} item ><Typography variant="h6">Please enter a valid email address:</Typography></Grid>
-              <Grid xs={12} item className={classes.inputClass}>
-                <Field component={FormikTextField}
-                  variant="outlined"
-                  label="Email"
-                  margin="dense"
-                  name="customeremail"
-                  fullWidth
-                />
-              </Grid>
-              <Grid xs={12} item ><Typography variant="h6">Please let us know what we can do to help:</Typography></Grid>
-              <Grid xs={12} item className={classes.inputClass}>
-                <Field component={FormikTextField}
-                  variant="outlined"
-                  label="Comments"
-                  margin="dense"
-                  name="comments"
-                  fullWidth
-                  cols={10}
-                />
-              </Grid>
-              <Grid xs={12} item ><Typography variant="h6">Upload any pictures of the project?</Typography></Grid>
-              <Grid xs={12} item >
-                <Attachments setFieldValue={setFieldValue} values={values} />
-              </Grid>
             </Grid>
-            <Button  onClick={handleClose1}>Close Modal</Button>
-
           </Grid>
-        </Grid>
-
+          </Grid>
+  
       </Form>)}
     </Formik>
   )

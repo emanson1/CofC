@@ -99,6 +99,9 @@ const styles = theme => ({
 		top: -(theme.spacing(1)),
 		left: theme.spacing(1),
 	},
+	bold:{
+		fontWeight:'bold'
+	}
 });
 
 class Attachments extends Component {
@@ -228,8 +231,7 @@ class Attachments extends Component {
 						<Grid lg={8} xs={12} >
 							<Grid container direction='row' className={[classes.paddingTopLarge, classes.paddingLeft].join(' ')}>
 								<Grid item xs={12} sm={12} md={12} lg={12} xl={12} >
-									<div className={classes.container}>
-										<div className={[classes.group, classes.paddingTopSmall].join(' ')}>
+									
 											<input
 												id='sketchFile'
 												accept='*/*'
@@ -246,26 +248,15 @@ class Attachments extends Component {
 												<Button disabled={this.props.isReadOnly} variant='contained' color='primary' component='span'>
 													Add File
 												</Button>
-
 												<span className={[classes.fileName, classes.paddingLeft].join(' ')}>{(this.state.fileName) || ''}</span>
 											</label>
-
 											<Typography className={classes.group} variant='p'><br /><br /><b></b></Typography>
-										</div>
-
-
-										<div className={classes.expansionPanelHeader}>
-									
 											<Button disabled={this.isFilePresent()} variant='contained' className={classes.paddingLeft} color='primary' onClick={(e) =>  this.uploadAttachment(e, this.props.values)}>
 												Upload
 											</Button>
 											<Button variant='contained' color='primary' className={classes.paddingLeft} onClick={() => this.toggleUploadWindow()}>
 												Cancel
 											</Button>
-										</div>
-									</div>
-
-
 								</Grid>
 							</Grid>
 						</Grid>
@@ -273,26 +264,13 @@ class Attachments extends Component {
 
 					</React.Fragment>}
 
-				{!this.state.uploadWindow && this.props.values.attachments &&
-					<Grid container className={classes.root} margin={20} spacing={16}>
-						<Grid xl={3} lg={12} md={12} sm={12} xs={12}>
-							<div className={classes.displayLarge}><Typography variant='h5' className={[classes.paddingLeft, classes.paddingTop].join(' ')} >
-								{!this.isReadOnly() && <Button className={classes.minWidthButton} variant='contained' color='primary' onClick={() => this.toggleUploadWindow()}>Upload Attachments</Button>}
-							</Typography></div>
-							<div className={[classes.paddingLeft, classes.paddingTop, classes.displaySmall].join(' ')} >
-								{!this.isReadOnly() && <Button className={classes.minWidthButton} variant='contained' color='primary' onClick={() => this.toggleUploadWindow()}>Upload Attachments</Button>}
-							</div></Grid>
-
-					</Grid>}
 				{!this.state.uploadWindow && this.props.values.attachments && this.props.values.attachments.map((attach, index) => {
 					return (
 						attach.FileName !== undefined && <React.Fragment>
 							<div>
 								
 								<Grid container direction='row' >
-									<Grid xl={3} lg={3} xs={1}>
-									</Grid>
-									<Grid xl={9} lg={9} xs={11}>
+									<Grid xl={12} lg={12} xs={11}>
 										<Grid container direction='row' className={[classes.paddingBottomLarge, classes.paddingLeft].join(' ')}>
 											<Grid item xs={4} sm={4} md={4} lg={4} xl={4} className={[classes.bold, classes.alignTop, classes.fileName].join()}>
 												<span className={[classes.bold, classes.fileNameFont].join(' ')}>({index + 1})&nbsp;{attach.FileName}</span>
@@ -324,6 +302,18 @@ class Attachments extends Component {
 						</React.Fragment>);
 				})
 				}
+								{!this.state.uploadWindow && this.props.values.attachments &&
+					<Grid container className={classes.root} margin={20} spacing={16}>
+						<Grid xl={3} lg={12} md={12} sm={12} xs={12}>
+							<div className={classes.displayLarge}><Typography variant='h5' className={[classes.paddingLeft, classes.paddingTop].join(' ')} >
+								{!this.isReadOnly() && <Button className={classes.minWidthButton} variant='contained' color='primary' onClick={() => this.toggleUploadWindow()}>Upload Pictures/Documents</Button>}
+							</Typography></div>
+							<div className={[classes.paddingLeft, classes.paddingTop, classes.displaySmall].join(' ')} >
+								{!this.isReadOnly() && <Button className={classes.minWidthButton} variant='contained' color='primary' onClick={() => this.toggleUploadWindow()}>Upload Pictures/Documents</Button>}
+							</div></Grid>
+
+					</Grid>}
+
 			</React.Fragment>
 		);
 	}
