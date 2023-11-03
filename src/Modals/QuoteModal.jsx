@@ -50,7 +50,7 @@ export default function QuoteModal(props) {
     subContainerBackground: {
       backgroundImage: `url(${CofCLogo})`,
       backgroundSize: 'cover',
-      
+
     },
     titleClass: {
       paddingTop: 10,
@@ -135,17 +135,18 @@ export default function QuoteModal(props) {
   };
   const getSchema = () => {
     const yupObj = Yup.object().shape({
-      customeremail: Yup.string().email('Must be a valid email address').max(255).required('Email is required'),
-      customername: Yup.string().required("Required"),
-      comments: Yup.string().required("Required"),
+      customername: Yup.string().required("Please give us a good contact name"),
+      comments: Yup.string().required("Please give us a little information.  We will reach out if we need more"),
+      customerphone: Yup.string().required('Phone or email is required'),
+      customeremail: Yup.string().email('Must be a valid email address').max(255).required('Email or phone is required'),
     });
     return yupObj
   };
   return (
     <Formik
-      initialValues={{ customername: '', emailaddress: '', comments: '', attachments: new Array() }}
-      // onSubmit={ (values)=>alert("here")}
-      onSubmit={(values) => submitForm(values)}
+      initialValues={{ customername: '', customeremail: '',customerphone:'', comments: '', attachments: new Array() }}
+      onSubmit={ (values)=>alert("here")}
+    //  onSubmit={(values) => submitForm(values)}
       validationSchema={getSchema()}
     >{({
       values,
@@ -236,7 +237,7 @@ export default function QuoteModal(props) {
             </Grid>
           </Grid>
           <Grid xs={12} className={classes.submitButtonGrid} item>
-            <Button className={classes.submitButton} variant='contained' color='primary' onClick={() => this.toggleUploadWindow()}>Send Info</Button>
+            <Button type='submit' className={classes.submitButton} variant='contained' color='primary'>Send Info</Button>
           </Grid>
           <Grid xs={12} item >
             <hr />
