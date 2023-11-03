@@ -9,14 +9,14 @@ import Attachments from '../Pages/Attachments.jsx';
 import emailjs from 'emailjs-com';
 
 export default function QuoteModal(props) {
-  const sendEmail=(e) =>{
+  const sendEmail = (e) => {
     e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
 
     emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID')
       .then((result) => {
-          window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
+        window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
       }, (error) => {
-          console.log(error.text);
+        console.log(error.text);
       });
   }
   const [imageList, setImageList] = useState([]);
@@ -39,85 +39,85 @@ export default function QuoteModal(props) {
   }
   const useStyles = makeStyles((theme) => ({
     container: {
-      overflow:'none',
+      overflow: 'none',
       border: '2px solid #ffcc00',
-      padding:10,
+      padding: 10,
       overflow: 'hidden',
       minHeight: 700,
       justifyContent: 'center',
+
+    },
+    subContainerBackground: {
       backgroundImage: `url(${CofCLogo})`,
-      backgroundSize: '600px 700px',
-      [theme.breakpoints.down('xs')]: {
-        backgroundSize: '250px 300px',
-        minHeight: 800,
+      backgroundSize: 'cover',
       
-      },
-    
     },
     titleClass: {
-      paddingTop:10,
+      paddingTop: 10,
       color: '#003569',
       textAlign: 'center',
       fontWeight: 'bold',
-      backgroundColor:'white',
+      backgroundColor: 'white',
       textShadow: '-1px 0 #8C92B4, 0 3px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
-      fontSize:50,
-         
+      fontSize: 45,
+
       [theme.breakpoints.down('lg')]:
-        { 
-         fontSize:40,
-       }, 
+      {
+        fontSize: 40,
+      },
       [theme.breakpoints.down('md')]:
-        { 
-          fontSize:35,
-       },  
-        [theme.breakpoints.down('sm')]: {
-          fontSize:30,
-          textShadow: '-1px 0 #8C92B4, 0 1px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
-        },
-        [theme.breakpoints.down('xs')]: {
-        fontSize:25,
-        },
-     
+      {
+        fontSize: 35,
+      },
+      [theme.breakpoints.down('sm')]: {
+        fontSize: 30,
+        textShadow: '-1px 0 #8C92B4, 0 1px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
+      },
+      [theme.breakpoints.down('xs')]: {
+        fontSize: 25,
+      },
+
     },
     subContainer: {
       backgroundColor: 'white',
       width: '100%',
       height: '100%',
       opacity: .85,
-      padding:10
+      padding: 10
     },
     subHeading: {
+      paddingLeft: 5,
+      paddingRight: 5,
       backgroundColor: '#ffcc00',
       color: '#003569',
       textAlign: 'center',
       opacity: 1,
-      borderBottom:'2px solid #003569',
-      borderTop:'2px solid #003569',
+      borderBottom: '2px solid #003569',
+      borderTop: '2px solid #003569',
       [theme.breakpoints.down('sm')]: {
-        fontSize:20,
+        fontSize: 20,
       },
       [theme.breakpoints.down('xs')]: {
-        fontSize:16,
+        fontSize: 16,
       }
-    
+
     },
-    submitButtonGrid:{
+    submitButtonGrid: {
       textAlign: 'center',
-      
+
     },
-    submitButton:{
-      width:'90%',
-      backgroundColor:'green',
-      fontSize:25,
+    submitButton: {
+      width: '90%',
+      backgroundColor: 'green',
+      fontSize: 25,
     },
-    inputText:{
-      fontSize:22,
-        fontWeight:'bold',     
+    inputText: {
+      fontSize: 22,
+      fontWeight: 'bold',
       [theme.breakpoints.down('xs')]:
-        { 
-         fontSize:17,
-       }, 
+      {
+        fontSize: 17,
+      },
       // [theme.breakpoints.down('md')]:
       //   { 
       //     fontSize:20,
@@ -158,76 +158,99 @@ export default function QuoteModal(props) {
     }) => (
 
       <Form>
-
-
         <Grid container className={classes.container}>
-          <Grid xs={12}>
-          <Grid item xs={12}><Typography variant={'h5'} className={classes.titleClass} style={{textAlign:'center'}}> CFC Hardwood Floors LLC</Typography></Grid>
-            <Grid container direction="row" alignItems="center">
-              <Grid xs={12} item><Typography  className={classes.subHeading} variant="h6">Please enter the following information and we reach out with a quote and/or for more information.</Typography></Grid>
+          <Grid item xs={12}>
+            <Typography variant={'h5'} className={classes.titleClass} style={{ textAlign: 'center' }}>
+              CFC Hardwood Floors LLC
+            </Typography>
+          </Grid>
+          <Grid container direction="row" alignItems="center">
+            <Grid xs={12} item>
+              <Typography className={classes.subHeading} variant="h6">
+                Please enter the following information and we reach out with a quote and/or for more information.
+              </Typography>
             </Grid>
-            
-            <Grid xs={12} className={classes.subContainer}>
-            <Grid xs={12}><br/></Grid>
-            
-              <Grid container direction="row" alignItems="center">
-                <Grid xs={12} item><Typography className={classes.inputText} variant="h6">Please supply your name:</Typography></Grid>
-                <Grid xs={12} item >
-                  <Field component={FormikTextField}
-                    variant="outlined"
-                    label="Name"
-                    margin="dense"
-                    name="customername"
-                    fullWidth
-                  />
+          </Grid>
+          <Grid container className={classes.subContainerBackground}>
+            <Grid xs={12}>
+              <Grid xs={12} className={classes.subContainer}>
+                <Grid xs={12}>
+                  <br />
                 </Grid>
-                <Grid xs={12} item ><Typography variant="h6"  className={classes.inputText} >Please enter a valid email address (or phone number):</Typography></Grid>
-                <Grid xs={12} item className={classes.inputClass}>
-                  <Field component={FormikTextField}
-                    variant="outlined"
-                    label="Email"
-                    margin="dense"
-                    name="customeremail"
-                    fullWidth
-                  />
-                </Grid>
-                <Grid xs={12} item >
-                  <Field component={FormikTextField}
-                    variant="outlined"
-                    label="Phone"
-                    margin="dense"
-                    name="customerphone"
-                    fullWidth
-                  />
-                </Grid>
-                <Grid xs={12} item ><Typography variant="h6"  className={classes.inputText} >Please let us know what we can do to help:</Typography></Grid>
-                <Grid xs={12} item className={classes.inputClass}>
-                  <Field component={FormikTextField}
-                    multiline
-                    variant="outlined"
-                    label="Comments"
-                    margin="dense"
-                    name="comments"
-                    fullWidth
-                    
-                    minRows={3}
-                  />
-                </Grid>
-                <Grid xs={12} className={classes.submitButtonGrid} item>
-                  <Button className={classes.submitButton} variant='contained' color='primary' onClick={() => this.toggleUploadWindow()}>Send Info</Button>
+                <Grid container direction="row" alignItems="center">
+                  <Grid xs={12} item>
+                    <Typography className={classes.inputText} variant="h6">
+                      Please supply your name:
+                    </Typography>
                   </Grid>
-                  <Grid xs={12} item ><hr/></Grid>
-                <Grid xs={12} item ><Typography variant="h6" className={classes.inputText}>Upload any pictures/info?</Typography></Grid>
-                <Grid xs={12} item ><Attachments setFieldValue={setFieldValue} values={values} />
+                  <Grid xs={12} item >
+                    <Field component={FormikTextField}
+                      variant="outlined"
+                      label="Name"
+                      margin="dense"
+                      name="customername"
+                      fullWidth
+                    />
+                  </Grid>
+                  <Grid xs={12} item >
+                    <Typography variant="h6" className={classes.inputText} >
+                      Please enter a valid email address (or phone number):
+                    </Typography>
+                  </Grid>
+                  <Grid xs={12} item className={classes.inputClass}>
+                    <Field component={FormikTextField}
+                      variant="outlined"
+                      label="Email"
+                      margin="dense"
+                      name="customeremail"
+                      fullWidth
+                    />
+                  </Grid>
+                  <Grid xs={12} item >
+                    <Field component={FormikTextField}
+                      variant="outlined"
+                      label="Phone"
+                      margin="dense"
+                      name="customerphone"
+                      fullWidth
+                    />
+                  </Grid>
+                  <Grid xs={12} item >
+                    <Typography variant="h6" className={classes.inputText} >
+                      Please let us know what we can do to help:
+                    </Typography>
+                  </Grid>
+                  <Grid xs={12} item className={classes.inputClass}>
+                    <Field component={FormikTextField}
+                      multiline
+                      variant="outlined"
+                      label="Comments"
+                      margin="dense"
+                      name="comments"
+                      fullWidth
+                      minRows={5}
+                    />
+                  </Grid>
                 </Grid>
               </Grid>
-              {/* <Button onClick={handleClose1}>Close Modal</Button> */}
-
             </Grid>
           </Grid>
+          <Grid xs={12} className={classes.submitButtonGrid} item>
+            <Button className={classes.submitButton} variant='contained' color='primary' onClick={() => this.toggleUploadWindow()}>Send Info</Button>
           </Grid>
-  
-      </Form>)}
-    </Formik>
+          <Grid xs={12} item >
+            <hr />
+          </Grid>
+          <Grid xs={12} item >
+            <Typography variant="h6" className={classes.inputText}>Upload any pictures/info?
+            </Typography>
+          </Grid>
+          <Grid xs={12} item >
+            <Attachments setFieldValue={setFieldValue} values={values} />
+          </Grid>
+        </Grid>
+      </Form>)
+      }
+    </Formik >
   )
 };
