@@ -71,7 +71,7 @@ const styles = theme => ({
 
 	},
 	minWidthButton:{
-		minWidth:300,
+		minWidth:'100%',
 	},
 	expansionPanelHeader:
 	{
