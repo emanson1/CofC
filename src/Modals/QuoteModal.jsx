@@ -137,9 +137,10 @@ export default function QuoteModal(props) {
     const yupObj = Yup.object().shape({
       customername: Yup.string().required("Please give us a good contact name"),
       comments: Yup.string().required("Please give us a little information.  We will reach out if we need more"),
-      customerphone: Yup.string().required('Phone or email is required'),
-      customeremail: Yup.string().email('Must be a valid email address').max(255).required('Email or phone is required'),
-    });
+      customerphone: Yup.string().when('customeremail', {is: (email) => !email || email.length === 0, then: Yup.string().required('Phone or email is required')}),
+      customeremail: Yup.string().email('Must be a valid email address').max(255).when('customerphone', {is: (phone) => !phone || phone.length === 0, then: Yup.string().required('Phone or email is required')}),
+    }
+    , ['customerphone', 'customeremail']);
     return yupObj
   };
   return (
