@@ -41,7 +41,7 @@ export default function QuoteModal(props) {
     container: {
       overflow: 'none',
       border: '2px solid #ffcc00',
-      padding: 10,
+      padding: 5,
       overflow: 'hidden',
       minHeight: 700,
       justifyContent: 'center',
@@ -131,8 +131,22 @@ export default function QuoteModal(props) {
     handleClose();
   };
   const submitForm = (values) => {
-    return;
-  };
+    //e.preventDefault();
+    emailjs.send("service_n0e5dj5","template_pemlusq",
+    {customername: values.customername,
+    customerphone: values.customerphone,
+    customeremail: values.customeremail,
+    comments: values.comments,
+    attachment1:values.attachments.length>0?`<img id='Image1' src='${values.attachments[0].Data.substring(22)}' alt='Image1'>`:"",
+    attachment2: values.attachments.length>1?`<img id='Image2' src='${values.attachments[1].Data}' alt='Image2'>`:"",
+    attachment3: values.attachments.length>2?`<img id='Image3' src='${values.attachments[2].Data}' alt='Image3'>`:"",
+    reply_to: "edwardmaddenanson@gmail.com"},"DmCX6vlKr2xzdc8fs"
+    ).then(
+      alert("Email sent!"),
+      handleClose()
+    )
+    };
+    
   const getSchema = () => {
     const yupObj = Yup.object().shape({
       customername: Yup.string().required("Please give us a good contact name"),
@@ -146,7 +160,7 @@ export default function QuoteModal(props) {
   return (
     <Formik
       initialValues={{ customername: '', customeremail: '',customerphone:'', comments: '', attachments: new Array() }}
-      onSubmit={ (values)=>alert("here")}
+      onSubmit={ (values)=>submitForm(values)}
     //  onSubmit={(values) => submitForm(values)}
       validationSchema={getSchema()}
     >{({

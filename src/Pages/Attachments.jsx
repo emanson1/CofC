@@ -169,6 +169,7 @@ class Attachments extends Component {
 		var file = this.state.file;
 		if (file.name) {
 			const fileExists = values.attachments.find(a => { return a.FileName === file.name; });
+			
 			if (!(fileExists)) {
 				let attachBase64 = '';
 
@@ -191,7 +192,22 @@ class Attachments extends Component {
 					// {s
 
 					
-
+					if (attachments.length>2)
+					{
+						alert("Please upload a maximum of three (3) images.")
+						return;
+					}	
+					if (
+						(attachment.FileName.substring(attachment.FileName.lastIndexOf('.') + 1, attachment.FileName.length).toLowerCase() !== 'png')
+					&& (attachment.FileName.substring(attachment.FileName.lastIndexOf('.') + 1, attachment.FileName.length).toLowerCase() !== 'jpg')
+					&& (attachment.FileName.substring(attachment.FileName.lastIndexOf('.') + 1, attachment.FileName.length).toLowerCase() !== 'jpeg')
+					&& (attachment.FileName.substring(attachment.FileName.lastIndexOf('.') + 1, attachment.FileName.length).toLowerCase() !== 'gif')
+					)
+					{
+						alert("Please only upload an image file.")
+						return;
+					} 
+				
 					attachments.push(attachment);
 
 					values.attachments = attachments;

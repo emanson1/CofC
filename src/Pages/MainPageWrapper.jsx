@@ -36,18 +36,12 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
   },
-  linkOffset:{
-    paddingTop:20,
-    [theme.breakpoints.down('sm')]: {
-      //width: '90vw',
-      paddingTop:10,
-    },
-    [theme.breakpoints.down('xs')]: {
-      //width: '90vw',
-      paddingTop:5,
-    },
-  
+  marginTopBottom30:{
+    alignItems: 'center',
+    height:'100%',
+    width:'100%'
   },
+  
   boxBlue:{
   backgroundColor:'#003569',
   paddingTop:30,
@@ -61,30 +55,44 @@ const useStyles = makeStyles((theme) => ({
   width:121
 
   },
-  marginTopBottom30:{
-    alignItems: 'center',
-    height:'100%',
-    width:'100%'
+  linkOffset:{
+    paddingBottom:20,
+    backgroundColor:'white',
+    paddingTop:20,
+    [theme.breakpoints.down('md')]: {
+      paddingTop:0,
+      paddingBottom:10,
+    },
+   
+    [theme.breakpoints.down('sm')]: {
+      
+      paddingBottom:5,
+    },
+    [theme.breakpoints.down('xs')]: {
+      paddingBottom:2,
+  
+    },
+  
   },
   linkClass:{
-    fontSize:20,
+    fontSize:40,
     textAlign:'center',
     fontWeight:'bold',
     [theme.breakpoints.down('lg')]:
     { 
-     fontSize:18,
+     fontSize:30,
    }, 
   [theme.breakpoints.down('md')]:
     { 
-     fontSize:16,
+     fontSize:24,
    },  
     [theme.breakpoints.down('sm')]: {
       //width: '90vw',
-    fontSize:12,
+    fontSize:20,
     },
     [theme.breakpoints.down('xs')]: {
       //width: '90vw',
-    fontSize:10,
+    fontSize:13,
     },
   
   },
@@ -112,29 +120,31 @@ color:'white',
 
 },
 TitleClass:{
-  paddingTop:30,
+  paddingTop:140,
   color: '#003569',
   textAlign: 'center',
+  
   fontWeight: 'bold',
   textShadow: '-1px 0 #8C92B4, 0 3px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
-  fontSize:70,
+  fontSize:90,
      
   [theme.breakpoints.down('lg')]:
     { 
-     fontSize:55,
+     fontSize:75,
    }, 
   [theme.breakpoints.down('md')]:
     { 
-      fontSize:40,
+      paddingTop:95,
+      fontSize:45,
    },  
     [theme.breakpoints.down('sm')]: {
-      paddingTop:10,
-      fontSize:30,
+      paddingTop:70,
+      fontSize:35,
       textShadow: '-1px 0 #8C92B4, 0 1px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
 
     },
     [theme.breakpoints.down('xs')]: {
-      paddingTop:5,
+      paddingTop:20,
       
     fontSize:15,
     },
@@ -265,22 +275,23 @@ const MainPageWrapper = props => {
       <Grid item xs={2} sm={3}>
       <div className={classes.logoClass}><img src={CofCLogo} style={{width:'60%'}}/></div></Grid>
       <Grid item xs={8} sm={6}>
-      <Grid container className={classes.linkOffset}>
-      <Grid item xs={2} className={classes.linkClass} style={{textAlign:'left'}} ><a onClick={()=>setCurWindow(<Home/>)}>Home</a></Grid>
-      <Grid item xs={3} className={classes.linkClass} style={{textAlign:'center'}} ><a onClick={()=>setCurWindow(<Services/>)}>Services</a></Grid>
-      <Grid item xs={2} className={classes.linkClass} style={{textAlign:'right'}} ><a onClick={()=>setCurWindow(<Gallery/>)}>Gallery</a></Grid>
-      {/* <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<About/>)}>About</a></Grid> */}
-      <Grid item xs={2} className={classes.linkClass}  style={{textAlign:'right'}}>&nbsp;&nbsp;&nbsp;<a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
-      <Grid item xs={3} className={classes.linkClass}  style={{textAlign:'right'}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
-      </Grid>
-      <Grid container>
-      <Grid item xs={12}><Typography variant={'h2'} className={classes.TitleClass} style={{textAlign:'center'}}> CFC Hardwood Floors LLC</Typography></Grid>
+     
+  <Grid container>
+      <Grid item xs={12}><Typography variant={'h2'} className={classes.TitleClass}>CFC Hardwood Floors LLC</Typography></Grid>
       </Grid>
       
       </Grid>  
       <Grid item xs={2} sm={3} className={classes.marginTopBottom30}><a onClick={()=>openModal({open:true, modalType:'quoteModal', data:{}})}><Box className={classes.contactBox}>Request Quote</Box></a>
       </Grid>
       </Grid>
+      <Grid container className={classes.linkOffset}>
+      <Grid item xs={3} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Home/>)}>Home</a></Grid>
+      <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Services/>)}>Services</a></Grid>
+      <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Gallery/>)}>Gallery</a></Grid>
+      <Grid item xs={2} className={classes.linkClass}>&nbsp;&nbsp;&nbsp;<a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
+      <Grid item xs={3} className={classes.linkClass}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
+      
+    </Grid>
 <Grid container><Grid>&nbsp;</Grid></Grid>
       <Grid container className={classes.panorama}>
         <Grid item xs={12}>
@@ -298,7 +309,6 @@ const MainPageWrapper = props => {
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Home/>)}>Home</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Services/>)}>Services</a></Grid>
       <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<Gallery/>)}>Gallery</a></Grid>
-      {/* <Grid item xs={2} className={classes.linkClass} ><a onClick={()=>setCurWindow(<About/>)}>About</a></Grid> */}
       <Grid item xs={3} className={classes.linkClass} ><a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
       <Grid item xs={3} className={classes.linkClass} ><a href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
       
