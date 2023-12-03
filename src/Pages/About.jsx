@@ -5,6 +5,24 @@ import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import { connect } from 'react-redux';
 const useStyles = makeStyles((theme) => ({
     triPane:{opacity:.75},
+    containerClass:{
+      paddingTop:60,
+
+      [theme.breakpoints.down('lg')]:
+        { 
+          paddingTop:40,
+        },  
+        [theme.breakpoints.down('md')]: {
+          paddingTop:30,
+        },
+        [theme.breakpoints.down('sm')]: {
+          paddingTop:20,
+        },
+        [theme.breakpoints.down('xs')]: {
+          paddingTop:10,
+
+        }      
+    },
     blueBar:{backgroundColor:'#003569'},
      pageClass:{
      border:'1px solid #8C92B4',
@@ -172,7 +190,7 @@ const useStyles = makeStyles((theme) => ({
    const About = props => {
     const classes = useStyles();
 return (
-<Grid container style={{paddingTop:60}}>
+<Grid container className={classes.containerClass}>
         <Grid item xs={1} sm={2}>
           {/* <a  onClick={()=>setIsLogdgedIn(false)}>LogOut</a> */}
           </Grid> 
