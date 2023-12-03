@@ -200,7 +200,26 @@ const useStyles = makeStyles((theme) => ({
   li:
   {
     fontSize: 19
-  }
+  },
+  
+  containerClass:{
+    paddingTop:60,
+
+    [theme.breakpoints.down('lg')]:
+      { 
+        paddingTop:40,
+      },  
+      [theme.breakpoints.down('md')]: {
+        paddingTop:30,
+      },
+      [theme.breakpoints.down('sm')]: {
+        paddingTop:20,
+      },
+      [theme.breakpoints.down('xs')]: {
+        paddingTop:10,
+
+      }      
+  },
 }));
 const Gallery = props => {
   const classes = useStyles();
@@ -216,7 +235,7 @@ const Gallery = props => {
   }, []);
   return (
 <div>
-    <Grid container style={{ paddingTop: 10 }}>
+    <Grid container className={classes.containerClass}>
       <Grid item xs={1} sm={2}>
         {/* <a  onClick={()=>setIsLogdgedIn(false)}>LogOut</a> */}
       </Grid>

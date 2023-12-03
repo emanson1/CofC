@@ -44,7 +44,24 @@ const useStyles = makeStyles((theme) => ({
         }
       },
       
-     
+      containerClass:{
+        paddingTop:60,
+  
+        [theme.breakpoints.down('lg')]:
+          { 
+            paddingTop:40,
+          },  
+          [theme.breakpoints.down('md')]: {
+            paddingTop:30,
+          },
+          [theme.breakpoints.down('sm')]: {
+            paddingTop:20,
+          },
+          [theme.breakpoints.down('xs')]: {
+            paddingTop:10,
+  
+          }      
+      },
     alignBottom:{
      display:'table-cell',
      verticalAlign:'middle',
@@ -165,7 +182,7 @@ const useStyles = makeStyles((theme) => ({
     const classes = useStyles();
 return (
   <React.Fragment>
-<Grid container style={{paddingTop:60}}>
+<Grid container className={classes.containerClass}>
         <Grid item xs={1} sm={2} >
           {/* <a  onClick={()=>setIsLogdgedIn(false)}>LogOut</a> */}
           </Grid> 
