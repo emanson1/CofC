@@ -9,13 +9,7 @@ function rand() {
 }
 
 const Modals= {
-  //   confirmationModal:ConfirmationModal,
-  //   successModal:SucessModal,
-  //   errorModal: ErrorModal,
        quoteModal: QuoteModal
-  //   marketPlace:MarketPlaceModal,
-       
-  //   account: AccountModal
    };
    
  
@@ -27,23 +21,9 @@ const ModalRoot = props => {
   const SpecificModal = Modals[modalType];
  
  const classes = makeStyles();
-// getModalStyle is not a pure function, we roll the style only on the first render
 
 
 
-const divImage = {
-  backgroundImage: "url('" + modalProps.background + "')",
-  backgroundColor:'lightgray',
-  backgroundSize: 'contain',
-  backgroundPosition:'center center',
-  backgroundRepeat: 'no-repeat',
-  height:'inherit',
-  border:'2px solid #444c4f',
-  fontWeight:'bold',
-  padding:'30px',
-  borderRadius: '10px 10px 10px 10px'
-
-};
 
 return (
   

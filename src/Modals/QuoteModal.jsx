@@ -4,7 +4,7 @@ import { TextField as FormikTextField, Select } from 'formik-material-ui';
 import * as Yup from 'yup';
 import { Grid, Box, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import CofCLogo from '../Images/Gallery/CFCLogo.png';
+import CofCLogoSmall from '../Images/Gallery/CFCLogoSmall.png';
 import Attachments from '../Pages/Attachments.jsx';
 import emailjs from 'emailjs-com';
 
@@ -42,15 +42,18 @@ export default function QuoteModal(props) {
       overflow: 'none',
       border: '2px solid #ffcc00',
       padding: 5,
-      overflow: 'hidden',
-      height:'100%',
+     // overflow: 'hidden',
       justifyContent: 'center',
-
+      
     },
     subContainerBackground: {
-      backgroundImage: `url(${CofCLogo})`,
+      backgroundImage: `url(${CofCLogoSmall})`,
       backgroundSize: 'cover',
-
+      [theme.breakpoints.down('xs')]: {
+        backgroundSize: '300px 500px',
+        
+      },
+      
     },
     titleClass: {
       paddingTop: 10,
@@ -74,14 +77,14 @@ export default function QuoteModal(props) {
         textShadow: '-1px 0 #8C92B4, 0 1px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
       },
       [theme.breakpoints.down('xs')]: {
-        fontSize: 25,
+        fontSize: 23,
       },
 
     },
     subContainer: {
       backgroundColor: 'white',
-      width: '100%',
-      height: '100%',
+      // width: '100%',
+      // height: '100%',
       opacity: .85,
       padding: 10
     },
@@ -118,10 +121,7 @@ export default function QuoteModal(props) {
       {
         fontSize: 17,
       },
-      // [theme.breakpoints.down('md')]:
-      //   { 
-      //     fontSize:20,
-      //  }
+      
     }
   }));
   const classes = useStyles();
@@ -244,7 +244,7 @@ export default function QuoteModal(props) {
                       margin="dense"
                       name="comments"
                       fullWidth
-                      minRows={5}
+                      minRows={3}
                     />
                   </Grid>
                 </Grid>
