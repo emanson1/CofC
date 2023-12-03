@@ -43,7 +43,7 @@ export default function QuoteModal(props) {
       border: '2px solid #ffcc00',
       padding: 5,
       overflow: 'hidden',
-      minHeight: 700,
+      height:'100%',
       justifyContent: 'center',
 
     },

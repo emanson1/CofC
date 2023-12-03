@@ -112,26 +112,22 @@ const useStyles = makeStyles((theme) => ({
   },
  logoClass:
  {
-  paddingTop:10,
+  paddingTop:30,
+  paddingBottom:30,
   display: 'flex',
   justifyContent: 'center',
   textAlign:'center',   
-  paddingBottom:10,
   [theme.breakpoints.down('sm')]: {
     paddingTop:10,
     paddingBottom:10,
   },
   [theme.breakpoints.down('xs')]: {
-    paddingTop:10,
-    paddingBottom:10,
+    paddingTop:5,
+    paddingBottom:5,
   },
   
 },
-placeStairs: {
-  verticalAlign:'top',
-  position:'relative',
-  top:-20,
-},
+
 copyWhite:{
 fontSize:20,
 color:'white',
@@ -139,33 +135,33 @@ color:'white',
 
 },
 TitleClass:{
-  paddingTop:140,
+  paddingTop:180,
   color: '#003569',
   textAlign: 'center',
   
   fontWeight: 'bold',
   textShadow: '-1px 0 #8C92B4, 0 3px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
-  fontSize:90,
+  fontSize:85,
      
   [theme.breakpoints.down('lg')]:
     { 
-     fontSize:75,
+     fontSize:70,
    }, 
   [theme.breakpoints.down('md')]:
     { 
       paddingTop:95,
-      fontSize:45,
+      fontSize:60,
    },  
     [theme.breakpoints.down('sm')]: {
       paddingTop:70,
-      fontSize:35,
+      fontSize:30,
       textShadow: '-1px 0 #8C92B4, 0 1px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
 
     },
     [theme.breakpoints.down('xs')]: {
       paddingTop:15,
       
-    fontSize:20,
+    fontSize:18,
     },
 
   
@@ -285,6 +281,15 @@ TitleClass:{
   li:
   {
     fontSize:19
+  },
+  imageClass:
+  {
+    width:'70%',
+    [theme.breakpoints.down('sm')]: {
+    width:'80%',
+    
+    },
+
   }
 }));
 const MainPageWrapper = props => {
@@ -313,7 +318,7 @@ const MainPageWrapper = props => {
     <div className={classes.pageClass}>
       <Grid container  className={classes.headingClass}>
       <Grid item xs={2} sm={3}>
-      <div className={classes.logoClass}><img src={CofCLogo} style={{width:'60%'}}/></div></Grid>
+      <div className={classes.logoClass}><img src={CofCLogo} className={classes.imageClass}/></div></Grid>
       <Grid item xs={8} sm={6}>
      
   <Grid container>
