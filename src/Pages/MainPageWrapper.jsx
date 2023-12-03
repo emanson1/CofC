@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Box, Typography } from '@material-ui/core';
+import { Grid, Box, Typography,Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { showModal, hideModal } from '../actions/bluevilleActions';
 import Marquee from 'react-double-marquee';
@@ -49,34 +49,33 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
   },
 
-  contactBox: {
-    padding: 40,
+  quoteButton: {
+    marginTop:50,
+    marginLeft:30,
+    marginRight:30,
     backgroudColor: '#ffcc00',
     color: '#003569',
-    height: 200,
-    width: 200,
-    fontSize: 30,
-    justifyContent: 'center',
-    textAlign: 'center',
+    fontSize: 60,
     fontWeight: 'bold',
-    [theme.breakpoints.down('lg')]:
-    {
-      fontSize: 70,
-    },
+    textShadow: '-1px 0 #8C92B4, 0 1px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
+    height:'70%',
+    width:'70%',
     [theme.breakpoints.down('md')]:
     {
-      paddingTop: 95,
-      fontSize: 60,
+      marginTop:20,
+    
+      fontSize: 20,
     },
     [theme.breakpoints.down('sm')]: {
-      paddingTop: 70,
-      fontSize: 30,
-      textShadow: '-1px 0 #8C92B4, 0 1px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
-
+      fontSize: 20,
+      marginLeft:20,
+   
     },
     [theme.breakpoints.down('xs')]: {
-      paddingTop: 15,
-      fontSize: 18,
+      marginTop:2,
+      fontSize: 8,
+      marginLeft:-10,
+
     },
   },
   boxBlue: {
@@ -281,22 +280,17 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('lg')]:
     {
       transform: 'scale(9.0)',
-      paddingTop: 26,
       paddingRight: 12,
     },
     [theme.breakpoints.down('md')]: {
-      paddingTop: 28,
-      paddingRight: 14,
+      paddingTop: 0,
+      paddingRight: 0,
       vtransform: 'scale(7.0)',
     },
     [theme.breakpoints.down('sm')]: {
-      paddingTop: 43,
-      paddingRight: 16,
       transform: 'scale(4.5)',
     },
     [theme.breakpoints.down('xs')]: {
-      paddingTop: 56,
-      paddingRight: 24,
       transform: 'scale(2.0)',
     }
   },
@@ -325,9 +319,9 @@ const MainPageWrapper = props => {
           </Grid>
 
         </Grid>
-        <Grid item xs={2} sm={3} className={classes.contactBox}>
+        <Grid item xs={2} sm={3}>
           <a onClick={() => openModal({ open: true, modalType: 'quoteModal', data: {} })}>
-            <RequestQuoteIcon className={classes.iconSize} />
+            <Button className={classes.quoteButton} style={{backgroundColor:'yellow'}} variant="contained" >Request Quote</Button>
           </a>
         </Grid>
       </Grid>
