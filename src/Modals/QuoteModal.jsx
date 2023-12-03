@@ -101,7 +101,7 @@ export default function QuoteModal(props) {
         fontSize: 20,
       },
       [theme.breakpoints.down('xs')]: {
-        fontSize: 16,
+        fontSize: 14,
       }
 
     },
