@@ -209,7 +209,7 @@ const useStyles = makeStyles((theme) => ({
 
     },
     [theme.breakpoints.down('xs')]: {
-      fontSize: 14,
+      fontSize: 12,
       paddingTop: 5,
       paddingBottom: 5,
 
@@ -317,11 +317,11 @@ const MainPageWrapper = props => {
         </Grid>
       </Grid>
       <Grid container className={classes.linkOffset}>
-        <Grid item xs={3} className={classes.linkClass} ><a onClick={() => setCurWindow(<Home />)}>Home</a></Grid>
-        <Grid item xs={2} className={classes.linkClass} ><a onClick={() => setCurWindow(<Services />)}>Services</a></Grid>
-        <Grid item xs={2} className={classes.linkClass} ><a onClick={() => setCurWindow(<Gallery />)}>Gallery</a></Grid>
-        <Grid item xs={2} className={classes.linkClass}>&nbsp;&nbsp;&nbsp;<a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
-        <Grid item xs={3} className={classes.linkClass}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
+        <Grid item xs={3} className={classes.linkClass} ><a href="#" onClick={() => setCurWindow(<Home />)}>Home</a></Grid>
+        <Grid item xs={2} className={classes.linkClass} ><a href="#" onClick={() => setCurWindow(<Services />)}>Services</a></Grid>
+        <Grid item xs={2} className={classes.linkClass} ><a href="#" onClick={() => setCurWindow(<Gallery />)}>Gallery</a></Grid>
+        <Grid item xs={2} className={classes.linkClass}><a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
+        <Grid item xs={3} className={classes.linkClass}><a href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
 
       </Grid>
       <Grid container className={classes.panorama}>
