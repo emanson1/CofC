@@ -10,7 +10,7 @@ import Gallery from '../Pages/Gallery.jsx';
 import NavBar from './NavBar';
 import { connect } from 'react-redux';
 import Background from '../Images/Gallery/floorpic2.png';
-import CofCLogo from '../Images/Gallery/CFCLogo.png';
+import CofCLogo from '../Images/CFCLogo.png';
 const tabs = {
   // 'instrument': Instruments,
   // 'settings':  Settings,
