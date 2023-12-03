@@ -12,6 +12,24 @@ const useStyles = makeStyles((theme) => ({
      padding:20
      
     },
+    containerClass:{
+      paddingTop:60,
+
+      [theme.breakpoints.down('lg')]:
+        { 
+          paddingTop:40,
+        },  
+        [theme.breakpoints.down('md')]: {
+          paddingTop:30,
+        },
+        [theme.breakpoints.down('sm')]: {
+          paddingTop:20,
+        },
+        [theme.breakpoints.down('xs')]: {
+          paddingTop:10,
+
+        }      
+    },
     iconSize: {
       
       color: '#003569',
@@ -173,7 +191,7 @@ const useStyles = makeStyles((theme) => ({
    const Services = props => {
     const classes = useStyles();
 return (
-<Grid container style={{paddingTop:60}}>
+<Grid container className={classes.containerClass}>
         <Grid item xs={1} sm={2}>
           {/* <a  onClick={()=>setIsLogdgedIn(false)}>LogOut</a> */}
           </Grid> 
