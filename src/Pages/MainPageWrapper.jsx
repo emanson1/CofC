@@ -23,10 +23,20 @@ const useStyles = makeStyles((theme) => ({
   pageClass:{
   border:'1px solid #8C92B4',
   backgroundColor:'#003569',
-  padding:20
+  padding:20,
+  [theme.breakpoints.down('sm')]: {
+      
+    padding:10,
+  },
+  [theme.breakpoints.down('xs')]: {
+      
+    padding:10,
+  },
+  
   
  },
  alignBottom:{
+
   display:'table-cell',
   verticalAlign:'middle',
   textAlign:'center',
@@ -107,6 +117,15 @@ const useStyles = makeStyles((theme) => ({
   justifyContent: 'center',
   textAlign:'center',   
   paddingBottom:10,
+  [theme.breakpoints.down('sm')]: {
+    paddingTop:10,
+    paddingBottom:10,
+  },
+  [theme.breakpoints.down('xs')]: {
+    paddingTop:10,
+    paddingBottom:10,
+  },
+  
 },
 placeStairs: {
   verticalAlign:'top',
@@ -144,9 +163,9 @@ TitleClass:{
 
     },
     [theme.breakpoints.down('xs')]: {
-      paddingTop:20,
+      paddingTop:15,
       
-    fontSize:15,
+    fontSize:20,
     },
 
   
@@ -155,9 +174,29 @@ TitleClass:{
     backgroundImage: `url(${Background})`,
     backgroundSize: 'cover',
   },
+  headingLargeContainer:{
+    borderTop:'#003569 20px solid',
+    borderBottom:'#003569 20px solid',
+    [theme.breakpoints.down('sm')]:
+      { 
+    borderTop:'#003569 10px solid',
+    borderBottom:'#003569 10px solid',
+      },
+      [theme.breakpoints.down('xs')]:
+      { 
+    borderTop:'#003569 5px solid',
+    borderBottom:'#003569 5px solid',
+      },
+
+    },
   headingLarge:{
     fontSize:65,
-     
+    paddingTop:20,
+    paddingBottom:20,
+    textAlign:'center',
+    color:'white',
+    fontWeight:'bold',
+    textShadow: '-1px 0 black, 0 3px black, 1px 0 black, 0 -1px black', 
     [theme.breakpoints.down('lg')]:
       { 
        fontSize:50,
@@ -169,17 +208,18 @@ TitleClass:{
       [theme.breakpoints.down('sm')]: {
         //width: '90vw',
       fontSize:30,
-      },
+      paddingTop:10,
+      paddingBottom:10,
+      
+    },
       [theme.breakpoints.down('xs')]: {
         //width: '90vw',
       fontSize:18,
+      paddingTop:5,
+      paddingBottom:5,
+    
       },
-    paddingTop:30,
-    paddingBottom:30,
-    textAlign:'center',
-    color:'white',
-    fontWeight:'bold',
-    textShadow: '-1px 0 black, 0 3px black, 1px 0 black, 0 -1px black',
+    
   },
   headingMedium:{
    
@@ -292,16 +332,14 @@ const MainPageWrapper = props => {
       <Grid item xs={3} className={classes.linkClass}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
       
     </Grid>
-<Grid container><Grid>&nbsp;</Grid></Grid>
       <Grid container className={classes.panorama}>
         <Grid item xs={12}>
         <Grid>
-        <Grid item xs={12}  style={{opacity:.9}}>
+        <Grid item xs={12}  style={{opacity:.9}} className={classes.headingLargeContainer} >
           <Typography variant={'h3'} className={classes.headingLarge}> Wood Floor Refinishing Service in Irmo, SC.<br/>  Open today until 5:00 PM</Typography>
         </Grid>
         
       </Grid>
-  <Grid className={classes.blueBar}><br/></Grid>
   <Grid item xs={12} style={{width:1600}}>{curWindow}</Grid>
    <Grid item xs={12}><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></Grid>
       
