@@ -11,6 +11,8 @@ import NavBar from './NavBar';
 import { connect } from 'react-redux';
 import Background from '../Images/Gallery/floorpic2.png';
 import CofCLogo from '../Images/CFCLogo.png';
+import RequestQuoteIcon from '@mui/icons-material/RequestQuoteRounded.js';
+
 const tabs = {
   // 'instrument': Instruments,
   // 'settings':  Settings,
@@ -46,12 +48,37 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
   },
-  marginTopBottom30: {
-    alignItems: 'center',
-    height: '100%',
-    width: '100%'
-  },
 
+  contactBox: {
+    padding: 40,
+    backgroudColor: '#ffcc00',
+    color: '#003569',
+    height: 200,
+    width: 200,
+    fontSize: 30,
+    justifyContent: 'center',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    [theme.breakpoints.down('lg')]:
+    {
+      fontSize: 70,
+    },
+    [theme.breakpoints.down('md')]:
+    {
+      paddingTop: 95,
+      fontSize: 60,
+    },
+    [theme.breakpoints.down('sm')]: {
+      paddingTop: 70,
+      fontSize: 30,
+      textShadow: '-1px 0 #8C92B4, 0 1px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
+
+    },
+    [theme.breakpoints.down('xs')]: {
+      paddingTop: 15,
+      fontSize: 18,
+    },
+  },
   boxBlue: {
     backgroundColor: '#003569',
     paddingTop: 30,
@@ -88,7 +115,7 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 40,
     textAlign: 'center',
     fontWeight: 'bold',
-    
+
     [theme.breakpoints.down('lg')]:
     {
       fontSize: 30,
@@ -142,7 +169,7 @@ const useStyles = makeStyles((theme) => ({
 
     fontWeight: 'bold',
     textShadow: '-1px 0 #8C92B4, 0 3px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
-    fontSize: 85,
+    fontSize: 80,
 
     [theme.breakpoints.down('lg')]:
     {
@@ -214,55 +241,10 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: 5,
 
     },
-
   },
   headingMedium: {
     fontSize: 45,
     fontWeight: 'bold'
-  },
-
-  contactBox: {
-    paddingTop: 10,
-    backgroundColor: '#ffcc00',
-    color: '#003569',
-    height: 140,
-    width: 140,
-    fontSize: 30,
-    justifyContent: 'center',
-    textAlign: 'center',
-    fontWeight: 'bold',
-    [theme.breakpoints.down('lg')]:
-    {
-      fontSize: 25,
-      height: 120,
-      width: 120,
-
-    },
-    [theme.breakpoints.down('md')]:
-    {
-      fontSize: 20,
-      height: 100,
-      width: 100,
-
-    },
-    [theme.breakpoints.down('sm')]: {
-      //width: '90vw',
-      fontSize: 15,
-      height: 80,
-      width: 80,
-
-    },
-    [theme.breakpoints.down('xs')]: {
-      //width: '90vw',
-      justifyContent: 'center',
-      paddingTop: 5,
-      marginLeft: 10,
-      marginTop: 10,
-      height: 30,
-      width: 35,
-      fontSize: 10,
-
-    },
   },
   darkBlueBackgroundLayer:
   {
@@ -288,7 +270,37 @@ const useStyles = makeStyles((theme) => ({
 
     },
 
-  }
+  },
+  iconSize: {
+
+    color: '#003569',
+    transform: 'scale(11.0)',
+    paddingTop: 20,
+    paddingRight: 10,
+
+    [theme.breakpoints.down('lg')]:
+    {
+      transform: 'scale(9.0)',
+      paddingTop: 26,
+      paddingRight: 12,
+    },
+    [theme.breakpoints.down('md')]: {
+      paddingTop: 28,
+      paddingRight: 14,
+      vtransform: 'scale(7.0)',
+    },
+    [theme.breakpoints.down('sm')]: {
+      paddingTop: 43,
+      paddingRight: 16,
+      transform: 'scale(4.5)',
+    },
+    [theme.breakpoints.down('xs')]: {
+      paddingTop: 56,
+      paddingRight: 24,
+      transform: 'scale(2.0)',
+    }
+  },
+
 }));
 const MainPageWrapper = props => {
   const { handleClose, handleOpen, rej, sel, instruments, setInstruments, setRej, setSel, setIsLoggedIn } = props;
@@ -313,7 +325,10 @@ const MainPageWrapper = props => {
           </Grid>
 
         </Grid>
-        <Grid item xs={2} sm={3} className={classes.marginTopBottom30}><a onClick={() => openModal({ open: true, modalType: 'quoteModal', data: {} })}><Box className={classes.contactBox}>Request Quote</Box></a>
+        <Grid item xs={2} sm={3} className={classes.contactBox}>
+          <a onClick={() => openModal({ open: true, modalType: 'quoteModal', data: {} })}>
+            <RequestQuoteIcon className={classes.iconSize} />
+          </a>
         </Grid>
       </Grid>
       <Grid container className={classes.linkOffset}>

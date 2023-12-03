@@ -86,7 +86,11 @@ export default function QuoteModal(props) {
       // width: '100%',
       // height: '100%',
       opacity: .85,
-      padding: 10
+      padding: 10,
+      [theme.breakpoints.down('xs')]: {
+        padding: 2
+      }
+
     },
     subHeading: {
       paddingLeft: 5,
