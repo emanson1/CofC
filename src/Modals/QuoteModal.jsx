@@ -6,19 +6,15 @@ import { Grid, Box, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CofCLogoSmall from '../Images/CFCLogoSmall.png';
 import Attachments from '../Pages/Attachments.jsx';
-import emailjs from 'emailjs-com';
+import { MyTemplate } from '../Pages/Email.jsx';
+import { render } from '@react-email/render';
+import { SES } from '@aws-sdk/client-ses';
+
+const ses = new SES({ region: process.env.AWS_SES_REGION })
+
+
 
 export default function QuoteModal(props) {
-  const sendEmail = (e) => {
-    e.preventDefault();    //This is important, i'm not sure why, but the email won't send without it
-
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', e.target, 'YOUR_USER_ID')
-      .then((result) => {
-        window.location.reload()  //This is if you still want the page to reload (since e.preventDefault() cancelled that behavior) 
-      }, (error) => {
-        console.log(error.text);
-      });
-  }
   const [imageList, setImageList] = useState([]);
   const [image64, setImage64] = useState({});
   const [fileObj, setFileObj] = useState();
@@ -93,6 +89,7 @@ export default function QuoteModal(props) {
 
     },
     subHeading: {
+    
       paddingLeft: 5,
       paddingRight: 5,
       backgroundColor: '#ffcc00',
@@ -134,22 +131,43 @@ export default function QuoteModal(props) {
     const closestr = "here";
     handleClose();
   };
-  const submitForm = (values) => {
+  const submitForm = async (values) => {
     //e.preventDefault();
-    emailjs.send("service_n0e5dj5","template_pemlusq",
-    {customername: values.customername,
-    customerphone: values.customerphone,
-    customeremail: values.customeremail,
-    comments: values.comments,
-    attachment1:values.attachments.length>0?`<img id='Image1' src='${values.attachments[0].Data.substring(22)}' alt='Image1'>`:"",
-    attachment2: values.attachments.length>1?`<img id='Image2' src='${values.attachments[1].Data}' alt='Image2'>`:"",
-    attachment3: values.attachments.length>2?`<img id='Image3' src='${values.attachments[2].Data}' alt='Image3'>`:"",
-    reply_to: "edwardmaddenanson@gmail.com"},"DmCX6vlKr2xzdc8fs"
-    ).then(
-      alert("Email sent!"),
-      handleClose()
-    )
+    const emailProps = {
+      customername: values.customername,
+     customerphone: values.customerphone,
+     customeremail: values.customeremail,
+     comments: values.comments,
+     attachment1:values.attachments.length>0?`<img id='Image1' src='${values.attachments[0].Data.substring(22)}' alt='Image1'>`:"",
+     attachment2: values.attachments.length>1?`<img id='Image2' src='${values.attachments[1].Data}' alt='Image2'>`:"",
+     attachment3: values.attachments.length>2?`<img id='Image3' src='${values.attachments[2].Data}' alt='Image3'>`:"",
+     reply_to: "edwardmaddenanson@gmail.com"};
+     const emailHtml = render(<MyTemplate url="https://cfchardwoodfloorsllc.com" emailProps={emailProps}/>)
+   
+     const params = {
+      Source: 'No-Reply@cfchardwoodfloorsllc.com',
+      Destination: {
+        ToAddresses: ['edwardmaddenanson@gmail.com'],
+      },
+      Message: {
+        Body: {
+          Html: {
+            Charset: 'UTF-8',
+            Data: emailHtml,
+          },
+        },
+        Subject: {
+          Charset: 'UTF-8',
+          Data: 'Thank you!  We will respond soon!',
+        },
+      },
     };
+    
+    await ses.sendEmail(params).then(alert("Success"));
+    
+    console.log(html);
+    
+  };
     
   const getSchema = () => {
     const yupObj = Yup.object().shape({
