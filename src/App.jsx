@@ -1,14 +1,7 @@
 import React, { useState } from 'react'
-import logo from './logo.svg';
 import {Route, BrowserRouter as Router} from 'react-router-dom';
 import '../src/App.css';
-import {Paper, Grid, Box, Typography} from '@material-ui/core';
-import TinderCard from 'react-tinder-card';
-import DataLayer from './Pages/DataLayer';
 import MainPage from './Pages/MainPage';
-
-import NavBar from './Pages/NavBar';
-import {View} from 'react-native';
 import ModalRoot from './Shared/ModalRoot';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
@@ -37,14 +30,9 @@ function App(props) {
   const modalProps=props.modalProps;
   const modalType=modalProps.modalType;
   const open=modalProps.open;
-  const [selectedTab, setSelectedTab] = useState('instrument');
-  const classes = useStyles();
-  const [modalStyle] = React.useState(getModalStyle);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
  
   return (
-    // <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
     <React.Fragment>
       <Router>
         <Route
@@ -58,7 +46,6 @@ function App(props) {
        {modalType!==undefined && modalType!==null && <ModalRoot handleClose={hideModal} open={open}/> }
        
        </React.Fragment>
-      //  </View>
  
        )
 }

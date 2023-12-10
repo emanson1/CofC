@@ -2,16 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Grid, Box, Typography,Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { showModal, hideModal } from '../actions/bluevilleActions';
-import Marquee from 'react-double-marquee';
 import Home from '../Pages/Home.jsx';
 import Services from '../Pages/Services.jsx';
-import About from '../Pages/About.jsx';
 import Gallery from '../Pages/Gallery.jsx';
-import NavBar from './NavBar';
 import { connect } from 'react-redux';
 import Background from '../Images/Gallery/floorpic2.png';
 import CofCLogo from '../Images/CFCLogo.png';
-import RequestQuoteIcon from '@mui/icons-material/RequestQuoteRounded.js';
 
 const tabs = {
   // 'instrument': Instruments,
