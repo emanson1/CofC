@@ -11,7 +11,6 @@ import { hideModal } from './actions/bluevilleActions';
 function getModalStyle() {
   const top = 50 + rand();
   const left = 50 + rand();
-
   return {
     top: `${top}%`,
     left: `${left}%`,
