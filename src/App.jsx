@@ -6,8 +6,6 @@ import ModalRoot from './Shared/ModalRoot';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { hideModal } from './actions/bluevilleActions';
-
-
 function getModalStyle() {
   const top = 50 + rand();
   const left = 50 + rand();
