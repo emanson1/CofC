@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Frame, useMotionValue, useTransform, useAnimation } from 'framer';
 import MainPageWrapper from './MainPageWrapper';
 import { makeStyles } from '@material-ui/core/styles';
 function MainPage(props) {

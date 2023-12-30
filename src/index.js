@@ -19,8 +19,8 @@ const store = configureStore(history, initialState);
 const rootElement = document.getElementById('root');
 
 const configuration = {
-  applicationName: 'BlueVilleApp - 1.2.0',
-  applicationAcronym:'BV',
+  applicationName: 'CofC - 1.0.0',
+  applicationAcronym:'CFC',
   folder:''
 };
 
