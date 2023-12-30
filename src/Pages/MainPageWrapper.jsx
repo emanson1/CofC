@@ -158,13 +158,13 @@ const useStyles = makeStyles((theme) => ({
 
   },
   TitleClass: {
-    paddingTop: 180,
+    paddingTop: 220,
     color: '#003569',
     textAlign: 'center',
 
     fontWeight: 'bold',
     textShadow: '-1px 0 #8C92B4, 0 3px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
-    fontSize: 80,
+    fontSize: 70,
 
     [theme.breakpoints.down('lg')]:
     {
