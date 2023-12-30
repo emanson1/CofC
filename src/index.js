@@ -5,7 +5,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { createHashHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
-import 'typeface-roboto';
+
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import registerServiceWorker from './registerServiceWorker';

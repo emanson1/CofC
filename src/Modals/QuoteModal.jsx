@@ -9,7 +9,7 @@ import Attachments from '../Pages/Attachments.jsx';
 import { SES } from "@aws-sdk/client-ses";
 //import { SES } from '@aws-sdk/client-ses';
 
-//const ses = new SES({ region: process.env.AWS_SES_REGION })
+const ses = new SES({ region: process.env.AWS_SES_REGION })
 
 
 
