@@ -130,6 +130,7 @@ export default function QuoteModal(props) {
     handleClose();
   };
   const submitForm = async (values) => {
+    alert("I made it here");
     //e.preventDefault();
     // const emailProps = {
     //   customername: values.customername,
