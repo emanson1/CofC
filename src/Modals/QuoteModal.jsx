@@ -10,6 +10,7 @@ import Attachments from '../Pages/Attachments.jsx';
 import { SESClient, ListIdentitiesCommand } from "@aws-sdk/client-ses";
 import { SES } from '@aws-sdk/client-ses';
 import { Email } from '../Pages/Email.jsx';
+import { render } from '@react-email/render';
 const ses = new SES({ region: process.env.AWS_SES_REGION })
 
 const emailHtml = render(<Email url="https://www.cfchardwoodfloorsllc.com" />);
