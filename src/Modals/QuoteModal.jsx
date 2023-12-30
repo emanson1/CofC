@@ -6,7 +6,7 @@ import { Grid, Box, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CofCLogoSmall from '../Images/CFCLogoSmall.png';
 import Attachments from '../Pages/Attachments.jsx';
-import { SESClient, ListIdentitiesCommand } from "@aws-sdk/client-ses";
+import { SES } from "@aws-sdk/client-ses";
 //import { SES } from '@aws-sdk/client-ses';
 
 //const ses = new SES({ region: process.env.AWS_SES_REGION })
