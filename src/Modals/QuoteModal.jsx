@@ -6,23 +6,28 @@ import { Grid, Box, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CofCLogoSmall from '../Images/CFCLogoSmall.png';
 import Attachments from '../Pages/Attachments.jsx';
-
-import { SESClient, ListIdentitiesCommand } from "@aws-sdk/client-ses";
 import { SES } from '@aws-sdk/client-ses';
 import { Email } from '../Pages/Email.jsx';
 import { render } from '@react-email/render';
-const ses = new SES({ region: process.env.AWS_SES_REGION })
+import {
+  SESClient,
+  CloneReceiptRuleSetCommand,
+  SendRawEmailCommand,
+  SendEmailCommand
+} from "@aws-sdk/client-ses";
+
+// import { Storage } from "aws-amplify";
+// import config from "./aws-exports";
+// Storage.configure({
+//     region: config.aws_user_files_s3_bucket_region,
+//     bucket: config.aws_user_files_s3_bucket,
+//     identityPoolId: config.aws_user_pools_id,
+//     level: "protected",
+// });
+const ses = new SES({ region: 'us-east-2'})
 
 const emailHtml = render(<Email url="https://www.cfchardwoodfloorsllc.com" />);
 
-//const ses = new SES({ region: process.env.AWS_SES_REGION })
-// a client can be shared by different commands.
-const client = new SESClient({ region: "REGION" });
-
-const params = {
-  /** input parameters */
-};
-const command = new ListIdentitiesCommand(params);
 
 
 export default function QuoteModal(props) {
@@ -143,8 +148,21 @@ export default function QuoteModal(props) {
     handleClose();
   };
   const submitForm = async (values) => {
-    const params = {
-      Source: 'edwardmaddenanson@gmail.com',
+    
+    try
+    {
+      // const input = {
+      //   "Destinations": [{'To':'edwardmaddenanson@gmail.com'}],
+      //   "FromArn": "",
+      //   "RawMessage": {
+      //     "Data": "From: cfchardwoodfloorsllc.com\\nTo: edwardmaddenanson@gmail.com\\nSubject: Test email (contains an attachment)\\nMIME-Version: 1.0\\nContent-type: Multipart/Mixed; boundary=\"NextPart\"\\n\\n--NextPart\\nContent-Type: text/plain\\n\\nThis is the message body.\\n\\n--NextPart\\nContent-Type: text/plain;\\nContent-Disposition: attachment; filename=\"attachment.txt\"\\n\\nThis is the text in the attachment.\\n\\n--NextPart--"
+      //   },
+      //   "ReturnPathArn": "",
+      //   "Source": "",
+      //   "SourceArn": ""
+      // };
+      const params = {
+        Source: 'edwardmaddenanson@gmail.com',
       Destination: {
         ToAddresses: ['edwardmaddenanson@gmail.com'],
       },
@@ -161,8 +179,24 @@ export default function QuoteModal(props) {
         },
       },
     };
+    const client = new SESClient({
+      credentials: {
+        accessKeyId: "AKIA6JUMEI7KHP3FYS2W",
+        secretAccessKey: "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"
+      },
+      region: "us-east-1",
+    });
     
-    await ses.sendEmail(params);
+    const command = new SendEmailCommand(params);
+    const response = await client.send(command);
+  
+    
+  //  await ses.sendEmail(params);
+  }
+  catch (ex)
+  {
+    var ex1=ex;
+  }
   };
     
   const getSchema = () => {
