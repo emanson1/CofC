@@ -181,7 +181,8 @@ export default function QuoteModal(props) {
     };
     const client = new SESClient({
       credentials: {
-    
+    //blank space
+    //
       },
       region: "us-east-1",
     });
