@@ -181,8 +181,7 @@ export default function QuoteModal(props) {
     };
     const client = new SESClient({
       credentials: {
-        accessKeyId: "AKIA6JUMEI7KKVLIY7HW",
-        secretAccessKey: "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"
+    
       },
       region: "us-east-1",
     });
