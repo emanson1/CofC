@@ -181,15 +181,15 @@ export default function QuoteModal(props) {
     };
     const client = new SESClient({
       credentials: {
-        accessKeyId: "AKIA6JUMEI7KHP3FYS2W",
-        secretAccessKey: "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"
+        accessKeyId: "AKIA6JUMEI7KKVLIY7HW",
+        secretAccessKey: "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"
       },
       region: "us-east-1",
     });
     
     const command = new SendEmailCommand(params);
     const response = await client.send(command);
-  
+  var here="here";
     
   //  await ses.sendEmail(params);
   }
