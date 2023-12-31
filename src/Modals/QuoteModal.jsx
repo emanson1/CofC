@@ -195,6 +195,8 @@ export default function QuoteModal(props) {
   }
   catch (ex)
   {
+
+    
     alert(ex);
     var ex1=ex;
   }
