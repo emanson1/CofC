@@ -7,24 +7,15 @@ import { makeStyles } from '@material-ui/core/styles';
 import CofCLogoSmall from '../Images/CFCLogoSmall.png';
 import Attachments from '../Pages/Attachments.jsx';
 import { SES } from '@aws-sdk/client-ses';
+import { AWS } from 'aws-sdk';
 import { Email } from '../Pages/Email.jsx';
 import { render } from '@react-email/render';
 import {
   SESClient,
-  CloneReceiptRuleSetCommand,
   SendRawEmailCommand,
-  SendEmailCommand
+  SendEmailCommand,
 } from "@aws-sdk/client-ses";
-
-// import { Storage } from "aws-amplify";
-// import config from "./aws-exports";
-// Storage.configure({
-//     region: config.aws_user_files_s3_bucket_region,
-//     bucket: config.aws_user_files_s3_bucket,
-//     identityPoolId: config.aws_user_pools_id,
-//     level: "protected",
-// });
-const ses = new SES({ region: 'us-east-2'})
+ import config from "../aws/aws.json";
 
 const emailHtml = render(<Email url="https://www.cfchardwoodfloorsllc.com" />);
 
@@ -151,16 +142,7 @@ export default function QuoteModal(props) {
     
     try
     {
-      // const input = {
-      //   "Destinations": [{'To':'edwardmaddenanson@gmail.com'}],
-      //   "FromArn": "",
-      //   "RawMessage": {
-      //     "Data": "From: cfchardwoodfloorsllc.com\\nTo: edwardmaddenanson@gmail.com\\nSubject: Test email (contains an attachment)\\nMIME-Version: 1.0\\nContent-type: Multipart/Mixed; boundary=\"NextPart\"\\n\\n--NextPart\\nContent-Type: text/plain\\n\\nThis is the message body.\\n\\n--NextPart\\nContent-Type: text/plain;\\nContent-Disposition: attachment; filename=\"attachment.txt\"\\n\\nThis is the text in the attachment.\\n\\n--NextPart--"
-      //   },
-      //   "ReturnPathArn": "",
-      //   "Source": "",
-      //   "SourceArn": ""
-      // };
+      
       const params = {
         Source: 'edwardmaddenanson@gmail.com',
       Destination: {
@@ -179,10 +161,14 @@ export default function QuoteModal(props) {
         },
       },
     };
+    process.env.AWS_SDK_LOAD_CONFIG = true; 
+    var AWS = require("aws-sdk");
+    console.log(AWS.config)
+   
     const client = new SESClient({
       credentials: {
-    //blank space
-    //
+        accessKeyId: config.config.AccessKeyId,
+        secretAccessKey: config.config.SecretAccessKey
       },
       region: "us-east-1",
     });
