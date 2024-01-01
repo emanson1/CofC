@@ -6,15 +6,15 @@ import { Grid, Box, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CofCLogoSmall from '../Images/CFCLogoSmall.png';
 import Attachments from '../Pages/Attachments.jsx';
-import { SES, SendEmailCommand } from '@aws-sdk/client-ses';
+import { SES } from '@aws-sdk/client-ses';
 import { AWS } from 'aws-sdk';
 import { Email } from '../Pages/Email.jsx';
 import { render } from '@react-email/render';
-// import {
-//   SESClient,
-//   SendRawEmailCommand,
-//   SendEmailCommand,
-// } from "@aws-sdk/client-ses";
+import {
+  SESClient,
+  SendRawEmailCommand,
+  SendEmailCommand,
+} from "@aws-sdk/client-ses";
 import {
   SecretsManagerClient,
   GetSecretValueCommand,
@@ -172,7 +172,7 @@ export default function QuoteModal(props) {
     {
       
       const params = {
-        Source: 'edwardmaddenanson@gmail.com',
+        Source: 'No-Reply@cfchardwoodfloorsllc.com',
       Destination: {
         ToAddresses: ['edwardmaddenanson@gmail.com'],
       },
@@ -189,24 +189,22 @@ export default function QuoteModal(props) {
         },
       },
     };
-  //   process.env.AWS_SDK_LOAD_CONFIG = true; 
-  //   var AWS = require("aws-sdk");
-  //   console.log(AWS.config);
-  //   console.log(process.env);
-  //  var accessKeyId=process.env.AWS_ACCESS_KEY_ID;
-  //  var accessSecretKeyId=process.env.AWS_SECRET_ACCESS_KEY_ID;
-  //   const client = new SESClient({
-  //      credentials: {
-  //        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-  //        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY_ID
-  //      },
-  //     region: "us-east-1",
-  //   });
+    process.env.AWS_SDK_LOAD_CONFIG = true; 
+    var AWS = require("aws-sdk");
+    console.log(AWS.config);
+    console.log(process.env);
+   var accessKeyId=process.env.AWS_ACCESS_KEY_ID;
+   var accessSecretKeyId=process.env.AWS_SECRET_ACCESS_KEY_ID;
+    const client = new SESClient({
+       credentials: {
+         accessKeyId: process.env.apikey,
+         secretAccessKey: process.env.apisecretkey
+       },
+      region: "us-east-1",
+    });
     
-    //const command = new SendEmailCommand(params);
-    const ses = new SES({ region: "us-east-1" })
-
-    const response = await ses.sendEmail(params);
+    const command = new SendEmailCommand(params);
+    const response = await client.send(command);
   var here="here";
     
   //  await ses.sendEmail(params);
