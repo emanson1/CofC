@@ -19,7 +19,9 @@ import {
   SecretsManagerClient,
   GetSecretValueCommand,
 } from "@aws-sdk/client-secrets-manager";
-const BUILD_ENV = process.env.REACT_APP_BUILD_ENV || "any-default-local-build_env";
+
+const BUILD_ENV = process.env.apikey || "cantfindkey";
+
 const emailHtml = render(<Email url="https://www.cfchardwoodfloorsllc.com" />);
 export default function QuoteModal(props) {
   const [imageList, setImageList] = useState([]);
