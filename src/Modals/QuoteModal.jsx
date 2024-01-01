@@ -145,28 +145,28 @@ export default function QuoteModal(props) {
   
   
   const submitForm = async (values) => {
-    const secret_name = "S3SESAPIKey";
+    // const secret_name = "S3SESAPIKey";
   
-    const client = new SecretsManagerClient({
-      region: "us-east-1",
-    });
+    // const client = new SecretsManagerClient({
+    //   region: "us-east-1",
+    // });
     
-    let response;
+    // let response;
     
-    try {
-      response = await client.send(
-        new GetSecretValueCommand({
-          SecretId: secret_name,
-          VersionStage: "AWSCURRENT", // VersionStage defaults to AWSCURRENT if unspecified
-        })
-      );
-    } catch (error) {
-      // For a list of exceptions thrown, see
-      // https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
-      throw error;
-    }
+    // try {
+    //   response = await client.send(
+    //     new GetSecretValueCommand({
+    //       SecretId: secret_name,
+    //       VersionStage: "AWSCURRENT", // VersionStage defaults to AWSCURRENT if unspecified
+    //     })
+    //   );
+    // } catch (error) {
+    //   // For a list of exceptions thrown, see
+    //   // https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
+    //   throw error;
+    // }
     
-    const secret = response.SecretString;
+    // const secret = response.SecretString;
       
     try
     {
@@ -194,10 +194,10 @@ export default function QuoteModal(props) {
     console.log(AWS.config)
    
     const client = new SESClient({
-      credentials: {
-        accessKeyId: secret.AccessKeyId,
-        secretAccessKey: secret.SecretAccessKey
-      },
+      // credentials: {
+      //   accessKeyId: secret.AccessKeyId,
+      //   secretAccessKey: secret.SecretAccessKey
+      // },
       region: "us-east-1",
     });
     
