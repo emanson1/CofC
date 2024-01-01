@@ -20,7 +20,7 @@ import {
   GetSecretValueCommand,
 } from "@aws-sdk/client-secrets-manager";
 
-const BUILD_ENV = process.env.apikey || "cantfindkey";
+const BUILD_ENV = process.env.apikey;
 
 const emailHtml = render(<Email url="https://www.cfchardwoodfloorsllc.com" />);
 export default function QuoteModal(props) {
