@@ -19,7 +19,7 @@ import {
   SecretsManagerClient,
   GetSecretValueCommand,
 } from "@aws-sdk/client-secrets-manager";
-
+const BUILD_ENV = process.env.REACT_APP_BUILD_ENV || "any-default-local-build_env";
 const emailHtml = render(<Email url="https://www.cfchardwoodfloorsllc.com" />);
 
 
