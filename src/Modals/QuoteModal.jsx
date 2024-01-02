@@ -20,7 +20,8 @@ import {
   GetSecretValueCommand,
 } from "@aws-sdk/client-secrets-manager";
 
-const BUILD_ENV = process.env.REACT_APP_API_KEY;
+const API_KEY = process.env.REACT_APP_API_KEY;
+const API_SECRET = process.env.REACT_APP_API_SECRET;
 
 const emailHtml = render(<Email url="https://www.cfchardwoodfloorsllc.com" />);
 export default function QuoteModal(props) {
@@ -193,8 +194,8 @@ export default function QuoteModal(props) {
     console.log(AWS.config);
     console.log(process.env);
     console.log(BUILD_ENV);
-   var accessKeyId=process.env.AWS_ACCESS_KEY_ID;
-   var accessSecretKeyId=process.env.AWS_SECRET_ACCESS_KEY_ID;
+   var accessKeyId=API_KEY;
+   var accessSecretKeyId=API_SECRET;
     const client = new SESClient({
        credentials: {
          accessKeyId: process.env.apikey,
