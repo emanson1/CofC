@@ -143,8 +143,7 @@ export default function QuoteModal(props) {
   
     try
     {
-      
-      const params = {
+        const params = {
         Source: 'No-Reply@cfchardwoodfloorsllc.com',
       Destination: {
         ToAddresses: ['edwardmaddenanson@gmail.com'],
