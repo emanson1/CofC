@@ -198,8 +198,8 @@ export default function QuoteModal(props) {
    var accessSecretKeyId=API_SECRET;
     const client = new SESClient({
        credentials: {
-         accessKeyId: process.env.apikey,
-         secretAccessKey: process.env.apisecretkey
+         accessKeyId: accessKeyId,
+         secretAccessKey: accessSecretKeyId
        },
       region: "us-east-1",
     });
