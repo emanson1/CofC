@@ -302,6 +302,7 @@ export default function QuoteModal(props) {
             </Typography>
           </Grid>
           <Grid xs={12} item >
+            
             <Attachments setFieldValue={setFieldValue} values={values} />
           </Grid>
         </Grid>

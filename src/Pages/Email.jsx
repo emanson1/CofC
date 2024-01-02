@@ -32,7 +32,6 @@ export function Email(props) {
       {values.customeremail}
       </Grid>
       </Grid>
-      
       <Grid container>
       <Grid item xs={12}>
       <hr/>
