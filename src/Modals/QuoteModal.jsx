@@ -19,7 +19,6 @@ import {
 const API_KEY = process.env.REACT_APP_API_KEY;
 const API_SECRET = process.env.REACT_APP_API_SECRET;
 
-const emailHtml = render(<Email values={values} url="https://www.cfchardwoodfloorsllc.com" />);
 export default function QuoteModal(props) {
   const [imageList, setImageList] = useState([]);
   const [image64, setImage64] = useState({});
@@ -140,7 +139,8 @@ export default function QuoteModal(props) {
   
   
   const submitForm = async (values) => {
-      
+    const emailHtml = render(<Email values={values} url="https://www.cfchardwoodfloorsllc.com" />);
+  
     try
     {
       
@@ -302,7 +302,7 @@ export default function QuoteModal(props) {
             </Typography>
           </Grid>
           <Grid xs={12} item >
-            
+
             <Attachments setFieldValue={setFieldValue} values={values} />
           </Grid>
         </Grid>
