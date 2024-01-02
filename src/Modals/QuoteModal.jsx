@@ -191,9 +191,6 @@ export default function QuoteModal(props) {
     };
     process.env.AWS_SDK_LOAD_CONFIG = true; 
     var AWS = require("aws-sdk");
-    console.log(AWS.config);
-    console.log(process.env);
-    console.log(BUILD_ENV);
    var accessKeyId=API_KEY;
    var accessSecretKeyId=API_SECRET;
     const client = new SESClient({
