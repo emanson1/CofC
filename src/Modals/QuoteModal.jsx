@@ -139,7 +139,6 @@ export default function QuoteModal(props) {
   
   
   const submitForm = async (values) => {
-    const emailHtml = render(<Email values={values} url="https://www.cfchardwoodfloorsllc.com" />);
   
     try
     {
@@ -152,7 +151,7 @@ export default function QuoteModal(props) {
         Body: {
           Html: {
             Charset: 'UTF-8',
-            Data: emailHtml,
+            Data: render(<Email values={values} url="https://www.cfchardwoodfloorsllc.com" />),
           },
         },
         Subject: {
