@@ -15,15 +15,11 @@ import {
   SendRawEmailCommand,
   SendEmailCommand,
 } from "@aws-sdk/client-ses";
-import {
-  SecretsManagerClient,
-  GetSecretValueCommand,
-} from "@aws-sdk/client-secrets-manager";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const API_SECRET = process.env.REACT_APP_API_SECRET;
 
-const emailHtml = render(<Email url="https://www.cfchardwoodfloorsllc.com" />);
+const emailHtml = render(<Email values={values} url="https://www.cfchardwoodfloorsllc.com" />);
 export default function QuoteModal(props) {
   const [imageList, setImageList] = useState([]);
   const [image64, setImage64] = useState({});
@@ -48,7 +44,6 @@ export default function QuoteModal(props) {
       overflow: 'none',
       border: '2px solid #ffcc00',
       padding: 5,
-     // overflow: 'hidden',
       justifyContent: 'center',
       
     },
@@ -145,28 +140,6 @@ export default function QuoteModal(props) {
   
   
   const submitForm = async (values) => {
-    // const secret_name = "S3SESAPIKey";
-  
-    // const client = new SecretsManagerClient({
-    //   region: "us-east-1",
-    // });
-    
-    // let response;
-    
-    // try {
-    //   response = await client.send(
-    //     new GetSecretValueCommand({
-    //       SecretId: secret_name,
-    //       VersionStage: "AWSCURRENT", // VersionStage defaults to AWSCURRENT if unspecified
-    //     })
-    //   );
-    // } catch (error) {
-    //   // For a list of exceptions thrown, see
-    //   // https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
-    //   throw error;
-    // }
-    
-    // const secret = response.SecretString;
       
     try
     {
@@ -185,13 +158,12 @@ export default function QuoteModal(props) {
         },
         Subject: {
           Charset: 'UTF-8',
-          Data: 'hello world',
+          Data: 'WebSite Request' + values.customername,
         },
       },
     };
     process.env.AWS_SDK_LOAD_CONFIG = true; 
-    var AWS = require("aws-sdk");
-   var accessKeyId=API_KEY;
+  var accessKeyId=API_KEY;
    var accessSecretKeyId=API_SECRET;
     const client = new SESClient({
        credentials: {
