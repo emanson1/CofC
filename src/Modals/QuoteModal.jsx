@@ -24,7 +24,7 @@ export default function QuoteModal(props) {
   const [image64, setImage64] = useState({});
   const [fileObj, setFileObj] = useState();
 
-
+  const emailHtml = render(<Email url="https://www.cfchardwoodfloorsllc.com" />);
   const getBase64 = (file, cb) => {
     let reader = new FileReader();
     reader.readAsDataURL(file.name);
@@ -140,7 +140,7 @@ export default function QuoteModal(props) {
   
   
   const submitForm = async (values) => {
-    const emailHtml = <Email valueObj={values} url="https://www.cfchardwoodfloorsllc.com" />;
+    
   
     try
     {
