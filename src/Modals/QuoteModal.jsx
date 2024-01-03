@@ -154,7 +154,7 @@ export default function QuoteModal(props) {
         Body: {
           Html: {
             Charset: 'UTF-8',
-            Data: emailHtml.replace('|customername|',values.customername).replace('|customeremail|',values.customeremail),
+            Data: emailHtml.replace('|customername|',values.customername).replace('|customeremail|',values.customeremail).replace('|customerphone|',values.customerphone).replace('|comments|',values.comments),
           },
         },
         Subject: {
