@@ -140,7 +140,47 @@ export default function QuoteModal(props) {
   
   
   const submitForm = async (values) => {
-    
+    // let nodemailer = require("nodemailer");
+    // let aws = require("@aws-sdk/client-ses");
+    var accessKeyId=API_KEY;
+    var accessSecretKeyId=API_SECRET;
+     
+// const ses = new aws.SES({
+//   apiVersion: "2010-12-01",
+//   region: "us-east-1",
+//   credentials:{
+//     accessKeyId: accessKeyId,
+//     secretAccessKey: accessSecretKeyId
+//   },
+// });
+
+// create Nodemailer SES transporter
+// let transporter = nodemailer.createTransport({
+//   SES: { ses, aws },
+// });
+
+// // send some mail
+// transporter.sendMail(
+//   {
+//     from: "no-reply@cfchardwoodfloorsllc.com",
+//     to: "edwardmaddenanson@gmail.com",
+//     subject: "Message",
+//     text: "I hope this message gets sent!",
+//     ses: {
+//       // optional extra arguments for SendRawEmail
+//       // Tags: [
+//       //   {
+//       //     Name: "tag_name",
+//       //     Value: "tag_value",
+//       //   },
+//       // ],
+//     },
+//   },
+//   (err, info) => {
+//     console.log(info.envelope);
+//     console.log(info.messageId);
+//   }
+// );
   
     try
     {
@@ -171,8 +211,6 @@ export default function QuoteModal(props) {
       },
     };
     process.env.AWS_SDK_LOAD_CONFIG = true; 
-  var accessKeyId=API_KEY;
-   var accessSecretKeyId=API_SECRET;
     const client = new SESClient({
        credentials: {
          accessKeyId: accessKeyId,
@@ -184,6 +222,8 @@ export default function QuoteModal(props) {
     const command = new SendEmailCommand(params);
     const response = await client.send(command);
   var here="here";
+  alert('Your information has been sent! Someone will get back to you soon.');
+  handleClose();
     
   //  await ses.sendEmail(params);
   }
