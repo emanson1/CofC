@@ -42,7 +42,32 @@ export function Email(props) {
       |comments|
       </Grid>
       </Grid>
-
+      <Grid container>
+      <Grid item xs={12}>
+      Attachments:
+      </Grid>
+      </Grid>
+      <Grid container>
+      <Grid item xs={12}>
+      <hr/>
+      </Grid>
+      </Grid>
+      <Grid container>
+      <Grid item xs={12}>
+      |Attachments1|
+      </Grid>
+      </Grid>
+      <Grid container>
+      <Grid item xs={12}>
+      |Attachments2|
+      </Grid>
+      </Grid>
+      <Grid container>
+      <Grid item xs={12}>
+      |Attachments3|
+      </Grid>
+      </Grid>
+   
       </Grid>
       </Html>
   );
