@@ -18,11 +18,12 @@ import {
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const API_SECRET = process.env.REACT_APP_API_SECRET;
-
+ 
 export default function QuoteModal(props) {
   const [imageList, setImageList] = useState([]);
   const [image64, setImage64] = useState({});
   const [fileObj, setFileObj] = useState();
+
 
   const getBase64 = (file, cb) => {
     let reader = new FileReader();
@@ -139,10 +140,12 @@ export default function QuoteModal(props) {
   
   
   const submitForm = async (values) => {
+    const emailHtml = <Email valueObj={values} url="https://www.cfchardwoodfloorsllc.com" />;
   
     try
     {
-        const params = {
+      
+      const params = {
         Source: 'No-Reply@cfchardwoodfloorsllc.com',
       Destination: {
         ToAddresses: ['edwardmaddenanson@gmail.com'],
@@ -151,7 +154,7 @@ export default function QuoteModal(props) {
         Body: {
           Html: {
             Charset: 'UTF-8',
-            Data: render(<Email values={values} url="https://www.cfchardwoodfloorsllc.com" />),
+            Data: emailHtml,
           },
         },
         Subject: {
@@ -212,7 +215,7 @@ export default function QuoteModal(props) {
     }) => (
 
       <Form>
-        <Grid container className={classes.container}>
+          <Grid container className={classes.container}>
           <Grid item xs={12}>
             <Typography variant={'h5'} className={classes.titleClass} style={{ textAlign: 'center' }}>
               CFC Hardwood Floors LLC
@@ -300,7 +303,6 @@ export default function QuoteModal(props) {
             </Typography>
           </Grid>
           <Grid xs={12} item >
-
             <Attachments setFieldValue={setFieldValue} values={values} />
           </Grid>
         </Grid>

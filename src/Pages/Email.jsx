@@ -4,13 +4,13 @@ import { Button } from '@react-email/button';
 import { Grid, Box, Typography } from '@material-ui/core';
 
 export function Email(props) {
-  const { url, values } = props;
+  const { url, valueObj } = props;
 
   return (
     <Html lang="en">
       <Grid container>
       <Grid item xs={12}>
-      You have received a website generated request from: {values.customername}.
+      You have received a website generated request from: {valueObj.customername}.
       
       </Grid>
       <Grid item xs={12}>
@@ -21,7 +21,7 @@ export function Email(props) {
       Phone:
       </Grid>
       <Grid item xs={4}>
-      {values.customerphone}
+      {valueObj.customerphone}
       </Grid>
       </Grid>
       <Grid container>
@@ -29,7 +29,7 @@ export function Email(props) {
       Email:
       </Grid>
       <Grid item xs={4}>
-      {values.customeremail}
+      {valueObj.customeremail}
       </Grid>
       </Grid>
       <Grid container>
@@ -39,7 +39,7 @@ export function Email(props) {
       </Grid>
       <Grid container>
       <Grid item xs={12}>
-      {values.comments}
+      {valueObj.comments}
       </Grid>
       </Grid>
 
