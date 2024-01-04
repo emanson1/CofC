@@ -8,23 +8,23 @@ import CofCLogoSmall from '../Images/CFCLogoSmall.png';
 import Attachments from '../Pages/Attachments.jsx';
 import { SES } from '@aws-sdk/client-ses';
 import { AWS } from 'aws-sdk';
-import { Email } from '../Pages/Email.jsx';
-import { render } from '@react-email/render';
+//import { Email } from '../Pages/Email.jsx';
+//import { render } from '@react-email/render';
+import nodemailer from 'nodemailer';
 import {
   SESClient,
   SendRawEmailCommand,
   SendEmailCommand,
-} from "@aws-sdk/client-ses";
+} from '@aws-sdk/client-ses';
 
-const API_KEY = process.env.REACT_APP_API_KEY;
-const API_SECRET = process.env.REACT_APP_API_SECRET;
+
  
 export default function QuoteModal(props) {
   const [imageList, setImageList] = useState([]);
   const [image64, setImage64] = useState({});
   const [fileObj, setFileObj] = useState();
 
-  const emailHtml = render(<Email url="https://www.cfchardwoodfloorsllc.com" />);
+//  const emailHtml = render(<Email url="https://www.cfchardwoodfloorsllc.com" />);
   const getBase64 = (file, cb) => {
     let reader = new FileReader();
     reader.readAsDataURL(file.name);
@@ -140,87 +140,88 @@ export default function QuoteModal(props) {
   
   
   const submitForm = async (values) => {
-    // let nodemailer = require("nodemailer");
-    // let aws = require("@aws-sdk/client-ses");
-    var accessKeyId=API_KEY;
-    var accessSecretKeyId=API_SECRET;
-     
-// const ses = new aws.SES({
-//   apiVersion: "2010-12-01",
-//   region: "us-east-1",
-//   credentials:{
-//     accessKeyId: accessKeyId,
-//     secretAccessKey: accessSecretKeyId
-//   },
-// });
-
-// create Nodemailer SES transporter
-// let transporter = nodemailer.createTransport({
-//   SES: { ses, aws },
-// });
-
-// // send some mail
-// transporter.sendMail(
-//   {
-//     from: "no-reply@cfchardwoodfloorsllc.com",
-//     to: "edwardmaddenanson@gmail.com",
-//     subject: "Message",
-//     text: "I hope this message gets sent!",
-//     ses: {
-//       // optional extra arguments for SendRawEmail
-//       // Tags: [
-//       //   {
-//       //     Name: "tag_name",
-//       //     Value: "tag_value",
-//       //   },
-//       // ],
-//     },
-//   },
-//   (err, info) => {
-//     console.log(info.envelope);
-//     console.log(info.messageId);
-//   }
-// );
-  
     try
     {
-      
-      const params = {
-        Source: 'No-Reply@cfchardwoodfloorsllc.com',
-      Destination: {
-        ToAddresses: ['edwardmaddenanson@gmail.com'],
-      },
-      Message: {
-        Body: {
-          Html: {
-            Charset: 'UTF-8',
-            Data: emailHtml.replace('|customername|',values.customername)
-            .replace('|customeremail|',values.customeremail)
-            .replace('|customerphone|',values.customerphone)
-            .replace('|comments|',values.comments)
-            .replace('|Attachments1|',values.attachments[0]?values.attachments[0]:'')
-            .replace('|Attachments2|',values.attachments[1]?values.attachments[1]:'')
-            .replace('|Attachments3|',values.attachments[2]?values.attachments[2]:'')
-            ,
-          },
-        },
-        Subject: {
-          Charset: 'UTF-8',
-          Data: 'WebSite Request' + values.customername,
-        },
-      },
-    };
-    process.env.AWS_SDK_LOAD_CONFIG = true; 
-    const client = new SESClient({
-       credentials: {
-         accessKeyId: accessKeyId,
-         secretAccessKey: accessSecretKeyId
-       },
+  
+    const API_KEY = process.env.REACT_APP_API_KEY;
+    const API_SECRET = process.env.REACT_APP_API_SECRET;
+    
+    var accessKeyId=API_KEY;
+    var accessSecretKeyId=API_SECRET;
+
+    const ses = new SES.SES({
+      apiVersion: "2010-12-01",
       region: "us-east-1",
+      credentials: {
+        accessKeyId: accessKeyId,
+        secretAccessKey: accessSecretKeyId
+      }
     });
     
-    const command = new SendEmailCommand(params);
-    const response = await client.send(command);
+    let transporter = nodemailer.createTransport({
+      SES: { ses, aws },
+    });
+    
+    // send some mail
+    transporter.sendMail(
+      {
+        from: "No-Reply@cfchardwoodfloorsllc.com",
+        to: "edwardmaddenanson@gmail.com",
+        subject: "Message",
+        text: "I hope this message gets sent!",
+        ses: {
+          // optional extra arguments for SendRawEmail
+          Tags: [
+            {
+              Name: "tag_name",
+              Value: "tag_value",
+            },
+          ],
+        },
+      },
+      (err, info) => {
+        console.log(info.envelope);
+        console.log(info.messageId);
+      }
+    );
+    
+      
+    //   const params = {
+    //     Source: 'No-Reply@cfchardwoodfloorsllc.com',
+    //   Destination: {
+    //     ToAddresses: ['edwardmaddenanson@gmail.com'],
+    //   },
+    //   Message: {
+    //     Body: {
+    //       Html: {
+    //         Charset: 'UTF-8',
+    //         Data: ''//emailHtml.replace('|customername|',values.customername)
+    //         .replace('|customeremail|',values.customeremail)
+    //         .replace('|customerphone|',values.customerphone)
+    //         .replace('|comments|',values.comments)
+    //         .replace('|Attachments1|',values.attachments[0]?values.attachments[0]:'')
+    //         .replace('|Attachments2|',values.attachments[1]?values.attachments[1]:'')
+    //         .replace('|Attachments3|',values.attachments[2]?values.attachments[2]:'')
+    //         ,
+    //       },
+    //     },
+    //     Subject: {
+    //       Charset: 'UTF-8',
+    //       Data: 'WebSite Request' + values.customername,
+    //     },
+    //   },
+    // };
+    // process.env.AWS_SDK_LOAD_CONFIG = true; 
+    // const client = new SESClient({
+    //    credentials: {
+    //      accessKeyId: accessKeyId,
+    //      secretAccessKey: accessSecretKeyId
+    //    },
+    //   region: "us-east-1",
+    // });
+    
+    // const command = new SendEmailCommand(params);
+    // const response = await client.send(command);
   var here="here";
   alert('Your information has been sent! Someone will get back to you soon.');
   handleClose();

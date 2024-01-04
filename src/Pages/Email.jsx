@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Html } from '@react-email/html';
-import { Button } from '@react-email/button';
+//import { Html } from '@react-email/html';
+//import { Button } from '@react-email/button';
 import { Grid, Box, Typography } from '@material-ui/core';
 
 export function Email(props) {
