@@ -225,15 +225,15 @@ export default function QuoteModal(props) {
           //     filename: 'text4.txt',
           //     content: fs.createReadStream('file.txt')
           // },
-          // {   // define custom content type for the attachment
-          //     filename: 'text.bin',
-          //     content: 'hello world!',
-          //     contentType: 'text/plain'
-          // },
-          {   // use URL as an attachment
-              filename: 'license.txt',
-              path: 'https://raw.github.com/nodemailer/nodemailer/master/LICENSE'
+          {   // define custom content type for the attachment
+               filename: 'text.bin',
+               content: 'hello world!',
+               contentType: 'text/plain'
           }
+          // {   // use URL as an attachment
+          //     filename: 'license.txt',
+          //     path: 'https://raw.github.com/nodemailer/nodemailer/master/LICENSE'
+          // }
           //,
           // {   // encoded string as an attachment
           //     filename: 'text1.txt',
