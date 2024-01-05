@@ -241,7 +241,7 @@ export default function QuoteModal(props) {
           //     encoding: 'base64'
           // },
          values.attachments.map(a=>{
-              path: a.Data
+              filePath: a.Data
          },)
         ]
           
