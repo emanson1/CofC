@@ -148,37 +148,49 @@ export default function QuoteModal(props) {
     
     var accessKeyId=API_KEY;
     var accessSecretKeyId=API_SECRET;
+    const aws = require("aws-sdk");
 
-let nodemailer = require("nodemailer");
-let aws = require("@aws-sdk/client-ses");
-let { defaultProvider } = require("@aws-sdk/credential-provider-node");
+    // you may need to adjust the region
+    const ses = new aws.SES({
+        apiVersion: "2010-12-01",
+        region: "us-east-1", 
+        credentials: {
+          accessKeyId: accessKeyId,
+          secretAccessKey: accessSecretKeyId
+        }
+      });
+    const transporter = nodemailer.createTransport({ SES: ses, AWS })
 
-const ses1 = new aws.SES({
-  apiVersion: "2010-12-01",
-  region: "us-east-1",
-  credentials: {
-    accessKeyId: accessKeyId,
-    secretAccessKey: accessSecretKeyId
-  }
-});
+// let nodemailer = require("nodemailer");
+// let aws = require("@aws-sdk/client-ses");
+// let { defaultProvider } = require("@aws-sdk/credential-provider-node");
 
-// create Nodemailer SES transporter
-let transporter1 = nodemailer.createTransport({
-  SES: { ses1, aws },
-});
+// const ses1 = new aws.SES({
+//   apiVersion: "2010-12-01",
+//   region: "us-east-1",
+//   credentials: {
+//     accessKeyId: accessKeyId,
+//     secretAccessKey: accessSecretKeyId
+//   }
+// });
+
+// // create Nodemailer SES transporter
+// let transporter1 = nodemailer.createTransport({
+//   SES: { ses1, aws },
+// });
 
     
-    const ses = new SES.SES({
-      apiVersion: "2010-12-01",
-      region: "us-east-1",
-      credentials: {
-        accessKeyId: accessKeyId,
-        secretAccessKey: accessSecretKeyId
-      }
-    });
+//     const ses = new SES.SES({
+//       apiVersion: "2010-12-01",
+//       region: "us-east-1",
+//       credentials: {
+//         accessKeyId: accessKeyId,
+//         secretAccessKey: accessSecretKeyId
+//       }
+//     });
     
-    // send some mail
-    transporter1.sendMail(
+//     // send some mail
+    transporter.sendMail(
       {
         from: "No-Reply@cfchardwoodfloorsllc.com",
         to: "edwardmaddenanson@gmail.com",
@@ -186,12 +198,12 @@ let transporter1 = nodemailer.createTransport({
         text: "I hope this message gets sent!",
         ses: {
           // optional extra arguments for SendRawEmail
-          Tags: [
-            {
-              Name: "tag_name",
-              Value: "tag_value",
-            },
-          ],
+          // Tags: [
+          //   {
+          //     Name: "tag_name",
+          //     Value: "tag_value",
+          //   },
+          // ],
         },
       },
       (err, info) => {
