@@ -149,6 +149,25 @@ export default function QuoteModal(props) {
     var accessKeyId=API_KEY;
     var accessSecretKeyId=API_SECRET;
 
+let nodemailer = require("nodemailer");
+let aws = require("@aws-sdk/client-ses");
+let { defaultProvider } = require("@aws-sdk/credential-provider-node");
+
+const ses1 = new aws.SES({
+  apiVersion: "2010-12-01",
+  region: "us-east-1",
+  credentials: {
+    accessKeyId: accessKeyId,
+    secretAccessKey: accessSecretKeyId
+  }
+});
+
+// create Nodemailer SES transporter
+let transporter1 = nodemailer.createTransport({
+  SES: { ses, aws },
+});
+
+    
     const ses = new SES.SES({
       apiVersion: "2010-12-01",
       region: "us-east-1",
@@ -158,12 +177,8 @@ export default function QuoteModal(props) {
       }
     });
     
-    let transporter = nodemailer.createTransport({
-      SES: { ses, aws },
-    });
-    
     // send some mail
-    transporter.sendMail(
+    transporter1.sendMail(
       {
         from: "No-Reply@cfchardwoodfloorsllc.com",
         to: "edwardmaddenanson@gmail.com",
