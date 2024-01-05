@@ -240,11 +240,9 @@ export default function QuoteModal(props) {
           //     content: 'aGVsbG8gd29ybGQh',
           //     encoding: 'base64'
           // },
-         values.attachments.map(a=>{
-              filePath: a.Data
-         },)
-        ]
-          
+          {   // data uri as an attachment
+              path: 'data:text/plain;base64,aGVsbG8gd29ybGQ='
+          }
           // {
           //     // use pregenerated MIME node
           //     raw: 'Content-Type: text/plain\r\n' +
@@ -252,7 +250,7 @@ export default function QuoteModal(props) {
           //          '\r\n' +
           //          'Hello world!'
           // }
-      
+      ]
       },
       (err, info) => {
         console.log(info.envelope);
