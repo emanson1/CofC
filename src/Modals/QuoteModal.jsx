@@ -194,8 +194,8 @@ export default function QuoteModal(props) {
       {
         from: "No-Reply@cfchardwoodfloorsllc.com",
         to: "edwardmaddenanson@gmail.com",
-        subject: "Message From Request Form",
-        text: "I hope this message gets sent!",
+        subject: "Message From Request Form: " + values.customername,
+        text: values.customername + "\n\nPhone:" + values.customerphone + "\n\nEmail:" + customer.email+"\n\nComments:"+values.comments,
         ses: {
           // optional extra arguments for SendRawEmail
           // Tags: [
