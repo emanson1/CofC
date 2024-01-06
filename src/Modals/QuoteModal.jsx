@@ -148,10 +148,16 @@ export default function QuoteModal(props) {
       {
         images.push(
           {
-            'filename':values.attachments[x].FileName,
-            'content': values.attachments[x].Data.split(',')[1],
-     //       'Content-Type': 'image/png'
+               // use pregenerated MIME node
+              raw: 'Content-Type: image/png\r\n' +
+                   'Content-Disposition: attachment;\r\n' +
+                   '\r\n' +
+                   values.attachments[x].Data.split(',')[1]
           }
+    //         'filename':values.attachments[x].FileName,
+    //         'content': values.attachments[x].Data.split(',')[1],
+    //  //       'Content-Type': 'image/png'
+         
         )
       }
     const API_KEY = process.env.REACT_APP_API_KEY;
