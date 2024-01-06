@@ -148,9 +148,9 @@ export default function QuoteModal(props) {
       {
         images.push(
           {
-            'fileName':values.attachments[x].FileName,
+            'filename':values.attachments[x].FileName,
             'content': values.attachments[x].Data.split(',')[1],
-            'contentType': 'imge/png'
+            'Content-Type': 'image/png'
           }
         )
       }
