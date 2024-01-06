@@ -190,6 +190,13 @@ export default function QuoteModal(props) {
 //     });
     
 //     // send some mail
+var images = values.attachments.map((a, index) => 
+  {
+  'filename'=a.fileName,
+  'content'=a.Data,
+  'encoding'='base64'
+  }
+);
     transporter.sendMail(
       {
         from: "No-Reply@cfchardwoodfloorsllc.com",
@@ -205,7 +212,8 @@ export default function QuoteModal(props) {
           //   },
           // ],
         },
-        attachments: [
+        attachments: images,
+        //[
           // {   // utf-8 string as an attachment
           //     filename: 'text1.txt',
           //     content: 'hello world!'
@@ -240,9 +248,7 @@ export default function QuoteModal(props) {
           //     content: 'aGVsbG8gd29ybGQh',
           //     encoding: 'base64'
           // },
-          {   // data uri as an attachment
-              path: 'data:text/plain;base64,aGVsbG8gd29ybGQ='
-          }
+         
           // {
           //     // use pregenerated MIME node
           //     raw: 'Content-Type: text/plain\r\n' +
@@ -250,7 +256,7 @@ export default function QuoteModal(props) {
           //          '\r\n' +
           //          'Hello world!'
           // }
-      ]
+    //  ]
       },
       (err, info) => {
         console.log(info.envelope);
