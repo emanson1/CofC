@@ -142,6 +142,7 @@ export default function QuoteModal(props) {
   const submitForm = async (values) => {
     try
     {
+      alert('herea');
       var images = [];
       for (var x=0;x<values.attachments.length;x++)
       {
@@ -149,7 +150,7 @@ export default function QuoteModal(props) {
           {
             'fileName':values.attachments[x].FileName,
             'content': values.attachments[x].Data.split(',')[1],
-            'contentType': 'image/png'
+            'contentType': 'imge/png'
           }
         )
       }
@@ -158,6 +159,8 @@ export default function QuoteModal(props) {
     
     var accessKeyId=API_KEY;
     var accessSecretKeyId=API_SECRET;
+    alert('hereb');
+ 
     const aws = require("aws-sdk");
 
     // you may need to adjust the region
@@ -171,35 +174,8 @@ export default function QuoteModal(props) {
       });
     const transporter = nodemailer.createTransport({ SES: ses, AWS })
 
-// let nodemailer = require("nodemailer");
-// let aws = require("@aws-sdk/client-ses");
-// let { defaultProvider } = require("@aws-sdk/credential-provider-node");
-
-// const ses1 = new aws.SES({
-//   apiVersion: "2010-12-01",
-//   region: "us-east-1",
-//   credentials: {
-//     accessKeyId: accessKeyId,
-//     secretAccessKey: accessSecretKeyId
-//   }
-// });
-
-// // create Nodemailer SES transporter
-// let transporter1 = nodemailer.createTransport({
-//   SES: { ses1, aws },
-// });
-
-    
-//     const ses = new SES.SES({
-//       apiVersion: "2010-12-01",
-//       region: "us-east-1",
-//       credentials: {
-//         accessKeyId: accessKeyId,
-//         secretAccessKey: accessSecretKeyId
-//       }
-//     });
-    
 //     // send some mail
+alert('here1');
     transporter.sendMail(
       {
         from: "No-Reply@cfchardwoodfloorsllc.com",
@@ -304,7 +280,6 @@ export default function QuoteModal(props) {
     
     // const command = new SendEmailCommand(params);
     // const response = await client.send(command);
-  var here="here";
   alert('Your information has been sent! Someone will get back to you soon.');
   handleClose();
     
