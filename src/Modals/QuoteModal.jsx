@@ -142,7 +142,17 @@ export default function QuoteModal(props) {
   const submitForm = async (values) => {
     try
     {
-  
+      var images = [];
+      for (var x=0;x<values.attachments.length;x++)
+      {
+        images.push(
+          {
+            'fileName':values.attachments[x].FileName,
+            'content': values.attachments[x].Data.split(',')[1],
+            'contentType': 'image/png'
+          }
+        )
+      }
     const API_KEY = process.env.REACT_APP_API_KEY;
     const API_SECRET = process.env.REACT_APP_API_SECRET;
     
@@ -190,13 +200,6 @@ export default function QuoteModal(props) {
 //     });
     
 //     // send some mail
-var images = values.attachments.map((a, index) => 
-  {
-  'filename'=a.fileName,
-  'content'=a.Data,
-  'encoding'='base64'
-  }
-);
     transporter.sendMail(
       {
         from: "No-Reply@cfchardwoodfloorsllc.com",
