@@ -150,7 +150,7 @@ export default function QuoteModal(props) {
           {
             'filename':values.attachments[x].FileName,
             'content': values.attachments[x].Data.split(',')[1],
-            'Content-Type': 'image/png'
+     //       'Content-Type': 'image/png'
           }
         )
       }
