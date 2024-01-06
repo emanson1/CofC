@@ -154,9 +154,10 @@ export default function QuoteModal(props) {
           //          '\r\n' +
           //          values.attachments[x].Data.split(',')[1]
           // }
-            'filename':values.attachments[x].FileName,
-            'content': values.attachments[x].Data.split(',')[1],
-            'contentType': 'image/png'
+            filename:values.attachments[x].FileName,
+            content: values.attachments[x].Data.split(',')[1],
+            encoding: 'base64',
+            contentType: 'image/png'
           }
         )
       }
