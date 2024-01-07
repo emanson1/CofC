@@ -158,15 +158,22 @@ export default function QuoteModal(props) {
         {
           fileType='application/pdf';
         }
-        case 'xls','xlsx':
+        case 'xls':
         {
           fileType='application/excel';
         }
-        case 'doc','docx','dot':
-          {
-            fileType='application/msword';
-          }
-  
+        case 'xlsx':
+        {
+          fileType='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+        }
+        case 'doc','dot':
+        {
+          fileType='application/msword';
+        }
+        case 'docx':
+        {
+          fileType='application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+        }
         default: fileType='text/plain'
         }
          
