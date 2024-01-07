@@ -197,16 +197,16 @@ class Attachments extends Component {
 						alert("Please upload a maximum of three (3) images.")
 						return;
 					}	
-					if (
-						(attachment.FileName.substring(attachment.FileName.lastIndexOf('.') + 1, attachment.FileName.length).toLowerCase() !== 'png')
-					&& (attachment.FileName.substring(attachment.FileName.lastIndexOf('.') + 1, attachment.FileName.length).toLowerCase() !== 'jpg')
-					&& (attachment.FileName.substring(attachment.FileName.lastIndexOf('.') + 1, attachment.FileName.length).toLowerCase() !== 'jpeg')
-					&& (attachment.FileName.substring(attachment.FileName.lastIndexOf('.') + 1, attachment.FileName.length).toLowerCase() !== 'gif')
-					)
-					{
-						alert("Please only upload an image file.")
-						return;
-					} 
+					// if (
+					// 	(attachment.FileName.substring(attachment.FileName.lastIndexOf('.') + 1, attachment.FileName.length).toLowerCase() !== 'png')
+					// && (attachment.FileName.substring(attachment.FileName.lastIndexOf('.') + 1, attachment.FileName.length).toLowerCase() !== 'jpg')
+					// && (attachment.FileName.substring(attachment.FileName.lastIndexOf('.') + 1, attachment.FileName.length).toLowerCase() !== 'jpeg')
+					// && (attachment.FileName.substring(attachment.FileName.lastIndexOf('.') + 1, attachment.FileName.length).toLowerCase() !== 'gif')
+					// )
+					// {
+					// 	alert("Please only upload an image file.")
+					// 	return;
+					// } 
 				
 					attachments.push(attachment);
 
