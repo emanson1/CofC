@@ -208,7 +208,7 @@ export default function QuoteModal(props) {
     transporter.sendMail(
       {
         from: "No-Reply@cfchardwoodfloorsllc.com",
-        to: "edwardmaddenanson@gmail.com",
+        to: "wmiller@cfchardwoodfloorsllc.com",
         subject: "Message from Request Form: " + values.customername,
         text: values.customername + "\n\nPhone:" + values.customerphone + "\n\nEmail:" + values.customeremail+"\n\nComments:"+values.comments,
         ses: {
