@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, Box, Typography,Button } from '@material-ui/core';
+import { Grid, Box, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { showModal, hideModal } from '../actions/bluevilleActions';
 import Home from '../Pages/Home.jsx';
@@ -8,7 +8,8 @@ import Gallery from '../Pages/Gallery.jsx';
 import { connect } from 'react-redux';
 import Background from '../Images/Gallery/floorpic2.png';
 import CofCLogo from '../Images/CFCLogo.png';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faList, faPlus } from '@fortawesome/free-solid-svg-icons';
 const tabs = {
   // 'instrument': Instruments,
   // 'settings':  Settings,
@@ -46,31 +47,31 @@ const useStyles = makeStyles((theme) => ({
   },
 
   quoteButton: {
-    marginTop:50,
-    marginLeft:30,
-    marginRight:30,
+    marginTop: 50,
+    marginLeft: 30,
+    marginRight: 30,
     backgroudColor: '#ffcc00',
     color: '#003569',
     fontSize: 60,
     fontWeight: 'bold',
     textShadow: '-1px 0 #8C92B4, 0 1px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4',
-    height:'70%',
-    width:'70%',
+    height: '70%',
+    width: '70%',
     [theme.breakpoints.down('md')]:
     {
-      marginTop:20,
-    
+      marginTop: 20,
+
       fontSize: 20,
     },
     [theme.breakpoints.down('sm')]: {
       fontSize: 20,
-      marginLeft:20,
-   
+      marginLeft: 20,
+
     },
     [theme.breakpoints.down('xs')]: {
-      marginTop:2,
+      marginTop: 2,
       fontSize: 8,
-      marginLeft:-10,
+      marginLeft: -10,
 
     },
   },
@@ -266,6 +267,20 @@ const useStyles = makeStyles((theme) => ({
     },
 
   },
+  showNav:{
+    display:'none',
+    [theme.breakpoints.down('xs')]: {
+      display:'inline',
+    }
+
+  },
+  showRequest:{
+    display:'inline',
+    [theme.breakpoints.down('xs')]: {
+      display:'none',
+    }
+
+  },
   iconSize: {
 
     color: '#003569',
@@ -293,7 +308,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 const MainPageWrapper = props => {
-  const { handleClose, handleOpen, rej, sel, instruments, setInstruments, setRej, setSel, setIsLoggedIn } = props;
+  const { handleClose, handleOpen, rej, sel, instruments, setInstruments, setRej, setSel, setIsLoggedIn, setOpen, open } = props;
   const [curWindow, setCurWindow] = useState(<Home />);
   const classes = useStyles();
 
@@ -307,28 +322,40 @@ const MainPageWrapper = props => {
     <div className={classes.pageClass}>
       <Grid container className={classes.headingClass}>
         <Grid item xs={2} sm={3}>
-          <div className={classes.logoClass}><img src={CofCLogo} className={classes.imageClass} /></div></Grid>
+          <div className={classes.logoClass}><img src={CofCLogo} className={classes.imageClass} /></div>
+        </Grid>
         <Grid item xs={8} sm={6}>
 
           <Grid container>
-            <Grid item xs={12}><Typography variant={'h2'} className={classes.TitleClass}>CFC Hardwood Floors LLC</Typography></Grid>
+            <Grid item xs={12}><Typography variant={'h2'} className={classes.TitleClass}>
+              CFC Hardwood Floors LLC</Typography></Grid>
           </Grid>
 
         </Grid>
         <Grid item xs={2} sm={3}>
+        <div className={classes.showNav}>
+            <Button className={classes.heading} onClick={() => setOpen(!open)}>
+              <Typography className={classes.heading} variant="h4">
+                <FontAwesomeIcon icon={faList} />
+              </Typography>
+            </Button>
+          </div>
+          <div className={classes.showRequest}>
           <a onClick={() => openModal({ open: true, modalType: 'quoteModal', data: {} })}>
-            <Button className={classes.quoteButton} style={{backgroundColor:'yellow'}} variant="contained" >Request Quote</Button>
+            <Button className={classes.quoteButton} style={{ backgroundColor: 'yellow' }} variant="contained" >Request Quote</Button>
           </a>
+          </div>
         </Grid>
       </Grid>
+      <div className={classes.showRequest}>
       <Grid container className={classes.linkOffset}>
         <Grid item xs={3} className={classes.linkClass} ><a href="#" onClick={() => setCurWindow(<Home />)}>Home</a></Grid>
         <Grid item xs={2} className={classes.linkClass} ><a href="#" onClick={() => setCurWindow(<Services />)}>Services</a></Grid>
         <Grid item xs={2} className={classes.linkClass} ><a href="#" onClick={() => setCurWindow(<Gallery />)}>Gallery</a></Grid>
         <Grid item xs={2} className={classes.linkClass}><a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
         <Grid item xs={3} className={classes.linkClass}><a href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
-
       </Grid>
+      </div>
       <Grid container className={classes.panorama}>
         <Grid item xs={12}>
           <Grid>

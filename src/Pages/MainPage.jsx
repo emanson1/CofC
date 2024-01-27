@@ -28,7 +28,7 @@ function MainPage(props) {
 
   }));
 
-  const { handleClose, handleOpen, setIsLoggedIn } = props;
+  const { handleClose, handleOpen, setIsLoggedIn, open, setOpen } = props;
   const classes = useStyles();
   const [sel, setSel] = useState([]);
   const [rej, setRej] = useState([]);
@@ -40,7 +40,7 @@ function MainPage(props) {
   return (
     <div>
       <div className={classes.container}>
-        <MainPageWrapper handleOpen={handleOpen} handleClose={handleClose} rej={rej} sel={sel} setSel={setSel} setRej={setRej} setIsLoggedIn={setIsLoggedIn} />
+        <MainPageWrapper handleOpen={handleOpen} handleClose={handleClose} rej={rej} sel={sel} setSel={setSel} setRej={setRej} setIsLoggedIn={setIsLoggedIn} open={open} setOpen={setOpen} />
       </div>
     </div>
   );
