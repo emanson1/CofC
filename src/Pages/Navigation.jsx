@@ -7,6 +7,8 @@ import CameraIcon from '@mui/icons-material/CameraAlt';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import CofCLogoSmall from '../Images/CFCLogoSmall.png';
+import { showModal, hideModal } from '../actions/bluevilleActions';
+import { connect } from 'react-redux';
 const useStyles = makeStyles((theme) => ({
     iconSize: {
         color: '#003569',
@@ -39,7 +41,7 @@ opacity:'90%'
      },
 quoteButton:{
     fontWeight:'bold',
-    width:'100%',
+    minWidth:'100%',
     textAlign:'center',
     backgroundColor:'yellow',
 },
@@ -51,6 +53,9 @@ quoteButtonContainer:{
 const Navigation = (props) => {
     const { open, setOpen, setCurWindow, Home, Services, Gallery } = props;
     const classes = useStyles();
+    var openModal = (modalProps) => {
+        props.showModal(modalProps);
+      }
     const top =
         
             <Grid container className={classes.navClass}>
@@ -149,4 +154,12 @@ const Navigation = (props) => {
         </React.Fragment>
     );
 };
-export default Navigation;
+const mapStateToProps = (state) => ({
+    modalProps: state.blueville.modalProps
+  });
+  
+  const mapDispatchToProps = (dispatch) => ({
+    showModal: (modalProps, modalTypes) => dispatch(showModal(modalProps, modalTypes)),
+    hideModal: () => dispatch(hideModal()),
+  });
+  export default connect(mapStateToProps, mapDispatchToProps)(Navigation);

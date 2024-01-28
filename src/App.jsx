@@ -43,7 +43,7 @@ function App(props) {
         <Route
   exact path='/'
   render={(props) => (
-    <MainPage  curWindow={curWindow} setCurWindow={setCurWindow}open={openNav} setOpen={setOpen} {...props}  Home={<Home />} Services={<Services />} Gallery={<Gallery />}/>
+    <MainPage  curWindow={curWindow} setCurWindow={setCurWindow} open={openNav} setOpen={setOpen} {...props}  Home={<Home />} Services={<Services />} Gallery={<Gallery />}/>
   )}
 />
 <Navigation open={openNav} setOpen={setOpen} curWindow={curWindow} setCurWindow={setCurWindow} Home={<Home />} Services={<Services />}  Gallery={<Gallery />}/>
