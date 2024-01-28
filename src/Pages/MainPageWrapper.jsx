@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Grid, Box, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { showModal, hideModal } from '../actions/bluevilleActions';
-import Home from '../Pages/Home.jsx';
-import Services from '../Pages/Services.jsx';
-import Gallery from '../Pages/Gallery.jsx';
 import { connect } from 'react-redux';
 import Background from '../Images/Gallery/floorpic2.png';
 import CofCLogo from '../Images/CFCLogo.png';
@@ -151,7 +148,6 @@ const useStyles = makeStyles((theme) => ({
     },
 
   },
-
   copyWhite: {
     fontSize: 20,
     color: 'white',
@@ -308,8 +304,8 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 const MainPageWrapper = props => {
-  const { handleClose, handleOpen, rej, sel, instruments, setInstruments, setRej, setSel, setIsLoggedIn, setOpen, open } = props;
-  const [curWindow, setCurWindow] = useState(<Home />);
+  const { handleClose, handleOpen, rej, sel, instruments, setInstruments, setRej, setSel, setIsLoggedIn, setOpen, open, curWindow, setCurWindow,Home, Services, Gallery } = props;
+  
   const classes = useStyles();
 
   useEffect(() => {
@@ -349,9 +345,9 @@ const MainPageWrapper = props => {
       </Grid>
       <div className={classes.showRequest}>
       <Grid container className={classes.linkOffset}>
-        <Grid item xs={3} className={classes.linkClass} ><a href="#" onClick={() => setCurWindow(<Home />)}>Home</a></Grid>
-        <Grid item xs={2} className={classes.linkClass} ><a href="#" onClick={() => setCurWindow(<Services />)}>Services</a></Grid>
-        <Grid item xs={2} className={classes.linkClass} ><a href="#" onClick={() => setCurWindow(<Gallery />)}>Gallery</a></Grid>
+        <Grid item xs={3} className={classes.linkClass} ><a href="#" onClick={() => setCurWindow(Home)}>Home</a></Grid>
+        <Grid item xs={2} className={classes.linkClass} ><a href="#" onClick={() => setCurWindow(Services)}>Services</a></Grid>
+        <Grid item xs={2} className={classes.linkClass} ><a href="#" onClick={() => setCurWindow(Gallery)}>Gallery</a></Grid>
         <Grid item xs={2} className={classes.linkClass}><a href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">Google</a></Grid>
         <Grid item xs={3} className={classes.linkClass}><a href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">Facebook</a></Grid>
       </Grid>

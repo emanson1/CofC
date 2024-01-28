@@ -7,6 +7,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { hideModal } from './actions/bluevilleActions';
 import Navigation from './Pages/Navigation.jsx';
+import Home from './Pages/Home.jsx';
+import Services from './Pages/Services.jsx';
+import Gallery from './Pages/Gallery.jsx';
+
 function getModalStyle() {
   const top = 50 + rand();
   const left = 50 + rand();
@@ -32,16 +36,17 @@ function App(props) {
   const [openNav, setOpen] = useState(false);
   const [rightOpen, setRightOpen] = useState(false);
   const [leftOpen, setLeftOpen] = useState(false);
+  const [curWindow, setCurWindow] = useState(<Home />);
   return (
     <React.Fragment>
       <Router>
         <Route
   exact path='/'
   render={(props) => (
-    <MainPage open={openNav} setOpen={setOpen} {...props} />
+    <MainPage  curWindow={curWindow} setCurWindow={setCurWindow}open={openNav} setOpen={setOpen} {...props}  Home={<Home />} Services={<Services />} Gallery={<Gallery />}/>
   )}
 />
-<Navigation open={openNav} setOpen={setOpen} />
+<Navigation open={openNav} setOpen={setOpen} curWindow={curWindow} setCurWindow={setCurWindow} Home={<Home />} Services={<Services />}  Gallery={<Gallery />}/>
       </Router>
     
        {modalType!==undefined && modalType!==null && <ModalRoot handleClose={hideModal} open={open}/> }
