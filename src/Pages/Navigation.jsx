@@ -45,6 +45,7 @@ const useStyles = makeStyles((theme) => ({
         minWidth: '100%',
         textAlign: 'center',
         backgroundColor: 'yellow',
+        fontSize:20
     },
     quoteButtonContainer: {
         minWidth: 200,
