@@ -206,7 +206,7 @@ return (
           <div>CFC Hardwood Services include:</div>
           <ul>
             <li>CofC Hardwood LLC offers the absolute best in industry hardwood floor refinishing</li>
-            <li>Laminate work that Billy mentioned to me...</li>
+            {/* <li>Laminate work that Billy mentioned to me...</li> */}
             </ul></Typography>
             </Grid>
  
