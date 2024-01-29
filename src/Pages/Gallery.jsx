@@ -248,7 +248,7 @@ const Gallery = props => {
               <Grid container>
                 <Grid item xs={12}>
                   <Typography className={classes.headingMedium} variant={'h4'}>
-                    CofC Hardwood Gallery:
+                    <div >CofC Hardwood Gallery:
                     </div>
                   </Typography>
                 </Grid>
