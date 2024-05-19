@@ -230,7 +230,6 @@ return (
           <div>About CFC Hardwood Services LLC:</div>
           <ul>
             <li>CofC Hardwood LLC was founded in 2010 by William Miller to provide the absolute best in industry hardwood floor refinishing</li>
-            <li>Blah Blah Blah give me more words</li>
             </ul></Typography>
             </Grid>
  
