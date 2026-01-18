@@ -3,13 +3,13 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Dialog,Grid } from '@material-ui/core';
 import {connect} from 'react-redux';
 import { hideModal } from '../actions/bluevilleActions';
-import QuoteModal from '../Modals/QuoteModal';
+//import QuoteModal from '../Modals/QuoteModal';
 function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
 
 const Modals= {
-       quoteModal: QuoteModal
+    //   quoteModal: QuoteModal
    };
    
  
