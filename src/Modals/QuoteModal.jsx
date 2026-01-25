@@ -37,8 +37,9 @@ export default function QuoteModal(props) {
   }
   const uplFile = (e) => {
     let file = e;
-    getBase64(file);
+    getBase64(false);
   }
+
   const useStyles = makeStyles((theme) => ({
     container: {
       overflow: 'none',
