@@ -24,12 +24,13 @@ const configuration = {
   applicationAcronym:'CFC',
   folder:''
 };
-const root = createRoot(container); // createRoot(container!) if you use TypeScript
+const container = document.getElementById('root'); // Or your actual DOM node variable
+const root = createRoot(container);
 root.render(
   <Provider store={store}>
-   <ConnectedRouter history={history}>
-    <App />
-  </ConnectedRouter>
-  </Provider>,
-  rootElement);
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
+  </Provider>
+);
 registerServiceWorker();
