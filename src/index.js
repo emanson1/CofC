@@ -1,3 +1,4 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -5,7 +6,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { createHashHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
-
+import { createRoot } from 'react-dom/client';
 import 'react-app-polyfill/ie11';
 import 'react-app-polyfill/stable';
 import registerServiceWorker from './registerServiceWorker';
@@ -23,8 +24,8 @@ const configuration = {
   applicationAcronym:'CFC',
   folder:''
 };
-
-ReactDOM.render(
+const root = createRoot(container); // createRoot(container!) if you use TypeScript
+root.render(
   <Provider store={store}>
    <ConnectedRouter history={history}>
     <App />
