@@ -2,7 +2,7 @@
   "name": "blueville",
   "version": "1.2.0",
   "private": true,
-  "homepage": ".",
+  "homepage": "./build",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.484.0",
     "@aws-sdk/client-secrets-manager": "^3.484.0",
