@@ -130,19 +130,6 @@ const Navigation = (props) => {
                             </a>
                         </Grid>
                         <Grid item xs={12}>
-                            <a className={classes.linkClass} href="https://classic-floors-of-charleston.business.site/?utm_source=gmb&utm_medium=referral" target="_blank">
-                                <Grid container>
-
-                                    <Grid className={classes.iconGrid} item xs={2}>
-                                        <GoogleIcon className={classes.iconSize} />
-                                    </Grid>
-                                    <Grid item xs={10}>
-                                        Google Business Site
-                                    </Grid>
-                                </Grid>
-                            </a>
-                        </Grid>
-                        <Grid item xs={12}>
                             <a className={classes.linkClass} href="https://www.facebook.com/people/CFC-Hardwood-Floors-LLC/100067691010274/" target="_blank">
                                 <Grid container>
                                     <Grid className={classes.iconGrid} item xs={2}>
