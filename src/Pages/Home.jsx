@@ -196,7 +196,7 @@ return (
           <Typography className={classes.headingMedium}  variant={'h4'}>
           CFC Hardwood is:
           <ul>
-            <li>Family owned business serving the greater Columbia area for over twenty years</li>
+            <li>Family owned business serving the greater Columbia area for sixteen (16) years</li>
             <li>Exceptional work and honest pricing, with 100s of satisfied customers and a 5 star Google rating</li>
             </ul></Typography>
             </Grid>
