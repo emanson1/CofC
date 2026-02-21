@@ -230,7 +230,7 @@ const Gallery = props => {
     return images;
   };
   useEffect(() => {
-    const images = importAll(require.context('../Images/Gallery/', false, /\.(png|jpe?g|svg)$/));
+    const images = importAll(require.context('../Images/Gallery/', false, /\.(png|jpeg|svg)$/));
 
     setListOfImages(images);
   }, []);
@@ -273,7 +273,7 @@ const Gallery = props => {
               listOfImages.map(
                 (image, index) =>
                   <Grid item key={index} style={{ textAlign: 'center', backgroundColor: 'white', opacity: '.6' }} md={3} sm={4} xs={4}>
-                    <a href={`${image}`} target='_blank'>
+                    <a href={`${image.default}`} target='_blank'>
                       <img className={classes.imageCss} key={index} src={image.default} alt="info" style={{ border: '3px solid #003569' }}>
                       </img>
                     </a>
