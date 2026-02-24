@@ -6,16 +6,7 @@ import { Grid, Box, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CofCLogoSmall from '../Images/CFCLogoSmall.png';
 import Attachments from '../Pages/Attachments.jsx';
-//import { SES } from '@aws-sdk/client-ses';
-//import { AWS } from 'aws-sdk';
-//import { Email } from '../Pages/Email.jsx';
-//import { render } from '@react-email/render';
-import nodemailer from 'nodemailer';
-// import {
-//   SESClient,
-//   SendRawEmailCommand,
-//   SendEmailCommand,
-// } from '@aws-sdk/client-ses';
+import emailjs from '@emailjs/browser';
 
 
  
@@ -138,6 +129,25 @@ export default function QuoteModal(props) {
     handleClose();
   };
 
+  const sendEmail = (e) => {
+    alert('Sending email. Please wait...');
+  e.preventDefault();
+
+  emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, Form.current, {
+      publicKey: PUBLIC_KEY,
+    })
+    .then(
+      () => {
+        alert('Message sent successfully!');
+        console.log('SUCCESS!');
+        e.target.reset(); // Optional: reset the form after success
+      },
+      (error) => {
+        console.log('FAILED...', error.text);
+        alert('Failed to send message. Please try again.');
+      }
+    );
+};    
   
   
   const submitForm = async (values) => {
@@ -187,44 +197,32 @@ export default function QuoteModal(props) {
           }
         )
       }
-    const API_KEY = process.env.REACT_APP_API_KEY;
-    const API_SECRET = process.env.REACT_APP_API_SECRET;
-    
-    var accessKeyId=API_KEY;
-    var accessSecretKeyId=API_SECRET;
- 
-    const aws = require("aws-sdk");
 
-    const ses = new aws.SES({
-        apiVersion: "2010-12-01",
-        region: "us-east-1", 
-        credentials: {
-          accessKeyId: accessKeyId,
-          secretAccessKey: accessSecretKeyId
-        }
-      });
-    const transporter = nodemailer.createTransport({ SES: ses, AWS })
+  const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
+  const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
+  const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
 
+  
 //     // send some mail
-    transporter.sendMail(
-      {
-        from: "No-Reply@cfchardwoodfloorsllc.com",
-        to: "wmiller@cfchardwoodfloorsllc.com",
-        subject: "Message from Request Form: " + values.customername,
-        text: values.customername + "\n\nPhone:" + values.customerphone + "\n\nEmail:" + values.customeremail+"\n\nComments:"+values.comments,
-        ses: {
-        },
-        attachments: images,
+    // transporter.sendMail(
+    //   {
+    //     from: "No-Reply@cfchardwoodfloorsllc.com",
+    //     to: "wmiller@cfchardwoodfloorsllc.com",
+    //     subject: "Message from Request Form: " + values.customername,
+    //     text: values.customername + "\n\nPhone:" + values.customerphone + "\n\nEmail:" + values.customeremail+"\n\nComments:"+values.comments,
+    //     ses: {
+    //     },
+    //     attachments: images,
         
-      },
-      (err, info) => {
-        console.log(info.envelope);
-        console.log(info.messageId);
-      }
-    );
+    //   },
+    //   (err, info) => {
+    //     console.log(info.envelope);
+    //     console.log(info.messageId);
+    //   }
+    // );
     
       
-    
+  sendEmail(values);
   alert('Your information has been sent! Someone will get back to you soon.');
   handleClose();
     
