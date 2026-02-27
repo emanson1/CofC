@@ -15,7 +15,7 @@ export default function QuoteModal(props) {
   const [image64, setImage64] = useState({});
   const [fileObj, setFileObj] = useState();
 
-//  const emailHtml = render(<Email url="https://www.cfchardwoodfloorsllc.com" />);
+//  const emailHtml = render(<Email url="https://www.cofchardwoodfloorsllc.com" />);
   const getBase64 = (file, cb) => {
     let reader = new FileReader();
     reader.readAsDataURL(file.name);
@@ -222,7 +222,14 @@ export default function QuoteModal(props) {
     // );
     
       
-  sendEmail(values);
+  try
+  {
+    sendEmail(values);
+  }
+catch(ex)
+{
+  alert(ex.message);
+}
   alert('Your information has been sent! Someone will get back to you soon.');
   handleClose();
     
