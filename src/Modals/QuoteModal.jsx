@@ -148,7 +148,7 @@ export default function QuoteModal(props) {
         e.target.reset(); // Optional: reset the form after success
       },
       (error) => {
-        console.log('FAILED...', error.text);
+        console.log('FAILED...', error.Message);
         alert('Failed to send message. Please try again.');
       }
     );
