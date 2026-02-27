@@ -129,9 +129,9 @@ export default function QuoteModal(props) {
     handleClose();
   };
 
-  const sendEmail = (e) => {
+  const sendEmail = () => {
     alert('Sending email. Please wait...');
-  e.preventDefault();
+  //e.preventDefault();
 
   emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, Form.current, {
       publicKey: PUBLIC_KEY,
