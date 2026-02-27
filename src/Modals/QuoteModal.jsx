@@ -224,7 +224,7 @@ export default function QuoteModal(props) {
       
   try
   {
-    sendEmail(values);
+    sendEmail();
   }
 catch(ex)
 {
