@@ -135,7 +135,7 @@ export default function QuoteModal(props) {
   };
 
   const sendEmail = (object) => {
-    alert('Sending email. Please wait...');
+    
   //e.preventDefault();
 
   emailjs.send(SERVICE_ID, TEMPLATE_ID, object, {
