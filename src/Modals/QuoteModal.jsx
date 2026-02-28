@@ -134,11 +134,11 @@ export default function QuoteModal(props) {
     handleClose();
   };
 
-  const sendEmail = (e) => {
+  const sendEmail = (object) => {
     alert('Sending email. Please wait...');
   //e.preventDefault();
 
-  emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, {
+  emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, object, {
       publicKey: PUBLIC_KEY,
     })
     .then(
@@ -155,7 +155,7 @@ export default function QuoteModal(props) {
 };    
   
   
-  const submitForm = async (values) => {
+  const submitForm = (values) => {
     try
     {
       var images = [];
@@ -225,7 +225,7 @@ export default function QuoteModal(props) {
       
   try
   {
-    sendEmail(e);
+    sendEmail(values);
   }
 catch(ex)
 {
