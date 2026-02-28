@@ -193,7 +193,7 @@ export default function QuoteModal(props) {
         }
         default: fileType='text/plain'
         }
-         attStr+=encoding+fileType+values.attachments[x].Data.split(',')[1];
+         //attStr+=encoding+fileType+values.attachments[x].Data.split(',')[1];
          values.attachmentStr=attStr;
         images.push(
           {
@@ -336,13 +336,13 @@ catch(ex)
           <Grid xs={12} item >
             <hr />
           </Grid>
-          <Grid xs={12} item >
+          {/* <Grid xs={12} item >
             <Typography variant="h6" className={classes.inputText}>Upload any pictures/info?
             </Typography>
           </Grid>
           <Grid xs={12} item >
             <Attachments setFieldValue={setFieldValue} values={values} />
-          </Grid>
+          </Grid> */}
         </Grid>
       </Form>)
       }
