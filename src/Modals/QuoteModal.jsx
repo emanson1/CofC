@@ -138,7 +138,9 @@ export default function QuoteModal(props) {
     alert('Sending email. Please wait...');
   //e.preventDefault();
 
-  emailjs.send(SERVICE_ID, TEMPLATE_ID, object, PUBLIC_KEY)
+  emailjs.send(SERVICE_ID, TEMPLATE_ID, object, {
+      publicKey: PUBLIC_KEY,
+    })
     .then(
       () => {
         alert('Message sent successfully!');
@@ -146,7 +148,7 @@ export default function QuoteModal(props) {
         e.target.reset(); // Optional: reset the form after success
       },
       (error) => {
-        console.log('PUBLIC_KEY...:' + error);
+        console.log('FAILED...', error);
         alert('Failed to send message. Please try again.');
       }
     );
