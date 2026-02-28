@@ -248,14 +248,14 @@ catch(ex)
       customername: Yup.string().required("Please give us a good contact name"),
       comments: Yup.string().required("Please give us a little information.  We will reach out if we need more"),
       customerphone: Yup.string().when('customeremail', {is: (email) => !email || email.length === 0, then: Yup.string().required('Phone or email is required')}),
-      customeremail: Yup.string().email('Must be a valid email address').max(255).when('customerphone', {is: (phone) => !phone || phone.length === 0, then: Yup.string().required('Phone or email is required')}),
+      to_email: Yup.string().email('Must be a valid email address').max(255).when('customerphone', {is: (phone) => !phone || phone.length === 0, then: Yup.string().required('Phone or email is required')}),
     }
     , ['customerphone', 'customeremail']);
     return yupObj
   };
   return (
     <Formik
-      initialValues={{ customername: '', customeremail: '',customerphone:'', comments: '', attachments: new Array() }}
+      initialValues={{ customername: '', to_email: '',customerphone:'', comments: '', attachments: new Array() }}
       onSubmit={ (values, actions)=>{setTimeout(()=> submitForm(values) ,1000)}}
     //  onSubmit={(values4s) => submitForm(values)}
       validationSchema={getSchema()}
@@ -314,7 +314,7 @@ catch(ex)
                       variant="outlined"
                       label="Email"
                       margin="dense"
-                      name="customeremail"
+                      name="to_email"
                       fullWidth
                     />
                   </Grid>
