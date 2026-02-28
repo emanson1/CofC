@@ -134,11 +134,11 @@ export default function QuoteModal(props) {
     handleClose();
   };
 
-  const sendEmail = () => {
+  const sendEmail = (e) => {
     alert('Sending email. Please wait...');
   //e.preventDefault();
 
-  emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this, {
+  emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, e.target, {
       publicKey: PUBLIC_KEY,
     })
     .then(
