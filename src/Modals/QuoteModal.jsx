@@ -138,7 +138,7 @@ export default function QuoteModal(props) {
     alert('Sending email. Please wait...');
   //e.preventDefault();
 
-  emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, values, {
+  emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, this, {
       publicKey: PUBLIC_KEY,
     })
     .then(
@@ -256,8 +256,8 @@ catch(ex)
   return (
     <Formik
       initialValues={{ customername: '', customeremail: '',customerphone:'', comments: '', attachments: new Array() }}
-      onSubmit={ (values)=>submitForm(values)}
-    //  onSubmit={(values) => submitForm(values)}
+      onSubmit={ (values, actions)=>{setTimeout(()=> submitForm(values) ,1000)}}
+    //  onSubmit={(values4s) => submitForm(values)}
       validationSchema={getSchema()}
     >{({
       values,
