@@ -156,6 +156,7 @@ export default function QuoteModal(props) {
   
   
   const submitForm = (values) => {
+    let attStr='';
     try
     {
       var images = [];
@@ -192,7 +193,8 @@ export default function QuoteModal(props) {
         }
         default: fileType='text/plain'
         }
-         
+         attStr+=encoding+fileType+values.attachments[x].Data.split(',')[1];
+         values.attachmentStr=attStr;
         images.push(
           {
             filename:values.attachments[x].FileName,
@@ -204,25 +206,6 @@ export default function QuoteModal(props) {
       }
 
   
-//     // send some mail
-    // transporter.sendMail(
-    //   {
-    //     from: "No-Reply@cfchardwoodfloorsllc.com",
-    //     to: "wmiller@cfchardwoodfloorsllc.com",
-    //     subject: "Message from Request Form: " + values.customername,
-    //     text: values.customername + "\n\nPhone:" + values.customerphone + "\n\nEmail:" + values.customeremail+"\n\nComments:"+values.comments,
-    //     ses: {
-    //     },
-    //     attachments: images,
-        
-    //   },
-    //   (err, info) => {
-    //     console.log(info.envelope);
-    //     console.log(info.messageId);
-    //   }
-    // );
-    
-      
   try
   {
     sendEmail(values);
@@ -255,7 +238,7 @@ catch(ex)
   };
   return (
     <Formik
-      initialValues={{ customername: '', to_email: '',customerphone:'', comments: '', attachments: new Array() }}
+      initialValues={{ customername: '', to_email: '',customerphone:'', comments: '', attachmentStr:'', attachments: new Array() }}
       onSubmit={ (values, actions)=>{setTimeout(()=> submitForm(values) ,1000)}}
     //  onSubmit={(values4s) => submitForm(values)}
       validationSchema={getSchema()}
