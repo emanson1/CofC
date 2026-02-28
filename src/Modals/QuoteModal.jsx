@@ -155,7 +155,7 @@ export default function QuoteModal(props) {
 };    
   
   
-  const submitForm = async (values) => {
+  const submitForm = async (e,values) => {
     try
     {
       var images = [];
@@ -225,7 +225,7 @@ export default function QuoteModal(props) {
       
   try
   {
-    sendEmail();
+    sendEmail(e);
   }
 catch(ex)
 {
