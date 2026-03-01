@@ -208,6 +208,11 @@ export default function QuoteModal(props) {
   
   try
   {
+    let emailaddress=values.to_email;
+    if (!emailaddress || emailaddress.length === 0)
+    {
+      values.to_email='wmfloorman75@gmail.com';
+    }
     sendEmail(values);
   }
 catch(ex)
