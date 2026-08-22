@@ -2,34 +2,6 @@
 # yarn lockfile v1
 
 
-"@aws-sdk/checksums@^3.1000.29":
-  version "3.1000.29"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/checksums/-/checksums-3.1000.29.tgz#f12a6926eb3789057f5f16582fc226fe533c87fa"
-  integrity sha512-Dtu0gr4dnATZAPwEYbpCsG+MpLM7OAliy2gTepEFQwl1vZ6DL3QMH2FveMa3HLvPsOdhJsPRB3KtxVhph9T75A==
-  dependencies:
-    "@aws-sdk/core" "^3.977.9"
-    "@aws-sdk/types" "^3.974.5"
-    "@smithy/core" "^3.33.3"
-    "@smithy/types" "^4.17.2"
-    tslib "^2.6.2"
-
-"@aws-sdk/client-s3@^3.484.0":
-  version "3.1116.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/client-s3/-/client-s3-3.1116.0.tgz#1e2eec221df81a255a4942bbcbe37e90f5dc3099"
-  integrity sha512-UKRl9qSVW0rZpvSOauQNpYAy8+ONBAVYnpfKVtCyOF+FZVT1tl6MunYuHvuarCrroD2/YJs+tHTALYNgAlec3Q==
-  dependencies:
-    "@aws-sdk/checksums" "^3.1000.29"
-    "@aws-sdk/core" "^3.977.9"
-    "@aws-sdk/credential-provider-node" "^3.972.81"
-    "@aws-sdk/middleware-sdk-s3" "^3.972.75"
-    "@aws-sdk/signature-v4-multi-region" "^3.996.46"
-    "@aws-sdk/types" "^3.974.5"
-    "@smithy/core" "^3.33.3"
-    "@smithy/fetch-http-handler" "^5.7.2"
-    "@smithy/node-http-handler" "^4.11.3"
-    "@smithy/types" "^4.17.2"
-    tslib "^2.6.2"
-
 "@aws-sdk/client-secrets-manager@^3.484.0":
   version "3.1116.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-secrets-manager/-/client-secrets-manager-3.1116.0.tgz#f784f5da938099a974b6b887529a695e3511e24e"
@@ -175,18 +147,6 @@
   dependencies:
     "@aws-sdk/core" "^3.977.9"
     "@aws-sdk/nested-clients" "^3.997.44"
-    "@aws-sdk/types" "^3.974.5"
-    "@smithy/core" "^3.33.3"
-    "@smithy/types" "^4.17.2"
-    tslib "^2.6.2"
-
-"@aws-sdk/middleware-sdk-s3@^3.972.75":
-  version "3.972.75"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/middleware-sdk-s3/-/middleware-sdk-s3-3.972.75.tgz#d20222cbdd61197b245e0aaa3f79b7215dff31dc"
-  integrity sha512-wMIsNumRVKaNMKhvU/s9VrdEwE8S6gSzXp4RygFG5BEMnGkkXf8cjh8zf7cKJBpUDpqTWqwbz5isEgp9rH6Lng==
-  dependencies:
-    "@aws-sdk/core" "^3.977.9"
-    "@aws-sdk/signature-v4-multi-region" "^3.996.46"
     "@aws-sdk/types" "^3.974.5"
     "@smithy/core" "^3.33.3"
     "@smithy/types" "^4.17.2"
