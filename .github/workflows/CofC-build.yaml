@@ -37,7 +37,7 @@ jobs:
           CI: true
           SITE_URL: ${{ inputs.site-url }}
         run: |
-          yarn install --immutable
+          yarn install --ignore-engines
           yarn run build
 
 # Please do not touch the following action
