@@ -189,7 +189,7 @@ const Gallery = props => {
   useEffect(() => {
     // 1. Bulk import all files matching images directly via Vite's static globs
     // (Adjust the extension regex if your images are .png, .jpeg, etc.)
-    const globImages = import.meta.glob('../../src/images/Gallery/*.{png,jpg,jpeg,svg,webp}', { eager: true });
+    const globImages = import.meta.glob('/src/images/Gallery/*.{png,jpg,jpeg,svg,webp}', { eager: true });
     
     // 2. Parse the modules and map their paths straight into an array format
     const imageList = Object.values(globImages).map((module) => module.default);
