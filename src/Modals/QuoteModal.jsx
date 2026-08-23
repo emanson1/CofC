@@ -14,7 +14,10 @@ export default function QuoteModal(props) {
   const [imageList, setImageList] = useState([]);
   const [image64, setImage64] = useState({});
   const [fileObj, setFileObj] = useState();
-
+// Initialize at the root level of your app
+emailjs.init({
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY, 
+});
 //  const emailHtml = render(<Email url="https://www.cofchardwoodfloorsllc.com" />);
   const getBase64 = (file, cb) => {
     let reader = new FileReader();
@@ -125,10 +128,6 @@ export default function QuoteModal(props) {
   const classes = useStyles();
   const { modalProps, handleClose } = props;
 
-  const SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-  const TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-  const PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY;
-
   const handleClose1 = () => {
     const closestr = "here";
     handleClose();
@@ -137,23 +136,20 @@ export default function QuoteModal(props) {
   const sendEmail = (object) => {
     
   //e.preventDefault();
-
-  emailjs.send(SERVICE_ID, TEMPLATE_ID, object, {
-      publicKey: PUBLIC_KEY,
-    })
-    .then(
-      () => {
-        alert('Message sent successfully!');
-        console.log('SUCCESS!');
-        e.target.reset(); // Optional: reset the form after success
-      },
-      (error) => {
-        console.log('FAILED...', error);
-        alert('Failed to send message. Please try again.');
-      }
-    );
-};    
-  
+// Example using emailjs.send
+emailjs.send(
+  import.meta.env.VITE_EMAILJS_SERVICE_ID,
+  import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+  templateParams,
+  {
+    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+  }
+).then((response) => {
+   console.log('SUCCESS!', response.status, response.text);
+}).catch((err) => {
+   console.error('FAILED...', err);
+});
+  };
   
   const submitForm = (values) => {
     let attStr='';
