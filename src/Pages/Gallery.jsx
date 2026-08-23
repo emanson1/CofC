@@ -5,45 +5,32 @@ import CameraIcon from '@mui/icons-material/CameraAlt';
 import { connect } from 'react-redux';
 
 const useStyles = makeStyles((theme) => ({
-
   imageCss: {
     width: 300,
-    heigh: 300,
-    [theme.breakpoints.down('lg')]:
-    {
-
+    height: 300, // Fixed spelling typo: 'heigh' -> 'height'
+    [theme.breakpoints.down('lg')]: {
       width: 250,
       height: 250
     },
-
-    [theme.breakpoints.down('md')]:
-    {
-
+    [theme.breakpoints.down('md')]: {
       width: 200,
       height: 200
     },
-
-    [theme.breakpoints.down('sm')]:
-    {
-
+    [theme.breakpoints.down('sm')]: {
       width: 150,
       height: 150
     },
     [theme.breakpoints.down('xs')]: {
-      //width: '90vw',
       width: 75,
       height: 75
     }
   },
   iconSize: {
-
     color: '#003569',
     transform: 'scale(11.0)',
     paddingTop: 20,
     paddingRight: 10,
-
-    [theme.breakpoints.down('lg')]:
-    {
+    [theme.breakpoints.down('lg')]: {
       transform: 'scale(9.0)',
       paddingTop: 26,
       paddingRight: 12,
@@ -51,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     [theme.breakpoints.down('md')]: {
       paddingTop: 28,
       paddingRight: 14,
-      vtransform: 'scale(7.0)',
+      transform: 'scale(7.0)', // Fixed spelling typo: 'vtransform' -> 'transform'
     },
     [theme.breakpoints.down('sm')]: {
       paddingTop: 43,
@@ -64,33 +51,28 @@ const useStyles = makeStyles((theme) => ({
       transform: 'scale(2.0)',
     }
   },
-
   triPane: { opacity: .75 },
   blueBar: { backgroundColor: '#003569' },
   pageClass: {
     border: '1px solid #8C92B4',
     backgroundColor: '#003569',
     padding: 20
-
   },
   iconStairs: {
     transform: 'scale(0.8)',
     color: 'white'
-
   },
   alignBottom: {
     display: 'table-cell',
     verticalAlign: 'middle',
     textAlign: 'center',
     border: '1px dotted #888',
-
   },
   root: {
     width: '100%',
   },
   linkOffset: {
     paddingTop: 20,
-
   },
   boxBlue: {
     backgroundColor: '#003569',
@@ -103,7 +85,6 @@ const useStyles = makeStyles((theme) => ({
     paddingRight: 30,
     height: 81,
     width: 121
-
   },
   marginTopBottom30: {
     display: 'flex',
@@ -118,10 +99,8 @@ const useStyles = makeStyles((theme) => ({
   },
   headingClass: {
     backgroundColor: 'white',
-
   },
-  logoClass:
-  {
+  logoClass: {
     paddingTop: 10,
     display: 'flex',
     justifyContent: 'center',
@@ -136,44 +115,33 @@ const useStyles = makeStyles((theme) => ({
   copyWhite: {
     fontSize: 20,
     color: 'white',
-    //fontWeight:'bold'
-
   },
   logoColor: {
     paddingTop: 30,
     color: '#003569',
-    //color: '#8C92B4',
     textAlign: 'center',
     fontWeight: 'bold',
     textShadow: '-1px 0 #8C92B4, 0 3px #8C92B4, 1px 0 #8C92B4, 0 -1px #8C92B4'
-    //fontFamily:'cursive'
   },
   headingLarge: {
-    //paddingTop:50,
-    //paddingBottom:10,
-
     color: 'white',
     fontWeight: 'bold',
     textShadow: '-1px 0 black, 0 3px black, 1px 0 black, 0 -1px black'
   },
   headingMedium: {
-    [theme.breakpoints.up('sm')]:
-    {
+    [theme.breakpoints.up('sm')]: {
       fontSize: 45,
     },
     [theme.breakpoints.down('sm')]: {
-      //width: '90vw',
       fontSize: 32,
     },
     [theme.breakpoints.down('xs')]: {
-      //width: '90vw',
       fontSize: 22,
     },
     color: 'white',
     fontWeight: 'bold',
     textShadow: '-1px 0 black, 0 3px black, 1px 0 black, 0 -1px black'
   },
-
   contactBox: {
     paddingTop: 10,
     backgroundColor: '#ffcc00',
@@ -186,28 +154,20 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
     fontWeight: 'bold'
   },
-  darkBlueBackgroundLayer:
-  {
+  darkBlueBackgroundLayer: {
     backgroundColor: '#145493',
     color: 'white'
-
   },
-  whiteBackgroundLayer:
-  {
+  whiteBackgroundLayer: {
     backgroundColor: 'white',
     color: '#145493'
-
   },
-  li:
-  {
+  li: {
     fontSize: 19
   },
-
   containerClass: {
     paddingTop: 60,
-
-    [theme.breakpoints.down('lg')]:
-    {
+    [theme.breakpoints.down('lg')]: {
       paddingTop: 40,
     },
     [theme.breakpoints.down('md')]: {
@@ -218,66 +178,66 @@ const useStyles = makeStyles((theme) => ({
     },
     [theme.breakpoints.down('xs')]: {
       paddingTop: 10,
-
     }
   },
 }));
+
 const Gallery = props => {
   const classes = useStyles();
   const [listOfImages, setListOfImages] = useState([]);
-  const importAll = (r) => {
-    const images = r.keys().map(r);
-    return images;
-  };
-  useEffect(() => {
-    const images = importAll(require.context('../Images/Gallery/', false, /\.(png|jpeg|svg)$/));
 
-    setListOfImages(images);
+  useEffect(() => {
+    // 1. Bulk import all files matching images directly via Vite's static globs
+    // (Adjust the extension regex if your images are .png, .jpeg, etc.)
+    const globImages = import.meta.glob('../../src/images/Gallery/*.{png,jpg,jpeg,svg,webp}', { eager: true });
+    
+    // 2. Parse the modules and map their paths straight into an array format
+    const imageList = Object.values(globImages).map((module) => module.default);
+    
+    setListOfImages(imageList);
   }, []);
+
   return (
     <div>
       <Grid container className={classes.containerClass}>
-        <Grid item xs={1} sm={2}>
-          {/* <a  onClick={()=>setIsLogdgedIn(false)}>LogOut</a> */}
-        </Grid>
+        <Grid item xs={1} sm={2}></Grid>
         <Grid item xs={11} sm={10}>
           <Grid container >
             <Grid item xs={1}>
-              <CameraIcon className={classes.iconSize} /></Grid>
+              <CameraIcon className={classes.iconSize} />
+            </Grid>
             <Grid item xs={10} style={{ textAlign: 'middle' }}>
               <Grid container>
                 <Grid item xs={12}>
                   <Typography className={classes.headingMedium} variant={'h4'}>
-                    <div >CofC Hardwood Gallery:
-                    </div>
+                    <div>CofC Hardwood Gallery:</div>
                   </Typography>
                 </Grid>
               </Grid>
-              <Grid xs={2}></Grid>
+              <Grid item xs={2}></Grid>
             </Grid>
           </Grid>
         </Grid>
-
-
-
-
       </Grid>
-      <Grid container><Grid xs={12}><hr /></Grid></Grid>
+      <Grid container><Grid item xs={12}><hr /></Grid></Grid>
       <Grid container>
-
         <Grid item xs={1}></Grid>
         <Grid item xs={10}>
           <Grid container>
             <Grid style={{ textAlign: 'center', backgroundColor: 'white', opacity: '.6' }} item xs={12}><br /><br /><br /></Grid>
             {
-              listOfImages.map(
-                (image, index) =>
-                  <Grid item key={index} style={{ textAlign: 'center', backgroundColor: 'white', opacity: '.6' }} md={3} sm={4} xs={4}>
-                    <a href={`${image.default}`} target='_blank'>
-                      <img className={classes.imageCss} key={index} src={image.default} alt="info" style={{ border: '3px solid #003569' }}>
-                      </img>
-                    </a>
-                  </Grid>
+              listOfImages.map((imagePath, index) =>
+                <Grid item key={index} style={{ textAlign: 'center', backgroundColor: 'white', opacity: '.6' }} md={3} sm={4} xs={4}>
+                  {/* Changed path link reference from image.default to standard fallback string */}
+                  <a href={imagePath} target='_blank' rel="noreferrer">
+                    <img 
+                      className={classes.imageCss} 
+                      src={imagePath} 
+                      alt={`Gallery view item ${index + 1}`} 
+                      style={{ border: '3px solid #003569' }} 
+                    />
+                  </a>
+                </Grid>
               )
             }
           </Grid>
@@ -286,7 +246,6 @@ const Gallery = props => {
       </Grid>
     </div>
   );
-
 }
 
 const mapStateToProps = (state) => ({
@@ -295,4 +254,5 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
 });
+
 export default connect(mapStateToProps, mapDispatchToProps)(Gallery);
