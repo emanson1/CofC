@@ -35,9 +35,9 @@ jobs:
       - name: Build Node assets
         env:
           CI: true
-          REACT_APP_EMAILJS_PUBLIC_KEY: nL2xPejMxqYVdsilI
-          REACT_APP_EMAILJS_SERVICE_ID: service_662q5jq
-          REACT_APP_EMAILJS_TEMPLATE_ID: template_e4073if
+          VITE_EMAILJS_PUBLIC_KEY: nL2xPejMxqYVdsilI
+          VITE_EMAILJS_SERVICE_ID: service_662q5jq
+          VITE_EMAILJS_TEMPLATE_ID: template_e4073if
           SITE_URL: ${{ inputs.site-url }}
         run: |
           npm install --global yarn
