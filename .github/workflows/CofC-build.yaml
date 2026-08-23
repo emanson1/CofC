@@ -14,7 +14,7 @@ on:
         type: string
 
 env:
-  DEPLOYMENT_FOLDER: build
+  DEPLOYMENT_FOLDER: public
 
 jobs:
 # Please do not rename this job
@@ -23,22 +23,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         with:
           submodules: 'recursive'
 
       - name: Setup Node
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: v22.x
 
       - name: Build Node assets
         env:
           CI: true
+          REACT_APP_EMAILJS_PUBLIC_KEY: nL2xPejMxqYVdsilI
+          REACT_APP_EMAILJS_SERVICE_ID: service_662q5jq
+           REACT_APP_EMAILJS_TEMPLATE_ID: template_e4073if
           SITE_URL: ${{ inputs.site-url }}
         run: |
-          yarn install --ignore-engines
-          yarn run build
+          npm install --global yarn
+          yarn install --frozen-lockfile
+          yarn build
 
 # Please do not touch the following action
       - name: Store deployment content
@@ -46,7 +50,7 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-us.ionos.space
-          project-id: 8e66ca41-42e1-4874-88f4-953ef425c538
+          project-id: f7110c49-6d16-4ff9-a33f-3f5d9ff3415c
           branch-id: ${{ inputs.branch-id }}
           version: ${{ github.sha }}
           folder: ${{ env.DEPLOYMENT_FOLDER }}
