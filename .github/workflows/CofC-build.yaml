@@ -37,7 +37,7 @@ jobs:
           CI: true
           REACT_APP_EMAILJS_PUBLIC_KEY: nL2xPejMxqYVdsilI
           REACT_APP_EMAILJS_SERVICE_ID: service_662q5jq
-           REACT_APP_EMAILJS_TEMPLATE_ID: template_e4073if
+          REACT_APP_EMAILJS_TEMPLATE_ID: template_e4073if
           SITE_URL: ${{ inputs.site-url }}
         run: |
           npm install --global yarn
