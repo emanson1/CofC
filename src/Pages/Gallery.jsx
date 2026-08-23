@@ -187,15 +187,21 @@ const Gallery = props => {
   const [listOfImages, setListOfImages] = useState([]);
 
   useEffect(() => {
-    // 1. Bulk import all files matching images directly via Vite's static globs
-    // (Adjust the extension regex if your images are .png, .jpeg, etc.)
-    const globImages = import.meta.glob('/src/images/Gallery/*.{png,jpg,jpeg,svg,webp}', { eager: true });
-    
-    // 2. Parse the modules and map their paths straight into an array format
-    const imageList = Object.values(globImages).map((module) => module.default);
-    
-    setListOfImages(imageList);
-  }, []);
+  // 1. Tell Vite to scan your public directory path during compilation
+  // (We use a broad wildcard to capture all standard casing variations)
+  const globImages = import.meta.glob(
+    '/public/images/Gallery/*.{png,jpg,jpeg,svg,webp,PNG,JPG,JPEG}', 
+    { eager: true }
+  );
+  
+  // 2. Extract the file keys, and remove the prefix "/public" 
+  // because anything in public is served from the root domain directly on IONOS.
+  const imageList = Object.keys(globImages).map((filePath) => 
+    filePath.replace('/public', '')
+  );
+  
+  setListOfImages(imageList);
+}, []);
 
   return (
     <div>
