@@ -6,6 +6,7 @@ export default defineConfig({
   define: {
     global: 'window', // From our previous fix
     'process.env': {}, // Add this line to mock process.env variables
+    base: './', // <--- Add this line to force relative path bundling
   },
   optimizeDeps: {
     include: [
