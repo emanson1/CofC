@@ -9,16 +9,16 @@ import Attachments from '../Pages/Attachments.jsx';
 import emailjs from '@emailjs/browser';
 
 
- 
+
 export default function QuoteModal(props) {
   const [imageList, setImageList] = useState([]);
   const [image64, setImage64] = useState({});
   const [fileObj, setFileObj] = useState();
-// Initialize at the root level of your app
-emailjs.init({
-  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY, 
-});
-//  const emailHtml = render(<Email url="https://www.cofchardwoodfloorsllc.com" />);
+  // Initialize at the root level of your app
+  emailjs.init({
+    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+  });
+  //  const emailHtml = render(<Email url="https://www.cofchardwoodfloorsllc.com" />);
   const getBase64 = (file, cb) => {
     let reader = new FileReader();
     reader.readAsDataURL(file.name);
@@ -40,16 +40,16 @@ emailjs.init({
       border: '2px solid #ffcc00',
       padding: 5,
       justifyContent: 'center',
-      
+
     },
     subContainerBackground: {
       backgroundImage: `url(${CofCLogoSmall})`,
       backgroundSize: 'cover',
       [theme.breakpoints.down('xs')]: {
         backgroundSize: '300px 500px',
-        
+
       },
-      
+
     },
     titleClass: {
       paddingTop: 10,
@@ -89,7 +89,7 @@ emailjs.init({
 
     },
     subHeading: {
-    
+
       paddingLeft: 5,
       paddingRight: 5,
       backgroundColor: '#ffcc00',
@@ -122,7 +122,7 @@ emailjs.init({
       {
         fontSize: 17,
       },
-      
+
     }
   }));
   const classes = useStyles();
@@ -134,219 +134,215 @@ emailjs.init({
   };
 
   const sendEmail = (object) => {
-    
-  //e.preventDefault();
-// Example using emailjs.send
-emailjs.send(
-  import.meta.env.VITE_EMAILJS_SERVICE_ID,
-  import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-  templateParams,
-  {
-    publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-  }
-).then((response) => {
-   console.log('SUCCESS!', response.status, response.text);
-}).catch((err) => {
-   console.error('FAILED...', err);
-});
-  };
-  
-  const submitForm = (values) => {
-    let attStr='';
-    try
-    {
-      var images = [];
-      for (var x=0;x<values.attachments.length;x++)
-      {
 
-        let fileType='image/png';
-       switch (values.attachments[x].FileName.substring(values.attachments[x].FileName.lastIndexOf('.') + 1, values.attachments[x].FileName.length).toLowerCase())
-       {
-        case 'jpg', 'png', 'gif','jpeg':
-        {
-          fileType='image/png';
-          break;
-        }
-        case 'pdf':
-        {
-          fileType='application/pdf';
-        }
-        case 'xls':
-        {
-          fileType='application/excel';
-        }
-        case 'xlsx':
-        {
-          fileType='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
-        }
-        case 'doc','dot':
-        {
-          fileType='application/msword';
-        }
-        case 'docx':
-        {
-          fileType='application/vnd.openxmlformats-officedocument.wordprocessingml.document';
-        }
-        default: fileType='text/plain'
-        }
-         //attStr+=encoding+fileType+values.attachments[x].Data.split(',')[1];
-         values.attachmentStr=attStr;
-        images.push(
+    const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    //e.preventDefault();
+    // Example using emailjs.send
+    emailjs.send(
+      SERVICE_ID,
+      TEMPLATE_ID,
+      object, {
+      publicKey: PUBLIC_KEY,
+    })
+.then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+    }).catch((err) => {
+      console.error('FAILED...', err);
+    });
+};
+
+const submitForm = (values) => {
+  let attStr = '';
+  try {
+    var images = [];
+    for (var x = 0; x < values.attachments.length; x++) {
+
+      let fileType = 'image/png';
+      switch (values.attachments[x].FileName.substring(values.attachments[x].FileName.lastIndexOf('.') + 1, values.attachments[x].FileName.length).toLowerCase()) {
+        case 'jpg', 'png', 'gif', 'jpeg':
           {
-            filename:values.attachments[x].FileName,
-            content: values.attachments[x].Data.split(',')[1],
-            encoding: 'base64',
-            contentType: fileType
+            fileType = 'image/png';
+            break;
           }
-        )
+        case 'pdf':
+          {
+            fileType = 'application/pdf';
+          }
+        case 'xls':
+          {
+            fileType = 'application/excel';
+          }
+        case 'xlsx':
+          {
+            fileType = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet';
+          }
+        case 'doc', 'dot':
+          {
+            fileType = 'application/msword';
+          }
+        case 'docx':
+          {
+            fileType = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
+          }
+        default: fileType = 'text/plain'
       }
-
-  
-  try
-  {
-    let emailaddress=values.to_email;
-    if (!emailaddress || emailaddress.length === 0)
-    {
-      values.to_email='wmfloorman75@gmail.com';
+      //attStr+=encoding+fileType+values.attachments[x].Data.split(',')[1];
+      values.attachmentStr = attStr;
+      images.push(
+        {
+          filename: values.attachments[x].FileName,
+          content: values.attachments[x].Data.split(',')[1],
+          encoding: 'base64',
+          contentType: fileType
+        }
+      )
     }
-    sendEmail(values);
+
+
+    try {
+      let emailaddress = values.to_email;
+      if (!emailaddress || emailaddress.length === 0) {
+        values.to_email = 'wmfloorman75@gmail.com';
+      }
+      sendEmail(values);
+    }
+    catch (ex) {
+      alert(ex.message);
+    }
+    alert('Your information has been sent! Someone will get back to you soon.');
+    handleClose();
+
   }
-catch(ex)
-{
-  alert(ex.message);
-}
-  alert('Your information has been sent! Someone will get back to you soon.');
-  handleClose();
-    
-  }
-  catch (ex)
-  {
-    
+  catch (ex) {
+
     alert(ex);
-    var ex1=ex;
+    var ex1 = ex;
   }
-  };
-    
-  const getSchema = () => {
-    const yupObj = Yup.object().shape({
-      customername: Yup.string().required("Please give us a good contact name"),
-      comments: Yup.string().required("Please give us a little information.  We will reach out if we need more"),
-      customerphone: Yup.string().when('customeremail', {is: (email) => !email || email.length === 0, then: Yup.string().required('Phone or email is required')}),
-      to_email: Yup.string().email('Must be a valid email address').max(255).when('customerphone', {is: (phone) => !phone || phone.length === 0, then: Yup.string().required('Phone or email is required')}),
-    }
-    , ['customerphone', 'customeremail']);
-    return yupObj
-  };
-  return (
-    <Formik
-      initialValues={{ customername: '', to_email: '',customerphone:'', comments: '', attachmentStr:'', attachments: new Array() }}
-      onSubmit={ (values, actions)=>{setTimeout(()=> submitForm(values) ,1000)}}
-    //  onSubmit={(values4s) => submitForm(values)}
-      validationSchema={getSchema()}
-    >{({
-      values,
-      touched,
-      errors,
-      dirty,
-      isSubmitting,
-      setFieldValue
-      /* and other goodies */
-    }) => (
+};
 
-      <Form>
-          <Grid container className={classes.container}>
-          <Grid item xs={12}>
-            <Typography variant={'h5'} className={classes.titleClass} style={{ textAlign: 'center' }}>
-              CFC Hardwood Floors LLC
+const getSchema = () => {
+  const yupObj = Yup.object().shape({
+    customername: Yup.string().required("Please give us a good contact name"),
+    comments: Yup.string().required("Please give us a little information.  We will reach out if we need more"),
+    customerphone: Yup.string().when('customeremail', { is: (email) => !email || email.length === 0, then: Yup.string().required('Phone or email is required') }),
+    to_email: Yup.string().email('Must be a valid email address').max(255).when('customerphone', { is: (phone) => !phone || phone.length === 0, then: Yup.string().required('Phone or email is required') }),
+  }
+    , ['customerphone', 'customeremail']);
+  return yupObj
+};
+return (
+  <Formik
+    initialValues={{ customername: '', to_email: '', customerphone: '', comments: '', attachmentStr: '', attachments: new Array() }}
+    onSubmit={(values, actions) => { setTimeout(() => submitForm(values), 1000) }}
+    //  onSubmit={(values4s) => submitForm(values)}
+    validationSchema={getSchema()}
+  >{({
+    values,
+    touched,
+    errors,
+    dirty,
+    isSubmitting,
+    setFieldValue
+    /* and other goodies */
+  }) => (
+
+    <Form>
+      <Grid container className={classes.container}>
+        <Grid item xs={12}>
+          <Typography variant={'h5'} className={classes.titleClass} style={{ textAlign: 'center' }}>
+            CFC Hardwood Floors LLC
+          </Typography>
+        </Grid>
+        <Grid container direction="row" alignItems="center">
+          <Grid xs={12} item>
+            <Typography className={classes.subHeading} variant="h6">
+              Please enter the following information and we reach out with a quote and/or for more information.
             </Typography>
           </Grid>
-          <Grid container direction="row" alignItems="center">
-            <Grid xs={12} item>
-              <Typography className={classes.subHeading} variant="h6">
-                Please enter the following information and we reach out with a quote and/or for more information.
-              </Typography>
-            </Grid>
-          </Grid>
-          <Grid container className={classes.subContainerBackground}>
-            <Grid xs={12}>
-              <Grid xs={12} className={classes.subContainer}>
-                <Grid xs={12}>
-                  <br />
+        </Grid>
+        <Grid container className={classes.subContainerBackground}>
+          <Grid xs={12}>
+            <Grid xs={12} className={classes.subContainer}>
+              <Grid xs={12}>
+                <br />
+              </Grid>
+              <Grid container direction="row" alignItems="center">
+                <Grid xs={12} item>
+                  <Typography className={classes.inputText} variant="h6">
+                    Please supply your name:
+                  </Typography>
                 </Grid>
-                <Grid container direction="row" alignItems="center">
-                  <Grid xs={12} item>
-                    <Typography className={classes.inputText} variant="h6">
-                      Please supply your name:
-                    </Typography>
-                  </Grid>
-                  <Grid xs={12} item >
-                    <Field component={FormikTextField}
-                      variant="outlined"
-                      label="Name"
-                      margin="dense"
-                      name="customername"
-                      fullWidth
-                    />
-                  </Grid>
-                  <Grid xs={12} item >
-                    <Typography variant="h6" className={classes.inputText} >
-                      Please enter a valid email address (or phone number):
-                    </Typography>
-                  </Grid>
-                  <Grid xs={12} item className={classes.inputClass}>
-                    <Field component={FormikTextField}
-                      variant="outlined"
-                      label="Email"
-                      margin="dense"
-                      name="to_email"
-                      fullWidth
-                    />
-                  </Grid>
-                  <Grid xs={12} item >
-                    <Field component={FormikTextField}
-                      variant="outlined"
-                      label="Phone"
-                      margin="dense"
-                      name="customerphone"
-                      fullWidth
-                    />
-                  </Grid>
-                  <Grid xs={12} item >
-                    <Typography variant="h6" className={classes.inputText} >
-                      Please let us know what we can do to help:
-                    </Typography>
-                  </Grid>
-                  <Grid xs={12} item className={classes.inputClass}>
-                    <Field component={FormikTextField}
-                      multiline
-                      variant="outlined"
-                      label="Comments"
-                      margin="dense"
-                      name="comments"
-                      fullWidth
-                      minRows={3}
-                    />
-                  </Grid>
+                <Grid xs={12} item >
+                  <Field component={FormikTextField}
+                    variant="outlined"
+                    label="Name"
+                    margin="dense"
+                    name="customername"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid xs={12} item >
+                  <Typography variant="h6" className={classes.inputText} >
+                    Please enter a valid email address (or phone number):
+                  </Typography>
+                </Grid>
+                <Grid xs={12} item className={classes.inputClass}>
+                  <Field component={FormikTextField}
+                    variant="outlined"
+                    label="Email"
+                    margin="dense"
+                    name="to_email"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid xs={12} item >
+                  <Field component={FormikTextField}
+                    variant="outlined"
+                    label="Phone"
+                    margin="dense"
+                    name="customerphone"
+                    fullWidth
+                  />
+                </Grid>
+                <Grid xs={12} item >
+                  <Typography variant="h6" className={classes.inputText} >
+                    Please let us know what we can do to help:
+                  </Typography>
+                </Grid>
+                <Grid xs={12} item className={classes.inputClass}>
+                  <Field component={FormikTextField}
+                    multiline
+                    variant="outlined"
+                    label="Comments"
+                    margin="dense"
+                    name="comments"
+                    fullWidth
+                    minRows={3}
+                  />
                 </Grid>
               </Grid>
             </Grid>
           </Grid>
-          <Grid xs={12} className={classes.submitButtonGrid} item>
-            <Button type='submit' className={classes.submitButton} variant='contained' color='primary'>Send Info</Button>
-          </Grid>
-          <Grid xs={12} item >
-            <hr />
-          </Grid>
-          {/* <Grid xs={12} item >
+        </Grid>
+        <Grid xs={12} className={classes.submitButtonGrid} item>
+          <Button type='submit' className={classes.submitButton} variant='contained' color='primary'>Send Info</Button>
+        </Grid>
+        <Grid xs={12} item >
+          <hr />
+        </Grid>
+        {/* <Grid xs={12} item >
             <Typography variant="h6" className={classes.inputText}>Upload any pictures/info?
             </Typography>
           </Grid>
           <Grid xs={12} item >
             <Attachments setFieldValue={setFieldValue} values={values} />
           </Grid> */}
-        </Grid>
-      </Form>)
-      }
-    </Formik >
-  )
+      </Grid>
+    </Form>)
+    }
+  </Formik >
+)
 };
